@@ -1101,3 +1101,15 @@ body {
 .np-med-hero img { z-index: 1; }
 .np-med-hero img, .np-med-view img { mix-blend-mode: normal; }
 @media (max-width: 560px) { .np-med-sws { gap: 4px; } .np-sw { width: 36px; height: 36px; } .np-sw i { width: 26px; height: 26px; } }
+
+/* v9 : tous les textes noirs dans la typo des sections (DM Sans ExtraBold, noir) */
+header nav a,
+main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-colors-label, .np-pet-toggle > span):not(:is(.np-phone *, .np-lost *, [class*="np-phone"], [class*="np-phone"] *, .np-how-cta, .np-how-cta *, .np-med-cta p)) {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 800;
+  color: rgb(38, 33, 28);
+}
+/* supprime les traits au-dessus et sous le bloc « La publicité » */
+#video { border-top: 0 !important; border-bottom: 0 !important; box-shadow: none !important; }
+#video::before, #video::after { display: none !important; }
+.np-screen-card figcaption p { font-family: "DM Sans", system-ui, sans-serif; font-weight: 800; color: rgb(38, 33, 28); }
