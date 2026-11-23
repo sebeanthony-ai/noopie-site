@@ -970,3 +970,26 @@ body {
 @keyframes npLinkIn { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translate(-50%, 0); } }
 .np-cam-link > span { display: block; text-align: left; }
 .np-cam-link b { display: block; }
+
+/* v7 : cadre iPhone Pro réaliste (titane, Dynamic Island, boutons, reflet) */
+.np-phone {
+  --ti1: #5E6268; --ti2: #D9DCE0; --ti3: #8B9096; --ti4: #F4F5F7; --pw: 168px;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(#050506, #050506) padding-box,
+    linear-gradient(135deg, var(--ti3) 0%, var(--ti4) 14%, var(--ti1) 30%, var(--ti2) 52%, var(--ti1) 70%, var(--ti4) 86%, var(--ti3) 100%) border-box;
+  padding: 6px; border-radius: 40px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 0 0 1px rgba(0,0,0,.55), 0 2px 3px rgba(6,20,60,.18), 0 22px 44px -8px rgba(6,20,60,.45), 0 48px 80px -20px rgba(6,20,60,.35);
+}
+.np-phone--fiche { --pw: 210px; }
+.np-phone--lg { --pw: 220px; border-radius: 46px; padding: 7px; }
+.np-phone .np-phone-screen { border-radius: 33px; }
+.np-phone--lg .np-phone-screen { border-radius: 38px; }
+.np-phone::before { top: 14px; width: 60px; height: 18px; border-radius: 99px; z-index: 5;
+  background: radial-gradient(circle at 78% 50%, #23345C 0 2px, #0B0E16 2.4px 4px, transparent 4.4px), #000; }
+.np-phone--lg::before { top: 17px; width: 72px; height: 21px; }
+.np-phone::after { content: ""; position: absolute; left: -6px; top: 96px; width: 3px; height: 30px; border-radius: 2px 0 0 2px; background: var(--ti3);
+  box-shadow: 0 -34px 0 -7px var(--ti3), 0 40px 0 0 var(--ti3), calc(var(--pw) + 5px) 22px 0 0 var(--ti3), calc(var(--pw) + 5px) 44px 0 0 var(--ti3); }
+.np-phone > .np-phone-screen::after { content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(118deg, rgba(255,255,255,.15) 0%, rgba(255,255,255,.04) 24%, rgba(255,255,255,0) 38%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
