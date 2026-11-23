@@ -1445,3 +1445,23 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-a3-bento .np-a3-tile:last-child { flex-direction: column; text-align: left; align-items: stretch; }
 .np-a3-bento .np-a3-tile:last-child .np-a3-ico { align-self: flex-start; }
 .np-a3-bento .np-a3-tile:last-child h3 { margin: 14px 0 6px; }
+
+/* v12 : vraies cartes dans les maquettes */
+.np-how-media--app .np-shot { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: calc(100% - 30px); aspect-ratio: 359 / 665; }
+.np-how-media--app .np-shot img { position: static; transform: none; width: 100%; height: 100%; max-width: none; display: block; }
+.np-shot-map { position: absolute; left: 10.6%; right: 4.2%; top: 28.1%; bottom: 2.9%; border-radius: 0 0 9% 9% / 0 0 6% 6%; overflow: hidden; opacity: 0; transition: opacity .4s; }
+.np-shot-map.mm-live { opacity: 1; }
+.np-shot-map .np-mm { border-radius: 0; }
+.np-shot-btn { position: absolute; left: 4%; right: 4%; bottom: 5%; z-index: 2; background: #fff; border-radius: 14px; box-shadow: 0 6px 16px rgba(0,0,0,.12); text-align: center; font: 800 clamp(9px, 1vw, 12px) "DM Sans", system-ui, sans-serif; color: #1A5FD6; padding: 7% 0; padding-block: clamp(6px, .9vw, 10px); }
+.np-ia-screen > :not(.np-mm) { position: relative; z-index: 1; }
+.np-ia-screen.mm-live { background: #E9EEF4; }
+.np-ia-screen.mm-live .np-ia-pin, .np-ia-screen.mm-live .np-ia-tag { display: none; }
+.np-ap-screen--live > :not(.np-mm), .np-ap-screen--zones > :not(.np-mm) { position: relative; z-index: 1; }
+.np-ap-screen--live > .np-ap-avatar-pin { position: absolute; }
+.np-ap-screen--zones > .np-u-zone, .np-ap-screen--zones > .np-u-zpin { position: absolute; }
+.np-ap-screen--live.mm-live, .np-ap-screen--zones.mm-live { background: #E9EEF4; }
+.np-ap-screen--live.mm-live .np-ap-avatar-pin, .np-ap-screen--zones.mm-live .np-u-zone, .np-ap-screen--zones.mm-live .np-u-zpin { display: none; }
+.np-a3-minimap.mm-live { background: #E9EEF4; }
+.np-a3-minimap.mm-live > :not(.np-mm):not(.np-a3-live) { display: none; }
+.np-a3-minimap .np-a3-live { z-index: 2; }
+.np-a3-minimap { overflow: hidden; }
