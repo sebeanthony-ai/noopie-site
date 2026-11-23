@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 360" fill="none">
+  <defs><path id="nougat-route" d="M405 210C489 209 552 170 625 195 667 210 691 241 722 263"/><path id="ziggy-route" d="M1041 222C960 207 889 268 827 278 785 285 752 280 722 263"/></defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <use href="#nougat-route" stroke="#1764d8" stroke-width="7"/>
+    <use href="#ziggy-route" stroke="#e4a522" stroke-width="7" stroke-dasharray="4 10"/>
+    <circle cx="722" cy="263" r="17" fill="#fff" stroke="#1764d8" stroke-width="3"/>
+    <g fill="#1764d8" transform="translate(722 263)">
+      <ellipse cx="-7" cy="-2" rx="2.3" ry="3" transform="rotate(-22 -7 -2)"/>
+      <ellipse cx="-2.6" cy="-6" rx="2.3" ry="3"/>
+      <ellipse cx="2.6" cy="-6" rx="2.3" ry="3"/>
+      <ellipse cx="7" cy="-2" rx="2.3" ry="3" transform="rotate(22 7 -2)"/>
+      <path d="M0-1c-3 0-7 4-7 7 0 4 5 2 7 2s7 2 7-2c0-3-4-7-7-7Z"/>
+    </g>
+  </g>
+</svg>

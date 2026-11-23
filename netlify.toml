@@ -1,0 +1,4 @@
+# Site statique : aucun build, Netlify publie directement la racine du dépôt.
+[build]
+  publish = "."
+  command = ""

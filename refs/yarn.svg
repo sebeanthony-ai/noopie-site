@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 190" width="240" height="190">
+  <defs>
+    <radialGradient id="yb" cx="38%" cy="32%" r="72%">
+      <stop offset="0" stop-color="#6AA4FF"/>
+      <stop offset=".45" stop-color="#2F7BF5"/>
+      <stop offset="1" stop-color="#0F49B0"/>
+    </radialGradient>
+    <linearGradient id="ys" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8CBAFF"/>
+      <stop offset="1" stop-color="#1F6FEB"/>
+    </linearGradient>
+    <clipPath id="yc"><circle cx="128" cy="92" r="74"/></clipPath>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <!-- ombre douce -->
+  <ellipse cx="124" cy="172" rx="86" ry="12" fill="#1554BF" opacity=".22" filter="url(#sh)"/>
+  <!-- pelote -->
+  <circle cx="128" cy="92" r="74" fill="url(#yb)"/>
+  <g clip-path="url(#yc)" fill="none" stroke-linecap="round">
+    <!-- brins enroulés : ombre puis brin puis reflet -->
+    <g stroke="#0F49B0" stroke-width="13" opacity=".55">
+      <path d="M40 60 C90 20 170 30 210 80"/>
+      <path d="M50 130 C80 60 150 40 205 60"/>
+      <path d="M60 160 C120 110 170 100 215 130"/>
+      <path d="M70 20 C60 90 110 150 180 170"/>
+      <path d="M150 15 C100 60 90 120 120 175"/>
+      <path d="M30 100 C80 80 150 80 215 100"/>
+      <path d="M100 20 C130 70 140 130 110 175"/>
+      <path d="M190 30 C150 70 110 90 55 95"/>
+    </g>
+    <g stroke="#2F7BF5" stroke-width="11">
+      <path d="M40 56 C90 16 170 26 210 76"/>
+      <path d="M50 126 C80 56 150 36 205 56"/>
+      <path d="M60 156 C120 106 170 96 215 126"/>
+      <path d="M70 16 C60 86 110 146 180 166"/>
+      <path d="M150 11 C100 56 90 116 120 171"/>
+      <path d="M30 96 C80 76 150 76 215 96"/>
+      <path d="M100 16 C130 66 140 126 110 171"/>
+      <path d="M190 26 C150 66 110 86 55 91"/>
+    </g>
+    <g stroke="url(#ys)" stroke-width="3.5" opacity=".8">
+      <path d="M40 52 C90 12 170 22 210 72"/>
+      <path d="M50 122 C80 52 150 32 205 52"/>
+      <path d="M60 152 C120 102 170 92 215 122"/>
+      <path d="M70 12 C60 82 110 142 180 162"/>
+      <path d="M150 7 C100 52 90 112 120 167"/>
+      <path d="M30 92 C80 72 150 72 215 92"/>
+      <path d="M100 12 C130 62 140 122 110 167"/>
+      <path d="M190 22 C150 62 110 82 55 87"/>
+    </g>
+  </g>
+  <!-- reflet global -->
+  <ellipse cx="100" cy="52" rx="30" ry="16" fill="#fff" opacity=".16" transform="rotate(-30 100 52)"/>
+  <!-- fil qui traîne, émergeant du bas de la pelote -->
+  <path d="M96 150 C80 158 60 150 40 156 C22 161 10 168 12 178 C13 184 20 186 26 183" fill="none" stroke="#1F6FEB" stroke-width="9" stroke-linecap="round"/>
+  <path d="M96 148 C80 156 60 148 40 154 C22 159 10 166 12 176" fill="none" stroke="#6AA4FF" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+</svg>

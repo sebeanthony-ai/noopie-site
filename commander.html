@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Commander mon Noopie</title>
+<meta name="description" content="Choisissez la couleur et la version de votre médaillon Noopie.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ---- Lien de paiement : à remplacer par vos liens (Stripe Payment Link, Shopify…) ---- */
+  :root{
+    --blue:#1F6FEB; --blue-2:#1A5FD6; --ink:#26211C; --ink-2:#5B544C; --line:#E7EEF9;
+    --sand:#F4F7FD; --gold:#E4A522; --bg:#fff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px 8px}
+  header.top svg{height:44px;width:auto;display:block}
+  .back{font-weight:700;font-size:15px;text-decoration:none;padding:8px 14px;border-radius:99px}
+  .back:hover{background:var(--sand)}
+
+  .steps{display:flex;justify-content:center;gap:8px;margin:18px 0 6px;flex-wrap:wrap}
+  .step{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#9AA3B2;padding:6px 12px 6px 6px;border-radius:99px}
+  .step b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#EEF2F8;color:#8792A3;font-family:Fredoka,sans-serif;font-weight:600}
+  .step.on{color:var(--ink)} .step.on b{background:var(--blue);color:#fff}
+  .step.done{color:var(--ink)} .step.done b{background:#DCE8FD;color:var(--blue)}
+  .sep{width:28px;height:2px;background:#E3E9F3;align-self:center;border-radius:2px}
+
+  h1{font-family:Fredoka,sans-serif;font-weight:700;color:var(--blue-2);font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-.01em;text-align:center;margin:18px 0 8px;text-wrap:balance}
+  .lead{text-align:center;font-weight:700;margin:0 auto 26px;max-width:620px;text-wrap:balance}
+
+  .stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;padding-bottom:56px}
+  .preview{position:relative;display:grid;place-items:center;min-height:380px}
+  .preview::before{content:"";position:absolute;width:min(360px,80%);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,var(--halo,#DCE8FD),transparent);opacity:.9;transition:background .4s}
+  .preview svg{position:relative;width:min(300px,70vw);height:auto;filter:drop-shadow(0 22px 26px rgba(38,33,28,.18));transition:transform .45s cubic-bezier(.2,.9,.3,1.3)}
+  .preview.pop svg{transform:scale(1.06) rotate(-4deg)}
+  .panel{min-width:0}
+  .label{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:0 0 12px}
+
+  .swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .sw{appearance:none;border:2px solid var(--line);background:#fff;border-radius:18px;padding:14px 10px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:14px;color:var(--ink);transition:border-color .2s,transform .2s,box-shadow .2s}
+  .sw:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(31,111,235,.10)}
+  .sw[aria-pressed="true"]{border-color:var(--blue);box-shadow:0 0 0 4px #DCE8FD}
+  .dot{width:46px;height:46px;border-radius:50%;border:1px solid rgba(38,33,28,.08);box-shadow:inset 0 -5px 0 rgba(0,0,0,.14),inset 0 4px 6px rgba(255,255,255,.35)}
+
+  .versions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .ver{appearance:none;border:2px solid var(--line);background:#fff;border-radius:22px;padding:18px 14px;cursor:pointer;font:inherit;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .ver:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(31,111,235,.10)}
+  .ver[aria-pressed="true"]{border-color:var(--blue);box-shadow:0 0 0 4px #DCE8FD}
+  .ver img{width:84px;height:84px;border-radius:50%;object-fit:cover;background:var(--sand)}
+  .ver svg{width:96px;height:auto}
+  .ver strong{font-family:Fredoka,sans-serif;font-weight:600;font-size:21px;color:var(--blue-2)}
+  .ver span{font-size:14px;color:var(--ink-2);font-weight:600}
+
+  .actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+  .btn{appearance:none;border:2px solid transparent;border-radius:99px;min-height:54px;padding:12px 28px;font-family:Fredoka,sans-serif;font-weight:600;font-size:18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 24px rgba(31,111,235,.32)}
+  .btn-primary:hover{background:var(--blue-2)}
+  .btn-primary[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+  .btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;box-shadow:none}
+  .btn-ghost{background:#fff;color:var(--blue);border-color:rgba(31,111,235,.3)}
+  .btn-ghost:hover{background:var(--sand)}
+
+  .recap{border:2px solid var(--line);border-radius:22px;padding:6px 20px}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  .row span{color:var(--ink-2);font-weight:600}
+  .row strong{display:flex;align-items:center;gap:8px;text-align:right}
+  .mini{width:18px;height:18px;border-radius:50%;display:inline-block}
+  .qty{display:inline-flex;align-items:center;border:2px solid var(--line);border-radius:99px}
+  .qty button{appearance:none;border:0;background:none;width:38px;height:36px;font-size:20px;font-weight:700;color:var(--blue);cursor:pointer}
+  .qty output{min-width:24px;text-align:center;font-weight:800}
+  .note{margin-top:14px;font-size:14px;color:var(--ink-2);font-weight:600;display:flex;gap:8px;align-items:flex-start}
+  .note svg{flex:none;margin-top:2px}
+  .todo{margin-top:12px;padding:12px 14px;border-radius:14px;background:#FFF6E0;color:#704200;font-size:14px;font-weight:700}
+
+  [hidden]{display:none!important}
+  @media (max-width:820px){
+    .stage{grid-template-columns:minmax(0,1fr);gap:8px}
+    .preview{min-height:280px}
+    .preview svg{width:min(220px,58vw)}
+    .actions .btn{flex:1 1 100%}
+    .sep{display:none}
+    .swatches{gap:8px}
+    .sw{padding:12px 4px 10px;font-size:12.5px;border-radius:16px;line-height:1.2}
+    .dot{width:38px;height:38px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a href="./index.html" aria-label="Noopie, accueil">
+      <svg viewBox="0 0 156 44" role="img" aria-label="Noopie"><defs><radialGradient id="g-gold" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFE6A6"/><stop offset=".55" stop-color="#F2C56A"/><stop offset="1" stop-color="#C9922F"/></radialGradient></defs><text x="0" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">no</text><g transform="translate(60 22)"><circle r="14" fill="url(#g-gold)"/><g fill="#1F6FEB" transform="translate(0 1)"><circle cx="-5" cy="-4" r="2.2"/><circle cx="0" cy="-6" r="2.2"/><circle cx="5" cy="-4" r="2.2"/><path d="M0 -1c-3.2 0-5.8 2.4-5.8 5 0 1.6 1.3 2.8 2.9 2.8 1.1 0 1.9-.5 2.9-.5s1.8.5 2.9.5c1.6 0 2.9-1.2 2.9-2.8 0-2.6-2.6-5-5.8-5Z"/></g><rect x="-3" y="-17" width="6" height="5" rx="2" fill="#CFCAC2"/></g><text x="80" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">pie</text></svg>
+    </a>
+    <a class="back" href="./index.html">← Retour au site</a>
+  </header>
+
+  <nav class="steps" aria-label="Étapes de la commande">
+    <div class="step" data-s="1"><b>1</b>Couleur</div><i class="sep"></i>
+    <div class="step" data-s="2"><b>2</b>Version</div><i class="sep"></i>
+    <div class="step" data-s="3"><b>3</b>Paiement</div>
+  </nav>
+
+  <main>
+    <!-- Étape 1 : couleur -->
+    <section id="s1">
+      <h1>Choisissez sa couleur</h1>
+      <p class="lead">Huit teintes, un seul médaillon : GPS intégré au cœur, QR code au dos.</p>
+      <div class="stage">
+        <div class="preview" data-preview></div>
+        <div class="panel">
+          <p class="label">Couleur du médaillon</p>
+          <div class="swatches" id="swatches"></div>
+          <div class="actions"><button class="btn btn-primary" id="to2">Choisir cette couleur →</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Étape 2 : version -->
+    <section id="s2" hidden>
+      <h1>Pour qui est ce Noopie ?</h1>
+      <p class="lead">Version chien ou version chat : chacun son style.</p>
+      <div class="stage">
+        <div class="preview" data-preview></div>
+        <div class="panel">
+          <p class="label">Version</p>
+          <div class="versions">
+            <button class="ver" data-v="chien" aria-pressed="false"><img src="refs/portrait-dog.jpg" alt=""><strong>Version chien</strong><span>Le style de Nougat</span></button>
+            <button class="ver" data-v="chat" aria-pressed="false"><img src="refs/portrait-cat.jpg" alt=""><strong>Version chat</strong><span>Le style de Ziggy</span></button>
+          </div>
+          <div class="actions">
+            <button class="btn btn-ghost" data-go="1">← Couleur</button>
+            <button class="btn btn-primary" id="to3" disabled>Passer au paiement →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Étape 3 : paiement -->
+    <section id="s3" hidden>
+      <h1>Votre Noopie est prêt</h1>
+      <p class="lead">Vérifiez votre choix, puis réglez en toute sécurité.</p>
+      <div class="stage">
+        <div class="preview" data-preview></div>
+        <div class="panel">
+          <p class="label">Récapitulatif</p>
+          <div class="recap">
+            <div class="row"><span>Médaillon</span><strong>Noopie GPS + QR</strong></div>
+            <div class="row"><span>Couleur</span><strong><i class="mini" id="rc-dot"></i><span id="rc-color" style="color:inherit;font-weight:800"></span></strong></div>
+            <div class="row"><span>Version</span><strong id="rc-ver"></strong></div>
+            <div class="row"><span>Quantité</span><strong><span class="qty"><button id="qm" aria-label="Retirer un">−</button><output id="qn">1</output><button id="qp" aria-label="Ajouter un">+</button></span></strong></div>
+            <div class="row"><span>Prix</span><strong id="rc-price">À définir</strong></div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-ghost" data-go="2">← Version</button>
+            <a class="btn btn-primary" id="pay" href="./paiement.html">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              Payer en toute sécurité
+            </a>
+          </div>
+          <p class="note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F6FEB" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Paiement sécurisé par Stripe. Vos données bancaires ne transitent jamais par Noopie.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+/* ===== À compléter : lien de paiement (ex. Stripe Payment Link) et prix ===== */
+const PAYMENT_LINK = "";          // ex. "https://buy.stripe.com/xxxx"
+const PRICE = "";                 // ex. "39,90 €"
+
+const COLORS = [
+  {id:"bleu",   name:"Bleu Noopie",   body:"#1E4FC4", dark:"#163A93", paw:"#F4EBDD", halo:"#DCE8FD"},
+  {id:"noir",   name:"Noir réglisse", body:"#2A2622", dark:"#120F0D", paw:"#F4BE1E", halo:"#E9E6E2"},
+  {id:"rose",   name:"Rose bonbon",   body:"#F27BA3", dark:"#C9527B", paw:"#FFF4EC", halo:"#FFE1EB"},
+  {id:"nude",   name:"Nude",          body:"#E9D2BE", dark:"#B88F70", paw:"#FFFFFF", halo:"#F6EADF"},
+  {id:"rouge",  name:"Rouge cerise",  body:"#D2283C", dark:"#9C1828", paw:"#FFF4EC", halo:"#FBDDE0"},
+  {id:"kaki",   name:"Kaki",          body:"#717042", dark:"#4F4E2C", paw:"#F4EBDD", halo:"#E9E9D8"},
+  {id:"prune",  name:"Violet prune",  body:"#6E3180", dark:"#4C1F5A", paw:"#F4EBDD", halo:"#EEDFF3"},
+  {id:"nuage",  name:"Blanc nuage",   body:"#F2EFE8", dark:"#C8C0B2", paw:"#1E4FC4", halo:"#EEF2F8"},
+];
+const VERS = {chien:"Version chien", chat:"Version chat"};
+const state = {color:COLORS[0], ver:null, qty:1};
+try{ const s=JSON.parse(sessionStorage.getItem("noopie-order")||"null"); if(s && /^#(version|paiement)$/.test(location.hash)){ state.color=COLORS.find(c=>c.id===s.c)||state.color; state.ver=s.v||null; state.qty=s.q||1; } }catch(e){}
+const save=()=>{ try{ sessionStorage.setItem("noopie-order",JSON.stringify({c:state.color.id,v:state.ver,q:state.qty})) }catch(e){} };
+
+function paw(fill){
+  return `<g fill="${fill}"><ellipse cx="-30" cy="-14" rx="11" ry="14" transform="rotate(-22 -30 -14)"/><ellipse cx="-11" cy="-34" rx="11" ry="14.5"/><ellipse cx="11" cy="-34" rx="11" ry="14.5"/><ellipse cx="30" cy="-14" rx="11" ry="14" transform="rotate(22 30 -14)"/><path d="M0 -8c-15 0-31 15-31 29 0 13 12 15 20 13 4-1 7-3 11-3s7 2 11 3c8 2 20 0 20-13 0-14-16-29-31-29Z"/></g>`;
+}
+function medal(c, ver){
+  const ears = ver==="chat"
+    ? `<path d="M46 92 L58 30 L98 70 Z" fill="${c.body}"/><path d="M194 92 L182 30 L142 70 Z" fill="${c.body}"/><path d="M60 78 L66 48 L86 68 Z" fill="${c.dark}" opacity=".35"/><path d="M180 78 L174 48 L154 68 Z" fill="${c.dark}" opacity=".35"/>`
+    : ver==="chien"
+    ? `<path d="M52 82 C20 86 14 140 30 172 C40 190 58 182 60 160 Z" fill="${c.dark}"/><path d="M188 82 C220 86 226 140 210 172 C200 190 182 182 180 160 Z" fill="${c.dark}"/>`
+    : "";
+  return `<svg viewBox="0 0 240 280" aria-hidden="true">
+    <defs><radialGradient id="sh-${c.id}${ver||""}" cx="32%" cy="28%" r="70%"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></radialGradient></defs>
+    <circle cx="120" cy="24" r="20" fill="none" stroke="#B9BEC6" stroke-width="7"/><circle cx="120" cy="24" r="20" fill="none" stroke="#E9ECEF" stroke-width="2.5" stroke-dasharray="30 20"/>
+    ${ears}
+    <path d="M120 36c14 0 22 8 22 18v8H98v-8c0-10 8-18 22-18Z" fill="${c.body}"/>
+    <circle cx="120" cy="56" r="7" fill="#fff"/>
+    <circle cx="120" cy="160" r="96" fill="${c.body}"/>
+    <circle cx="120" cy="160" r="96" fill="url(#sh-${c.id}${ver||""})"/>
+    <circle cx="120" cy="160" r="84" fill="none" stroke="${c.dark}" stroke-opacity=".25" stroke-width="3"/>
+    <g transform="translate(120 168)">${paw(c.dark)}</g>
+    <g transform="translate(118 164)">${paw(c.paw)}</g>
+  </svg>`;
+}
+
+const sw=document.getElementById("swatches");
+COLORS.forEach(c=>{
+  const b=document.createElement("button"); b.className="sw"; b.type="button"; b.dataset.c=c.id;
+  b.innerHTML=`<i class="dot" style="background:${c.body}"></i>${c.name}`;
+  b.onclick=()=>{state.color=c; save(); render(true)};
+  sw.appendChild(b);
+});
+document.querySelectorAll(".ver").forEach(b=>b.onclick=()=>{state.ver=b.dataset.v; save(); render(true)});
+document.getElementById("to2").onclick=()=>go(2);
+document.getElementById("to3").onclick=()=>go(3);
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(+b.dataset.go));
+document.getElementById("qm").onclick=()=>{state.qty=Math.max(1,state.qty-1);save();render()};
+document.getElementById("qp").onclick=()=>{state.qty=Math.min(10,state.qty+1);save();render()};
+
+let step=1;
+function go(n){ if(n===3 && !state.ver) n=2; step=n; location.hash=["","couleur","version","paiement"][n]; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+function render(pop){
+  [1,2,3].forEach(i=>document.getElementById("s"+i).hidden = i!==step);
+  document.querySelectorAll(".step").forEach(el=>{const s=+el.dataset.s; el.classList.toggle("on",s===step); el.classList.toggle("done",s<step)});
+  document.querySelectorAll("[data-preview]").forEach(p=>{
+    p.innerHTML=medal(state.color, step>=2?state.ver:null); p.style.setProperty("--halo",state.color.halo);
+    if(pop){p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); setTimeout(()=>p.classList.remove("pop"),350)}
+  });
+  sw.querySelectorAll(".sw").forEach(b=>b.setAttribute("aria-pressed", b.dataset.c===state.color.id));
+  document.querySelectorAll(".ver").forEach(b=>{b.setAttribute("aria-pressed", b.dataset.v===state.ver);});
+  document.getElementById("to3").disabled=!state.ver;
+  document.getElementById("rc-dot").style.background=state.color.body;
+  document.getElementById("rc-color").textContent=state.color.name;
+  document.getElementById("rc-ver").textContent=state.ver?VERS[state.ver]:"—";
+  document.getElementById("qn").textContent=state.qty;
+  document.getElementById("rc-price").textContent=PRICE||"À définir";
+  const pay=document.getElementById("pay");
+  pay.href = PAYMENT_LINK
+    ? (()=>{const u=new URL(PAYMENT_LINK); u.searchParams.set("client_reference_id",`${state.color.id}-${state.ver}-x${state.qty}`); return u.toString()})()
+    : `./paiement.html?c=${state.color.id}&v=${state.ver||"chien"}&q=${state.qty}`;
+}
+function fromHash(){ const h=location.hash.slice(1); step = h==="version"?2 : h==="paiement"?(state.ver?3:2) : 1; render(); }
+window.addEventListener("hashchange",fromHash);
+fromHash();
+</script>
+</body>
+</html>
