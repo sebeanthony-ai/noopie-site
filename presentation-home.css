@@ -1283,3 +1283,28 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
   .np-a3-phone--c { transform: none; bottom: 0; }
   .np-a3-float { display: none; }
 }
+
+/* v3.2 : section L'application au thème général du site (clair, bleu Noopie) */
+.np-app3 { background: linear-gradient(180deg, #fff 0%, #F5F8FE 100%); color: rgb(38, 33, 28); }
+.np-a3-glow { background: radial-gradient(50% 40% at 50% 55%, rgba(220,232,253,.9), transparent 70%); }
+.np-app3::after { display: none; }
+.np-a3-kicker { color: #1F6FEB; background: transparent; border: 0; padding: 0; }
+.np-a3-head h2 { color: #1A5FD6; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.06; letter-spacing: 0; margin: .6rem 0 .8rem; }
+.np-a3-head h2 span { background: none; -webkit-background-clip: initial; background-clip: initial; color: #1A5FD6; }
+#app.np-app3 .np-a3-head p { color: rgb(38, 33, 28) !important; font-weight: 800; }
+.np-a3-btn--light { background: #1F6FEB; color: #fff; box-shadow: 0 10px 24px rgba(31,111,235,.3); }
+.np-a3-btn--light:hover { background: #1A5FD6; }
+.np-a3-btn--ghost { color: #1F6FEB; background: #fff; border-color: rgba(31,111,235,.3); }
+.np-a3-stores { color: #5B544C; } .np-a3-stores b { color: rgb(38, 33, 28); } .np-a3-dot { background: #B8C2D3; }
+.np-a3-phone--l, .np-a3-phone--r { opacity: 1; }
+.np-a3-float { background: rgba(255,255,255,.92); border-color: #E3EBF8; color: rgb(38, 33, 28); box-shadow: 0 16px 36px rgba(31,111,235,.16); }
+.np-a3-float span { color: #5B544C; } .np-a3-float b { color: rgb(38, 33, 28); }
+.np-a3-tile { background: #fff; border: 0; box-shadow: 0 1px 0 #EEF2F8 inset, 0 10px 30px rgba(31,111,235,.08); }
+.np-a3-ico { background: #EEF4FE; color: #1F6FEB; }
+.np-a3-tile h3 { color: #1A5FD6; }
+#app.np-app3 .np-a3-tile p { color: rgb(38, 33, 28) !important; font-weight: 800; }
+.np-a3-n { background: #F4F7FD; }
+.np-a3-switch { background: #F4F7FD; }
+.np-a3-stats span { background: #F4F7FD; border-color: #E3EBF8; color: #5B544C; }
+.np-a3-stats b { color: #1A5FD6; }
+.np-a3-avs img, .np-a3-avs span { border-color: #fff; }
