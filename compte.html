@@ -254,6 +254,81 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
   .map-card{padding:10px}
   .map-card .chip{display:none}
 }
+
+/* ---------- Noopie autour de moi ---------- */
+.ml-near.cat i{background:#E3B98F;box-shadow:0 0 0 6px rgba(227,185,143,.28)}
+.ml-near.friend i{width:30px;height:30px;padding:0;overflow:hidden;background:#fff;border:3px solid #22B573;box-shadow:0 0 0 5px rgba(34,181,115,.22)}
+.ml-near.friend i img{width:100%;height:100%;object-fit:cover;display:block}
+.ml-near.friend b{color:#147A4C}
+.near.cat i{background:#E3B98F} .near.friend i{width:26px;height:26px;border-color:#22B573;background-size:cover;background-position:center}
+.vis-chip{position:absolute;left:12px;top:40px;z-index:3;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;background:rgba(255,255,255,.95);border-radius:99px;padding:4px 10px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.vis-chip.ghost{background:#26211C;color:#fff}
+.near-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:start}
+.near-h{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin:18px 0 8px}
+.near-h:first-child{margin-top:0}
+.seg{display:flex;flex-wrap:wrap;gap:4px;background:var(--soft);border-radius:14px;padding:4px}
+.seg button{flex:1 1 auto;border:0;background:transparent;border-radius:10px;padding:8px 10px;font-weight:800;font-size:13px;cursor:pointer;color:var(--ink-2);display:inline-flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap}
+.seg button.on{background:#fff;color:var(--blue-2);box-shadow:0 2px 8px rgba(31,111,235,.12)}
+.seg button[data-pro]::after{content:"Premium";font-size:9.5px;font-weight:800;color:#9A6800;background:var(--goldbg);border-radius:99px;padding:1px 6px}
+.seg.dis{opacity:.45;pointer-events:none}
+.fchips{display:flex;gap:8px;flex-wrap:wrap}
+.fchip{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 12px;font-weight:800;font-size:13px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.fchip.on{border-color:var(--blue);background:#EAF1FE;color:var(--blue-2)}
+.visrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.visrow:last-of-type{border-bottom:0}
+.visrow img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.visrow b{display:block;font-size:15px} .visrow small{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.visrow .seg{grid-column:1/-1}
+.nlist{display:grid;gap:8px}
+.nitem{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--soft)}
+.nitem .nic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none;background:#DCE7FB;font-size:19px;overflow:hidden}
+.nitem .nic.cat{background:#F6E6D6} .nitem .nic img{width:100%;height:100%;object-fit:cover}
+.nitem .nic.friend{box-shadow:0 0 0 3px #22B573}
+.nitem > div{flex:1;min-width:0} .nitem b{display:block;font-size:14.5px} .nitem span{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.nitem .btn{flex:none}
+.nempty{padding:18px;border-radius:14px;background:var(--soft);text-align:center;color:var(--muted);font-weight:700}
+.prochip{font-size:10.5px;font-weight:800;color:#9A6800;background:var(--goldbg);border-radius:99px;padding:2px 8px;white-space:nowrap}
+/* ---------- Premium ---------- */
+.pm-hero{position:relative;overflow:hidden;border-radius:24px;padding:clamp(22px,4vw,40px);background:linear-gradient(135deg,#1A5FD6 0%,#1F6FEB 55%,#5B9BFF 100%);color:#fff;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:center}
+.pm-hero h2{font-size:clamp(28px,3.6vw,44px);line-height:1.05;margin:8px 0 10px;font-weight:700}
+.pm-hero p{margin:0 0 18px;font-weight:600;opacity:.92;max-width:52ch}
+.pm-hero .eyebrow{display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.16);border-radius:99px;padding:4px 12px}
+.pm-hero .btn-gold{background:#FFD25A;color:#3A2A00;box-shadow:0 10px 24px rgba(0,0,0,.18)} .pm-hero .btn-gold:hover{background:#FFDB78}
+.pm-hero .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.pm-hero .acts{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pm-hero small{display:block;margin-top:10px;font-size:12.5px;font-weight:700;opacity:.85}
+.pm-art{position:relative;min-height:220px}
+.pm-art img.pm-pet{position:absolute;bottom:0;height:200px;width:auto;filter:drop-shadow(0 14px 18px rgba(0,0,0,.25))}
+.pm-art img.dog{left:0} .pm-art img.cat{right:0;height:180px}
+.pm-art .med{position:absolute;left:52%;top:-14px;transform:translateX(-50%) rotate(-8deg);height:100px;filter:drop-shadow(0 12px 16px rgba(0,0,0,.3))}
+.pm-on{display:flex;gap:10px;align-items:center;background:var(--okbg);color:var(--ok);font-weight:800;border-radius:14px;padding:12px 14px;margin-top:16px}
+.pm-feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.pm-f{position:relative;background:#fff;border-radius:20px;padding:20px;box-shadow:0 1px 0 #EEF2F8 inset,0 8px 24px rgba(31,111,235,.06)}
+.pm-f .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:#EAF1FE;margin-bottom:12px}
+.pm-f h4{margin:0 0 6px;font-family:Fredoka,sans-serif;font-size:18px;color:var(--blue-2)}
+.pm-f p{margin:0;font-size:14px;color:#4B5563;font-weight:600;line-height:1.45}
+.pm-f .tag{position:absolute;top:16px;right:16px}
+.pm-f.only{box-shadow:0 0 0 2px #FFD25A,0 8px 24px rgba(228,165,34,.12)}
+.pm-sec{font-family:Fredoka,sans-serif;font-size:24px;color:var(--blue-2);margin:28px 0 4px;font-weight:700}
+.pm-sub{margin:0 0 12px;color:var(--muted);font-weight:600}
+.cmp-wrap{overflow-x:auto;margin-top:12px;border-radius:20px;background:#fff;box-shadow:0 8px 24px rgba(31,111,235,.06)}
+.cmp{width:100%;border-collapse:collapse;min-width:560px}
+.cmp th,.cmp td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
+.cmp thead th{font-family:Fredoka,sans-serif;font-size:17px;color:var(--blue-2);background:#fff;position:sticky;top:0}
+.cmp thead th:last-child{background:#EAF1FE;border-radius:0 20px 0 0}
+.cmp td:nth-child(2),.cmp td:nth-child(3),.cmp th:nth-child(2),.cmp th:nth-child(3){text-align:center;width:22%}
+.cmp td:last-child{background:#F5F9FF}
+.cmp tr.grp td{background:var(--soft);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);font-weight:800;text-align:left}
+.cmp .y{color:var(--ok);font-weight:800} .cmp .n{color:#B5BCC8} .cmp .p{color:var(--blue-2);font-weight:800}
+.pm-faq details{background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 4px 14px rgba(31,111,235,.05)}
+.pm-faq details + details{margin-top:10px}
+.pm-faq summary{cursor:pointer;font-weight:800}
+.pm-faq p{margin:8px 0 0;color:#4B5563;font-weight:600;font-size:14px}
+@media (max-width:1100px){.pm-feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.near-grid{grid-template-columns:minmax(0,1fr)} .pm-hero{grid-template-columns:minmax(0,1fr)} .pm-art{min-height:180px} .pm-art img.pm-pet{height:160px} .pm-art img.cat{height:145px} .pm-art .med{height:80px}}
+@media (max-width:560px){.pm-feats{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.nitem{flex-wrap:wrap}.nitem .btn{width:100%;margin-left:52px;width:calc(100% - 52px)}.visrow .seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.visrow .seg button{font-size:12px;padding:8px 4px;white-space:normal;text-align:center}[data-near-r]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}[data-near-r] button{padding:8px 4px;flex-direction:column;gap:2px}}
+
 @media (prefers-reduced-motion:reduce){.pin{animation:none}}
 </style>
 </head>
@@ -370,7 +445,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
     <section data-view="carte" hidden>
       <div class="topbar"><div><h1>Carte</h1><p>Position en direct et trajets du jour.</p></div><span class="chip chip-ok"><i></i>Mise à jour il y a 1 min</span></div>
       <div class="card" style="padding:12px">
-        <div class="map map-lg" id="bigmap" data-realmap='{"near":true,"zoom":15.6,"center":[2.3825,48.8800]}'><span class="demo-tag">Positions de démonstration</span><div class="nearlayer" data-nearlayer><span class="near" style="left:58%;top:62%"><i></i><b>Chien · 120 m</b></span><span class="near" style="left:22%;top:74%"><i></i><b>Chat · 300 m</b></span><span class="near" style="left:88%;top:58%"><i></i><b>Chien · 210 m</b></span><span class="near" style="left:64%;top:14%"><i></i><b>Chien · 400 m</b></span></div>
+        <div class="map map-lg" id="bigmap" data-realmap='{"near":true,"zoom":15.6,"center":[2.3825,48.8800]}'><span class="demo-tag">Positions de démonstration</span><div class="nearlayer" data-nearlayer></div><span class="vis-chip" data-vis-chip></span>
           <div class="map-ctrl"><button class="on" data-pet="dog">Nougat</button><button data-pet="cat">Ziggy</button><button data-pet="all">Tous</button><button data-near class="on-near">Noopie à proximité</button></div>
           <div class="zone-ring" style="left:14%;top:18%;width:36%;aspect-ratio:1"><span>Maison · 150 m</span></div>
           <button class="pin" data-pin="dog" style="left:78%;top:28%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button>
@@ -383,7 +458,30 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
         <div class="card kpi"><small>Temps de sortie</small><b data-mk="time">48 min</b></div>
         <div class="card kpi"><small>Dans la zone Maison</small><b data-mk="zone">Non</b></div>
       </div>
-      <div class="card" style="margin-top:16px"><div class="ttl"><h3>Noopie à proximité</h3><span class="chip chip-blue">4 dans un rayon de 500 m</span></div><p class="muted" style="margin:0 0 10px">Les autres animaux équipés d’un médaillon Noopie apparaissent de façon anonyme et approximative. Pratique pour croiser des copains de balade… et indispensable en cas d’alerte « animal perdu ».</p><div class="toggle"><div><b>Me rendre visible des Noopie proches</b><span>Position arrondie à ~100 m, sans nom ni photo</span></div><input class="sw" type="checkbox" checked aria-label="Visible"></div></div>
+      <div class="card" style="margin-top:16px" id="autour">
+        <div class="ttl"><h3>Noopie autour de Nougat</h3><span class="chip chip-blue" data-near-count></span></div>
+        <p class="muted" style="margin:0 0 16px">Croisez les copains de balade, repérez les animaux du quartier et soyez prévenu s’il y en a un de perdu près de vous. Vous choisissez ce que vous voyez, et qui vous voit.</p>
+        <div class="grid near-grid">
+          <div>
+            <h4 class="near-h">Ce que je vois</h4>
+            <div class="toggle" style="padding-top:0"><div><b>Voir les autres Noopie sur ma carte</b><span>Positions approximatives, sans nom ni photo (sauf vos copains)</span></div><input class="sw" type="checkbox" data-near-show checked aria-label="Voir les autres Noopie"></div>
+            <div data-near-opts>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin:12px 0 8px"><b style="font-size:14px">Rayon autour de mes animaux</b></div>
+              <div class="seg" data-near-r><button type="button" data-rad="250">250 m</button><button type="button" data-rad="500">500 m</button><button type="button" data-rad="1000">1 km</button><button type="button" data-rad="3000" data-pro>3 km</button></div>
+              <div style="margin:12px 0 0" class="fchips"><button type="button" class="fchip" data-near-sp="dog">🐶 Chiens</button><button type="button" class="fchip" data-near-sp="cat">🐱 Chats</button><button type="button" class="fchip" data-near-friends>💚 Copains seulement</button></div>
+            </div>
+            <h4 class="near-h">Qui peut voir mes animaux ?</h4>
+            <div data-vis-rows></div>
+            <div class="toggle"><div><b>Masquer autour de la maison</b><span>Vos animaux n’apparaissent jamais aux autres à moins de 200 m de chez vous</span></div><input class="sw" type="checkbox" data-near-home checked aria-label="Masquer autour de la maison"></div>
+            <div class="toggle"><div><b>Exception « animal perdu »</b><span>Si je le déclare perdu, il redevient visible du réseau d’entraide, même en mode fantôme</span></div><input class="sw" type="checkbox" data-near-lost checked aria-label="Exception animal perdu"></div>
+          </div>
+          <div>
+            <h4 class="near-h">À proximité maintenant</h4>
+            <div class="nlist" data-near-list></div>
+            <p class="muted" style="font-size:12.5px;margin:12px 0 0">Les positions des autres sont arrondies à environ 100 m et ne sont jamais enregistrées dans votre historique.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ANIMAUX -->
@@ -523,15 +621,31 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
 
     <!-- PREMIUM -->
     <section data-view="premium" hidden>
-      <div class="topbar"><div><h1>Noopie Premium</h1><p>Pour ceux qui veulent tout, tout le temps.</p></div></div>
-      <div class="grid g-2 plans">
-        <div class="card plan"><h3>Essentiel</h3><p class="muted">Inclus avec le médaillon</p><ul>
-          <li>Position en direct</li><li>Fiche par QR code</li><li>Alertes médaillon détaché</li><li>Mode perdu</li><li>1 zone de sécurité</li><li>Historique 24 h</li></ul><span class="chip chip-ok">Votre formule</span></div>
-        <div class="card plan plan-pro"><span class="ribbon">Recommandé</span><h3>Premium</h3><p class="muted">Prix à définir</p><ul>
-          <li>Tout Essentiel</li><li>Alertes communautaires du quartier</li><li>Mode recherche intensive</li><li>Zones illimitées</li><li>Historique et statistiques illimités</li><li>Partage familial et pet-sitter</li><li>Carnet de santé avec rappels</li><li>Affiche « Perdu » en un clic</li></ul>
-          <button class="btn btn-blue full" type="button" data-toast="Démonstration : l’abonnement ouvrira avec les ventes">Passer à Premium</button></div>
+      <div class="pm-hero">
+        <div>
+          <span class="eyebrow">★ Noopie Premium</span>
+          <h2>Tout pour le retrouver.<br>Tout pour en prendre soin.</h2>
+          <p>Le médaillon fait déjà l’essentiel. Premium y ajoute la force du quartier, la recherche intensive, le suivi santé et toute la famille.</p>
+          <div class="acts"><button class="btn btn-gold" type="button" data-pm-start>Essayer Premium</button><a class="btn btn-ghost" href="#pm-compare">Comparer les formules</a></div>
+          <small>Prix et durée d’essai à définir avant le lancement · Démonstration</small>
+        </div>
+        <div class="pm-art" aria-hidden="true"><img class="pm-pet dog" src="refs/cut-dog.webp" alt=""><img class="med" src="refs/med/face-bleu.webp?v=5" alt=""><img class="pm-pet cat" src="refs/cut-cat.webp" alt=""></div>
       </div>
-      <div class="card" style="margin-top:16px"><div class="ttl"><h3>Assurance santé animale</h3><span class="chip chip-gold">Bientôt</span></div><p class="muted" style="margin:0">Une assurance proposée avec un partenaire, directement depuis l’app. Les conditions seront précisées au lancement.</p></div>
+      <div class="pm-on" data-pm-on hidden>✓ Premium est actif sur ce compte de démonstration. <button class="link" type="button" data-pm-stop style="margin-left:auto">Revenir à Essentiel</button></div>
+      <h3 class="pm-sec">Ce que seul Noopie fait</h3>
+      <p class="pm-sub">Un médaillon qui marche pour tout le monde, même sans appli, et une communauté qui aide vraiment.</p>
+      <div class="pm-feats"><article class="pm-f only"><span class="ico">🔳</span><span class="tag chip chip-ok">Inclus</span><h4>Le QR qui ne tombe jamais en panne</h4><p>Même batterie vide ou hors réseau, n’importe quel téléphone qui scanne le médaillon ouvre sa fiche et vous appelle. Pas d’appli à installer.</p></article><article class="pm-f only"><span class="ico">🫶</span><span class="tag prochip">Premium</span><h4>Le quartier en renfort</h4><p>Déclarez-le perdu : les membres Noopie jusqu’à 5 km reçoivent sa photo, peuvent signaler l’avoir vu, et l’alerte est relancée tant qu’il n’est pas retrouvé.</p></article><article class="pm-f only"><span class="ico">🐾</span><span class="tag prochip">Premium</span><h4>Copains de balade</h4><p>Voyez vos copains en balade, proposez une sortie au parc et faites des balades à plusieurs. Vous restez maître de qui vous voit.</p></article><article class="pm-f"><span class="ico">⚡</span><span class="tag prochip">Premium</span><h4>Recherche intensive</h4><p>Position toutes les 5 secondes, lumière et son à distance, et un lien de suivi en direct à envoyer à ceux qui vous aident.</p></article><article class="pm-f"><span class="ico">🩺</span><span class="tag prochip">Premium</span><h4>Bilan bien-être</h4><p>Chaque mois, activité, sommeil et poids résumés, avec une alerte si son comportement change. Utile à montrer au vétérinaire.</p></article><article class="pm-f"><span class="ico">🕒</span><span class="tag prochip">Premium</span><h4>Zones intelligentes</h4><p>Zones illimitées et à horaires : le jardin la journée, la maison la nuit, la crèche le mardi. Alerte dès qu’il en sort.</p></article><article class="pm-f"><span class="ico">🗺️</span><span class="tag prochip">Premium</span><h4>Sa vie en balades</h4><p>365 jours d’historique, la carte de tous ses coins préférés et une rétrospective de l’année à partager.</p></article><article class="pm-f"><span class="ico">👨‍👩‍👧</span><span class="tag prochip">Premium</span><h4>Toute la famille</h4><p>Proches illimités, accès temporaire pour le pet-sitter ou la pension, avec date de fin automatique.</p></article><article class="pm-f"><span class="ico">🛡️</span><span class="tag chip chip-blue">Bientôt</span><h4>Garantie et vétérinaire</h4><p>Remplacement du médaillon en cas de perte ou casse, et conseil vétérinaire en ligne, avec nos partenaires.</p></article></div>
+      <h3 class="pm-sec" id="pm-compare">Essentiel ou Premium ?</h3>
+      <p class="pm-sub">Essentiel est inclus avec le médaillon. Premium s’ajoute quand vous voulez.</p>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Fonction</th><th>Essentiel</th><th>Premium ★</th></tr></thead><tbody><tr class="grp"><td colspan="3">Le retrouver</td></tr><tr><td>Position GPS en direct</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Fiche QR lisible par tous, même batterie vide</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte médaillon détaché</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Mode perdu et affiche « Perdu »</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Lumière et son à distance</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Mode recherche intensive (position toutes les 5 s)</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte au quartier en cas de perte</td><td><span class="p">1 km</span></td><td><span class="p">5 km + relances</span></td></tr><tr><td>Partage de la recherche avec un lien suivi en direct</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Sa sécurité au quotidien</td></tr><tr><td>Zones de sécurité</td><td><span class="p">1</span></td><td><span class="p">Illimitées</span></td></tr><tr><td>Zones à horaires (ex. jardin de 8 h à 18 h)</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Historique des trajets</td><td><span class="p">24 h</span></td><td><span class="p">365 jours</span></td></tr><tr><td>Alerte batterie et hors réseau</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Communauté</td></tr><tr><td>Voir les Noopie autour de vous</td><td><span class="p">jusqu’à 1 km</span></td><td><span class="p">jusqu’à 3 km</span></td></tr><tr><td>Choisir qui voit votre animal (tous, copains, personne)</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Copains de balade : profils, invitations, balades à plusieurs</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Lieux adaptés aux animaux</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Santé et bien-être</td></tr><tr><td>Carnet de santé</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Rappels vaccins, vermifuges, antiparasitaires</td><td><span class="p">2</span></td><td><span class="p">Illimités</span></td></tr><tr><td>Activité, sommeil et objectifs</td><td><span class="p">7 jours</span></td><td><span class="p">Illimité</span></td></tr><tr><td>Bilan bien-être mensuel et alerte comportement inhabituel</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Rétrospective de l’année et carte de ses balades</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Famille et services</td></tr><tr><td>Personnes pouvant suivre l’animal</td><td><span class="p">2</span></td><td><span class="p">Illimité</span></td></tr><tr><td>Accès pet-sitter temporaire</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Export de l’historique</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Garantie perte et casse du médaillon (partenaire)</td><td><span class="n">—</span></td><td><span class="p">Bientôt</span></td></tr><tr><td>Conseil vétérinaire en ligne (partenaire)</td><td><span class="n">—</span></td><td><span class="p">Bientôt</span></td></tr></tbody></table></div>
+      <h3 class="pm-sec">Questions fréquentes</h3>
+      <div class="pm-faq">
+        <details><summary>Le médaillon fonctionne-t-il sans Premium ?</summary><p>Oui. Position en direct, fiche QR, mode perdu, alerte médaillon détaché, lumière et son sont inclus dans Essentiel.</p></details>
+        <details><summary>Que se passe-t-il si j’arrête Premium ?</summary><p>Vous revenez à Essentiel : rien ne s’arrête pour la sécurité de base de votre animal. L’historique au-delà de 24 h n’est plus affiché.</p></details>
+        <details><summary>Un abonnement couvre-t-il plusieurs animaux ?</summary><p>À définir au lancement : une formule par médaillon ou une formule famille pour plusieurs animaux.</p></details>
+        <details><summary>Qui voit mon animal sur la carte ?</summary><p>C’est vous qui choisissez, animal par animal : tout le monde de façon anonyme, vos copains seulement, ou personne (mode fantôme). Réglage dans Carte, rubrique « Noopie autour de Nougat ».</p></details>
+      </div>
+      <div class="card" style="margin-top:16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:220px"><h3 style="margin:0 0 4px;color:var(--blue-2)">Prêt à passer à Premium ?</h3><p class="muted" style="margin:0">Activez-le en démonstration pour voir les fonctions se débloquer dans l’app.</p></div><button class="btn btn-blue" type="button" data-pm-start>Essayer Premium</button></div>
     </section>
 
     <!-- COMMANDES -->
@@ -561,6 +675,10 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
           <div class="toggle"><div><b>Mon prénom</b><span>« Propriétaire : Marie »</span></div><input class="sw" type="checkbox" checked aria-label="Prénom"></div>
           <div class="toggle"><div><b>Mon adresse</b><span>Jamais affichée par défaut</span></div><input class="sw" type="checkbox" aria-label="Adresse"></div>
           <div class="toggle"><div><b>Demander sa position</b><span>Avec son accord</span></div><input class="sw" type="checkbox" checked aria-label="Position"></div>
+        </div>
+        <div class="card"><div class="ttl"><h3>Visibilité sur la carte Noopie</h3><a href="#carte" data-goto-autour>Réglages détaillés</a></div>
+          <div class="toggle" style="padding-top:0"><div><b>Voir les autres Noopie</b><span>Sur ma carte, autour de mes animaux</span></div><input class="sw" type="checkbox" data-near-show checked aria-label="Voir les autres Noopie"></div>
+          <div data-vis-rows></div>
         </div>
         <div class="card"><div class="ttl"><h3>Sécurité</h3></div>
           <div class="toggle"><div><b>Double authentification</b><span>Code par SMS à la connexion</span></div><input class="sw" type="checkbox" aria-label="2FA"></div>
@@ -693,17 +811,85 @@ document.addEventListener('np-pet',e=>showPet(e.detail));
 const bm=()=>$('#bigmap')._np;
 const _show=showPet; showPet=function(k){_show(k);const m=bm();if(m)m.focus(k)};
 document.addEventListener('np-map-ready',e=>{if(e.target.id==='bigmap'){bm().focus('dog')}});
-if(nb){const o=nb.onclick;nb.onclick=()=>{o();const m=bm();if(m)m.showNear(!nb.classList.contains('off'))}}
+if(nb){nb.onclick=null;nb.addEventListener('click',()=>{ncfg.show=!ncfg.show;saveNear()})}
+document.addEventListener('np-map-ready',e=>{if(e.target.id==='bigmap')renderNear()});
 $('#zr').addEventListener('input',e=>{const z=$('#zonemap')._np;if(z)z.setRadius(+e.target.value)});
 $$('.map-ctrl button[data-pet]').forEach(b=>b.onclick=()=>showPet(b.dataset.pet));$$('[data-pin]').forEach(b=>b.onclick=()=>showPet(b.dataset.pin));
 
+
+/* --- Noopie autour de moi : voir les autres, choisir qui me voit --- */
+const NEARD=[
+ {id:'a',sp:'dog',pos:[2.3828,48.8796]},
+ {id:'b',sp:'cat',pos:[2.3858,48.8788]},
+ {id:'c',sp:'dog',pos:[2.3866,48.8812],friend:'Rocky',img:'avatars/dog-10-border-collie.jpg',br:'Border collie',st:'En balade au parc'},
+ {id:'d',sp:'dog',pos:[2.3822,48.8826]},
+ {id:'e',sp:'dog',pos:[2.3895,48.8822],friend:'Lola',img:'avatars/dog-02-labrador.jpg',br:'Labrador',st:'Au square Bolivar'},
+ {id:'f',sp:'cat',pos:[2.3790,48.8778]},
+ {id:'g',sp:'dog',pos:[2.3905,48.8760]},
+ {id:'h',sp:'cat',pos:[2.3760,48.8850],friend:'Miso',img:'avatars/cat-03-siamois.jpg',br:'Siamois',st:'Sur son balcon'},
+ {id:'i',sp:'dog',pos:[2.3990,48.8890]},
+ {id:'j',sp:'dog',pos:[2.3660,48.8705]}];
+window.NP_NEAR=NEARD;
+const FROM=[2.3842,48.8803];
+const hav=(a,b)=>{const R=6371000,r=Math.PI/180,dLa=(b[1]-a[1])*r,dLo=(b[0]-a[0])*r;const h=Math.sin(dLa/2)**2+Math.cos(a[1]*r)*Math.cos(b[1]*r)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const fmtD=m=>m<1000?`${Math.round(m/10)*10} m`:`${(m/1000).toFixed(1).replace('.0','').replace('.',',')} km`;
+NEARD.forEach(n=>n.d=hav(FROM,n.pos));
+let ncfg=Object.assign({show:true,r:500,dog:true,cat:true,fr:false,home:true,lost:true,vis:{nougat:'all',ziggy:'friends'}},store.get('near',{}));
+let premium=store.get('premium',false);
+const VIS={all:['🌍','Tout le monde','Visible de façon anonyme : espèce et distance, sans nom ni photo'],friends:['💚','Mes copains','Seuls vos copains le voient, avec son nom et sa photo'],none:['👻','Personne','Mode fantôme : il n’apparaît chez personne']};
+const upsell=(what)=>modal('Fonction Premium',`<p class="muted" style="margin:0 0 6px">${what} fait partie de Noopie Premium.</p><p class="muted" style="margin:0">Premium ajoute aussi la recherche intensive, l’alerte quartier à 5 km, les zones illimitées et le bilan bien-être.</p>`,()=>{location.hash='premium'},'Découvrir Premium');
+function nearVisible(n){return ncfg.show&&ncfg[n.sp]&&n.d<=ncfg.r&&(!ncfg.fr||!!n.friend)}
+function renderNear(){
+  const list=NEARD.filter(nearVisible).sort((a,b)=>a.d-b.d);
+  const cnt=$('[data-near-count]'); if(cnt){cnt.textContent=ncfg.show?`${list.length} dans un rayon de ${fmtD(ncfg.r)}`:'Masqués';cnt.className='chip '+(ncfg.show?'chip-blue':'chip-gold')}
+  $$('[data-near-show]').forEach(i=>i.checked=ncfg.show);
+  const o=$('[data-near-opts]'); if(o) o.querySelectorAll('.seg,.fchips').forEach(x=>x.classList.toggle('dis',!ncfg.show));
+  $$('[data-near-r] button').forEach(b=>b.classList.toggle('on',+b.dataset.rad===ncfg.r));
+  $$('[data-near-sp]').forEach(b=>b.classList.toggle('on',!!ncfg[b.dataset.nearSp]));
+  $$('[data-near-friends]').forEach(b=>b.classList.toggle('on',ncfg.fr));
+  const h=$('[data-near-home]'); if(h) h.checked=ncfg.home; const l=$('[data-near-lost]'); if(l) l.checked=ncfg.lost;
+  const L=$('[data-near-list]');
+  if(L) L.innerHTML=!ncfg.show?`<div class="nempty">Vous ne voyez pas les autres Noopie.<br>Activez « Voir les autres Noopie » pour les afficher.</div>`:!list.length?`<div class="nempty">Aucun Noopie dans ce rayon pour le moment.</div>`:list.map(n=>n.friend
+    ?`<div class="nitem"><span class="nic friend"><img src="${n.img}" alt=""></span><div><b>${n.friend} · ${n.br}</b><span>Copain · ${n.st} · ${fmtD(n.d)}</span></div><button class="btn btn-white btn-sm" type="button" data-walk="${n.friend}">Proposer une balade</button></div>`
+    :`<div class="nitem"><span class="nic ${n.sp==='cat'?'cat':''}">${n.sp==='cat'?'🐱':'🐶'}</span><div><b>${n.sp==='cat'?'Chat':'Chien'} · ${fmtD(n.d)}</b><span>Membre Noopie · position approximative</span></div><button class="btn btn-white btn-sm" type="button" data-wave>👋 Coucou</button></div>`).join('');
+  // visibilité par animal
+  const rows=pets.map(p=>{const v=ncfg.vis[p.id]||'all';return `<div class="visrow"><img src="${p.img}" alt=""><div><b>${p.name}</b><small>${VIS[v][2]}</small></div><div class="seg" role="group" aria-label="Qui peut voir ${p.name}">${Object.entries(VIS).map(([k,x])=>`<button type="button" data-vis="${p.id}" data-v="${k}" class="${k===v?'on':''}" aria-pressed="${k===v}">${x[0]} ${x[1]}</button>`).join('')}</div></div>`}).join('');
+  $$('[data-vis-rows]').forEach(x=>x.innerHTML=rows);
+  const p0=pets[0],v0=ncfg.vis[p0.id]||'all',chip=$('[data-vis-chip]');
+  if(chip){chip.textContent=v0==='none'?`👻 ${p0.name} en mode fantôme`:v0==='friends'?`💚 ${p0.name} visible de ses copains`:`🌍 ${p0.name} visible · anonyme`;chip.classList.toggle('ghost',v0==='none')}
+  // carte statique (si la vraie carte ne charge pas)
+  const lay=$('[data-nearlayer]');
+  if(lay){const X=lng=>(lng-2.3700)/(2.3960-2.3700)*100,Yp=lat=>(48.8870-lat)/(48.8870-48.8740)*100;
+    lay.innerHTML=NEARD.filter(nearVisible).filter(n=>X(n.pos[0])>3&&X(n.pos[0])<97&&Yp(n.pos[1])>3&&Yp(n.pos[1])<97).map(n=>`<span class="near ${n.sp==='cat'?'cat':''} ${n.friend?'friend':''}" style="left:${X(n.pos[0]).toFixed(1)}%;top:${Yp(n.pos[1]).toFixed(1)}%"><i${n.friend?` style="background-image:url(${n.img})"`:''}></i><b>${n.friend||(n.sp==='cat'?'Chat':'Chien')} · ${fmtD(n.d)}</b></span>`).join('')}
+  const nbt=$('[data-near]'); if(nbt) nbt.classList.toggle('off',!ncfg.show);
+  const m=$('#bigmap')&&$('#bigmap')._np; if(m&&m.setNear) m.setNear({show:ncfg.show,radius:ncfg.r,dog:ncfg.dog,cat:ncfg.cat,friends:ncfg.fr});
+}
+function saveNear(){store.set('near',ncfg);renderNear()}
+document.addEventListener('change',e=>{const t=e.target;
+  if(t.matches('[data-near-show]')){ncfg.show=t.checked;saveNear();toast(t.checked?'Les Noopie autour de vous sont affichés':'Les autres Noopie sont masqués sur votre carte')}
+  else if(t.matches('[data-near-home]')){ncfg.home=t.checked;saveNear();toast(t.checked?'Vos animaux sont masqués autour de la maison':'Masquage autour de la maison désactivé')}
+  else if(t.matches('[data-near-lost]')){ncfg.lost=t.checked;saveNear()}});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.matches('[data-near-r] button')){const r=+b.dataset.rad;if(b.hasAttribute('data-pro')&&!premium){upsell('Voir les Noopie jusqu’à 3 km');return}ncfg.r=r;saveNear()}
+  else if(b.matches('[data-near-sp]')){const k=b.dataset.nearSp,o=k==='dog'?'cat':'dog';ncfg[k]=!ncfg[k];if(!ncfg[k]&&!ncfg[o])ncfg[o]=true;saveNear()}
+  else if(b.matches('[data-near-friends]')){ncfg.fr=!ncfg.fr;saveNear()}
+  else if(b.matches('[data-vis]')){ncfg.vis[b.dataset.vis]=b.dataset.v;saveNear();const p=pets.find(x=>x.id===b.dataset.vis);toast(b.dataset.v==='none'?`${p.name} passe en mode fantôme`:b.dataset.v==='friends'?`${p.name} n’est visible que de vos copains`:`${p.name} est visible des Noopie proches, de façon anonyme`)}
+  else if(b.matches('[data-wave]')){toast('Coucou envoyé ! Si son propriétaire répond, vous pourrez devenir copains')}
+  else if(b.matches('[data-walk]')){if(!premium){upsell('Proposer une balade à un copain')}else toast(`Invitation envoyée à ${b.dataset.walk} (démonstration)`)}
+  else if(b.matches('[data-pm-start]')){premium=true;store.set('premium',true);renderPremium();toast('Premium activé (démonstration) : les fonctions sont débloquées')}
+  else if(b.matches('[data-pm-stop]')){premium=false;store.set('premium',false);renderPremium();toast('Retour à la formule Essentiel')}
+},true);
+function renderPremium(){$$('[data-pm-on]').forEach(x=>x.hidden=!premium);$$('[data-pm-start]').forEach(b=>{b.textContent=premium?'Premium actif ✓':'Essayer Premium';b.disabled=premium});
+  $$('[data-near-r] [data-pro]').forEach(b=>b.title=premium?'':'Premium');if(!premium&&ncfg.r>1000){ncfg.r=1000;saveNear()}}
+const _render=render;render=function(){_render();if(typeof ncfg!=='undefined')renderNear()};
+const gA=$('[data-goto-autour]');if(gA)gA.addEventListener('click',()=>setTimeout(()=>{const t=$('#autour');t&&t.scrollIntoView({behavior:'smooth',block:'start'})},120));
 /* routing */
 const VIEWS=['accueil','carte','animaux','sante','activite','communaute','premium','alertes','medaillons','zones','partage','commandes','parametres'];
 function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'accueil';
   $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v);$$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
   if(v==='alertes'){setTimeout(()=>{alerts.forEach(a=>a.u=false);save();render()},1500)}
   window.scrollTo(0,0)}
-function boot(){const on=!!user;$('#auth').hidden=on;$('#app').hidden=!on;if(on){render();showPet('dog');route()}}
+function boot(){const on=!!user;$('#auth').hidden=on;$('#app').hidden=!on;if(on){render();showPet('dog');renderNear();renderPremium();route()}}
 window.addEventListener('hashchange',()=>user&&route());
 boot();
 })();
