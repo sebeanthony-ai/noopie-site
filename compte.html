@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mon compte Noopie</title>
+<meta name="description" content="Votre espace Noopie : animaux, position, alertes, médaillons, zones et partage.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1F6FEB;--blue-2:#1A5FD6;--ink:#26211C;--ink-2:#5B544C;--muted:#7A8291;--line:#E6ECF5;--soft:#F4F7FD;--bg:#F7F9FD;--card:#fff;--ok:#1C9A63;--okbg:#E6F6EE;--red:#E5484D;--redbg:#FDECEC;--gold:#E4A522;--goldbg:#FFF4D6}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.logo svg{height:40px;width:auto;display:block}
+h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:99px;font-family:Fredoka,sans-serif;font-weight:600;font-size:16px;text-decoration:none;transition:background .15s,transform .15s}
+.btn:active{transform:scale(.98)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(31,111,235,.28)} .btn-blue:hover{background:var(--blue-2)}
+.btn-white{background:#fff;color:var(--blue);border:1.5px solid rgba(31,111,235,.3)} .btn-white:hover{background:var(--soft)}
+.btn-red{background:var(--red);color:#fff}
+.btn-sm{min-height:36px;padding:0 14px;font-size:14px}
+.chip{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;border-radius:99px;padding:3px 10px}
+.chip i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.chip-ok{color:var(--ok);background:var(--okbg)} .chip-red{color:var(--red);background:var(--redbg)} .chip-gold{color:#9A6800;background:var(--goldbg)} .chip-blue{color:var(--blue);background:#EAF1FE}
+.card{background:var(--card);border-radius:20px;box-shadow:0 1px 0 #EEF2F8 inset,0 8px 24px rgba(31,111,235,.06);padding:20px;min-width:0}
+.ttl{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}
+.ttl h3{margin:0;font-size:19px;font-weight:700;color:var(--blue-2)}
+.ttl a,.link{font-weight:800;font-size:14px;color:var(--blue);text-decoration:none;background:none;border:0;cursor:pointer;padding:0}
+.av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;background:var(--soft)}
+.muted{color:var(--muted);font-weight:600}
+.demo{font-size:12.5px;font-weight:700;color:#7A5200;background:var(--goldbg);border-radius:12px;padding:8px 12px}
+
+/* ---------- AUTH ---------- */
+.auth{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.auth-side{position:relative;overflow:hidden;background:linear-gradient(160deg,#EAF2FF 0%,#F7FAFF 60%,#fff 100%);padding:40px clamp(24px,5vw,64px);display:flex;flex-direction:column}
+.auth-side h2{font-size:clamp(30px,3.4vw,46px);line-height:1.05;color:var(--blue-2);margin:auto 0 12px;font-weight:700}
+.auth-side p{margin:0;font-weight:800;max-width:440px}
+.auth-pets{display:flex;align-items:flex-end;gap:0;margin-top:28px}
+.auth-pets img{width:46%;max-width:260px;height:auto}
+.auth-feats{margin:22px 0 auto;padding:0;list-style:none;display:grid;gap:10px}
+.auth-feats li{display:flex;gap:10px;align-items:center;font-weight:800}
+.auth-feats li span{width:28px;height:28px;border-radius:9px;background:#fff;display:grid;place-items:center;color:var(--blue);box-shadow:0 4px 10px rgba(31,111,235,.12);font-size:14px}
+.auth-main{display:flex;flex-direction:column;padding:32px clamp(20px,5vw,72px)}
+.auth-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.auth-box{width:100%;max-width:400px;margin:auto}
+.auth-box h1{font-size:34px;margin:0 0 6px;color:var(--blue-2);font-weight:700}
+.auth-box > p{margin:0 0 22px;font-weight:800}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border-radius:99px;padding:4px;margin-bottom:20px}
+.tabs button{appearance:none;border:0;background:none;border-radius:99px;min-height:40px;font-weight:800;cursor:pointer;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--blue-2);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field label{font-size:13.5px;font-weight:800}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;outline:none}
+.field textarea{min-height:76px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px #DCE8FD}
+.err{color:var(--red);font-size:13px;font-weight:700;min-height:0}
+.or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;font-weight:700;margin:16px 0}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.sso{display:grid;gap:10px}
+.sso .btn{width:100%;background:#fff;border:1.5px solid var(--line);color:var(--ink);font-family:"DM Sans",sans-serif;font-weight:800;font-size:15px}
+.sso .btn:hover{background:var(--soft)}
+.full{width:100%}
+.row-between{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:-2px 0 14px;font-size:13.5px;font-weight:700}
+.row-between label{display:flex;gap:8px;align-items:center}
+.row-between input{accent-color:var(--blue);width:16px;height:16px}
+
+/* ---------- APP SHELL ---------- */
+.app{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;background:#fff;border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:18px}
+.nav{display:grid;gap:2px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;text-decoration:none;font-weight:800;color:#3E4757}
+.nav a svg{width:20px;height:20px;flex:none;color:#8A93A3}
+.nav a:hover{background:var(--soft)}
+.nav a.on{background:#EAF1FE;color:var(--blue-2)} .nav a.on svg{color:var(--blue)}
+.nav a .badge{margin-left:auto;background:var(--red);color:#fff;font-size:11px;font-weight:800;border-radius:99px;padding:1px 7px}
+.side-foot{margin-top:auto;display:grid;gap:10px}
+.side-user{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:var(--soft)}
+.side-user .ini{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:Fredoka,sans-serif;font-weight:700}
+.side-user b{display:block;font-size:14px} .side-user span{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.main{min-width:0;padding:26px clamp(16px,3vw,40px) 60px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.topbar h1{margin:0;font-size:clamp(26px,3vw,34px);font-weight:700;color:var(--blue-2)}
+.topbar p{margin:2px 0 0;font-weight:800}
+.mobile-bar{display:none}
+.grid{display:grid;gap:16px}
+.g-dash{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:16px}
+.kpi{padding:16px 18px}
+.kpi small{display:block;font-size:12.5px;font-weight:800;color:var(--muted)}
+.kpi b{display:block;font-family:Fredoka,sans-serif;font-size:28px;color:var(--blue-2);line-height:1.15}
+.kpi span{font-size:12.5px;font-weight:700;color:var(--ok)}
+
+.map{position:relative;border-radius:16px;overflow:hidden;background:#dbe9fa url("refs/alert-map.webp") 55% 35% / cover no-repeat;min-height:280px}
+.map-lg{min-height:520px}
+.pin{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--blue);padding:3px;box-shadow:0 0 0 0 rgba(31,111,235,.4);animation:pulse 2s infinite;cursor:pointer;border:0}
+.pin img{width:100%;height:100%;border-radius:50%;display:block}
+.pin.cat{background:#C9A27E;animation-delay:-1s}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,111,235,.45)}100%{box-shadow:0 0 0 18px rgba(31,111,235,0)}}
+.zone-ring{position:absolute;border:2px dashed var(--blue);background:rgba(31,111,235,.10);border-radius:50%;pointer-events:none}
+.zone-ring span{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:11px;font-weight:800;border-radius:99px;padding:2px 9px;white-space:nowrap}
+.map-card{position:absolute;left:14px;bottom:14px;right:14px;max-width:420px;background:rgba(255,255,255,.96);border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.map-card b{display:block;font-size:15px}
+.map-ctrl{position:absolute;top:12px;right:12px;display:flex;gap:8px}
+.map-ctrl button{border:0;background:#fff;border-radius:99px;padding:7px 12px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.map-ctrl button.on{background:var(--blue);color:#fff}
+
+.pet{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:var(--soft)}
+.pet + .pet{margin-top:10px}
+.pet b{display:block;font-size:15.5px}
+.pet .meta{font-size:12.5px;color:var(--muted);font-weight:700}
+.pet .r{margin-left:auto;text-align:right;display:grid;gap:4px;justify-items:end}
+.batt{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:#3E4757}
+.batt i{width:22px;height:11px;border-radius:3px;border:1.5px solid #3E4757;position:relative;display:inline-block}
+.batt i::after{content:"";position:absolute;left:1px;top:1px;bottom:1px;width:var(--b,70%);background:var(--ok);border-radius:1px}
+
+.feed{display:grid;gap:10px}
+.ev{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;background:var(--soft)}
+.ev .ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px;flex:none}
+.ic-red{background:var(--red)} .ic-blue{background:var(--blue)} .ic-green{background:#22B573} .ic-gold{background:var(--gold)}
+.ev b{display:block;font-size:14.5px} .ev span{display:block;font-size:13px;font-weight:600;color:#4B5563} .ev em{font-style:normal;font-size:12px;color:var(--muted);font-weight:700;margin-left:auto;white-space:nowrap}
+.ev.unread{background:#fff;box-shadow:inset 3px 0 0 var(--blue),0 4px 14px rgba(31,111,235,.08)}
+
+.petcard{padding:0;overflow:hidden}
+.petcard .hd{display:flex;gap:14px;align-items:center;padding:18px;background:linear-gradient(135deg,#EAF2FF,#F7FAFF)}
+.petcard .hd img{width:72px;height:72px;border-radius:50%;border:4px solid #fff}
+.petcard .hd h3{margin:0;font-size:22px;color:var(--blue-2)}
+.petcard dl{margin:0;padding:14px 18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.petcard dl div{background:var(--soft);border-radius:12px;padding:8px 10px;min-width:0}
+.petcard dt{font-size:11px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.petcard dd{margin:0;font-weight:800;font-size:14px}
+.petcard .ft{display:flex;gap:8px;flex-wrap:wrap;padding:0 18px 18px}
+.add-card{display:grid;place-items:center;text-align:center;border:2px dashed #BBD0F5;background:transparent;box-shadow:none;min-height:240px;cursor:pointer;color:var(--blue)}
+.add-card b{font-family:Fredoka,sans-serif;font-size:19px}
+
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.toggle:last-child{border-bottom:0}
+.toggle b{display:block;font-size:15px} .toggle span{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.sw{appearance:none;position:relative;width:48px;height:28px;border-radius:99px;background:#D1D5DB;cursor:pointer;flex:none;transition:background .2s;border:0;margin:0}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .2s}
+.sw:checked{background:#34C759} .sw:checked::after{left:23px}
+.sw.red:checked{background:var(--red)}
+
+.medal-row{display:flex;align-items:center;gap:14px;padding:14px;border-radius:16px;background:var(--soft)}
+.medal-row + .medal-row{margin-top:10px}
+.medal-row img{width:54px;height:64px;object-fit:contain}
+.medal-row b{display:block}
+.medal-row .r{margin-left:auto;display:grid;gap:6px;justify-items:end}
+.qrbox{display:flex;gap:16px;align-items:center}
+.qrbox img{width:120px;height:120px;border-radius:50%;background:#fff;padding:6px;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+
+.person{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.person:last-child{border-bottom:0}
+.person .ini{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:Fredoka,sans-serif;font-weight:700;flex:none}
+.person b{display:block} .person span{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.person .r{margin-left:auto}
+
+.order{display:flex;gap:14px;align-items:center;padding:14px;border-radius:16px;background:var(--soft)}
+.order + .order{margin-top:10px}
+.order img{width:56px;height:56px;object-fit:contain}
+.steps{display:flex;gap:6px;margin-top:8px}
+.steps i{height:6px;flex:1;border-radius:9px;background:#DCE3EE}
+.steps i.on{background:var(--blue)}
+
+.lostbanner{display:flex;gap:14px;align-items:center;justify-content:space-between;background:var(--redbg);border-radius:16px;padding:14px 16px;margin-bottom:16px;flex-wrap:wrap}
+.lostbanner b{color:var(--red)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:#1C1C1E;color:#fff;border-radius:14px;padding:12px 16px;font-weight:700;font-size:14px;transition:.25s;z-index:50;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.modal{position:fixed;inset:0;background:rgba(10,20,40,.45);display:grid;place-items:center;padding:16px;z-index:40}
+.modal .card{width:100%;max-width:460px;max-height:calc(100vh - 32px);overflow:auto}
+.modal h3{margin:0 0 4px;font-size:22px;color:var(--blue-2)}
+.modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap}
+.range{width:100%;accent-color:var(--blue)}
+
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))} .g-dash,.g-3{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){
+  .auth{grid-template-columns:minmax(0,1fr)} .auth-side{display:none}
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;z-index:30;flex-direction:row;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));border-right:0;border-top:1px solid var(--line)}
+  .side .logo,.side-foot{display:none}
+  .nav{grid-auto-flow:column;grid-auto-columns:1fr;width:100%;overflow-x:auto}
+  .nav a{flex-direction:column;gap:3px;font-size:10.5px;padding:6px 4px;text-align:center}
+  .nav a .lbl-long{display:none}
+  .nav a .badge{position:absolute;margin:0;transform:translate(10px,-4px);font-size:9px}
+  .nav a{position:relative}
+  .nav a.hide-m{display:none}
+  .main{padding:16px 16px 100px}
+  .mobile-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .g-2{grid-template-columns:minmax(0,1fr)}
+  .petcard dl{grid-template-columns:minmax(0,1fr)}
+  .map-lg{min-height:420px}
+  .map{min-height:340px}
+  .map-card{padding:10px}
+  .map-card .chip{display:none}
+}
+@media (prefers-reduced-motion:reduce){.pin{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= CONNEXION ================= -->
+<section class="auth" id="auth">
+  <aside class="auth-side">
+    <a class="logo" href="./index.html" aria-label="Noopie, accueil"><svg viewBox="0 0 156 44" role="img" aria-label="Noopie"><defs><radialGradient id="g-gold1" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFE6A6"/><stop offset=".55" stop-color="#F2C56A"/><stop offset="1" stop-color="#C9922F"/></radialGradient></defs><text x="0" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">no</text><g transform="translate(60 22)"><circle r="14" fill="url(#g-gold1)"/><g fill="#1F6FEB" transform="translate(0 1)"><circle cx="-5" cy="-4" r="2.2"/><circle cx="0" cy="-6" r="2.2"/><circle cx="5" cy="-4" r="2.2"/><path d="M0 -1c-3.2 0-5.8 2.4-5.8 5 0 1.6 1.3 2.8 2.9 2.8 1.1 0 1.9-.5 2.9-.5s1.8.5 2.9.5c1.6 0 2.9-1.2 2.9-2.8 0-2.6-2.6-5-5.8-5Z"/></g><rect x="-3" y="-17" width="6" height="5" rx="2" fill="#CFCAC2"/></g><text x="80" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">pie</text></svg></a>
+    <h2>Content de vous revoir&nbsp;!</h2>
+    <p>Retrouvez la position de vos compagnons, leurs fiches et toutes vos alertes.</p>
+    <ul class="auth-feats">
+      <li><span>📍</span>Position en direct</li>
+      <li><span>🔔</span>Alertes instantanées</li>
+      <li><span>🐾</span>Fiche partageable par QR code</li>
+    </ul>
+    <div class="auth-pets"><img src="refs/hero-dog-noshadow.webp" alt="Nougat"><img src="refs/hero-cat-noshadow.webp" alt="Ziggy"></div>
+  </aside>
+  <main class="auth-main">
+    <div class="auth-top"><a class="logo" href="./index.html" aria-label="Noopie, accueil"><svg viewBox="0 0 156 44" role="img" aria-label="Noopie"><defs><radialGradient id="g-gold2" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFE6A6"/><stop offset=".55" stop-color="#F2C56A"/><stop offset="1" stop-color="#C9922F"/></radialGradient></defs><text x="0" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">no</text><g transform="translate(60 22)"><circle r="14" fill="url(#g-gold2)"/><g fill="#1F6FEB" transform="translate(0 1)"><circle cx="-5" cy="-4" r="2.2"/><circle cx="0" cy="-6" r="2.2"/><circle cx="5" cy="-4" r="2.2"/><path d="M0 -1c-3.2 0-5.8 2.4-5.8 5 0 1.6 1.3 2.8 2.9 2.8 1.1 0 1.9-.5 2.9-.5s1.8.5 2.9.5c1.6 0 2.9-1.2 2.9-2.8 0-2.6-2.6-5-5.8-5Z"/></g><rect x="-3" y="-17" width="6" height="5" rx="2" fill="#CFCAC2"/></g><text x="80" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">pie</text></svg></a><a class="link" href="./index.html">← Retour au site</a></div>
+    <div class="auth-box">
+      <h1 id="auth-title">Se connecter</h1>
+      <p id="auth-sub">Accédez à votre espace Noopie.</p>
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-mode="login">Connexion</button>
+        <button type="button" role="tab" aria-selected="false" data-mode="signup">Créer un compte</button>
+      </div>
+      <form id="auth-form" novalidate autocomplete="off">
+        <div class="field" id="f-name" hidden><label for="name">Prénom</label><input id="name" placeholder="Marie"></div>
+        <div class="field"><label for="email">E-mail</label><input id="email" type="email" placeholder="vous@exemple.fr"></div>
+        <div class="field"><label for="pwd">Mot de passe</label><input id="pwd" type="password" placeholder="••••••••"></div>
+        <div class="row-between" id="f-remember"><label><input type="checkbox" checked> Rester connecté</label><button type="button" class="link" id="forgot">Mot de passe oublié ?</button></div>
+        <p class="err" id="auth-err"></p>
+        <button class="btn btn-blue full" type="submit" id="auth-submit">Se connecter</button>
+      </form>
+      <div class="or">ou</div>
+      <div class="sso">
+        <button class="btn" type="button" data-sso><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14 5.3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3.1-1.5z"/></svg>Continuer avec Apple</button>
+        <button class="btn" type="button" data-sso><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6c-.2 1.3-1 2.4-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7C4.4 19.7 8 22 12 22z"/><path fill="#FBBC05" d="M6.2 13.6c-.2-.6-.3-1.2-.3-1.8s.1-1.2.3-1.8V7.3H2.7C2 8.7 1.6 10.3 1.6 12s.4 3.3 1.1 4.7l3.5-3.1z"/><path fill="#EA4335" d="M12 5.8c1.5 0 2.9.5 4 1.5l3-3C17.2 2.6 14.8 1.6 12 1.6 8 1.6 4.4 3.9 2.7 7.3l3.5 2.7C7 7.6 9.3 5.8 12 5.8z"/></svg>Continuer avec Google</button>
+      </div>
+      <p class="demo" style="margin-top:18px">Démonstration : aucun compte n’est créé et rien n’est envoyé. Saisissez n’importe quel e-mail pour découvrir l’espace.</p>
+    </div>
+  </main>
+</section>
+
+<!-- ================= ESPACE CONNECTÉ ================= -->
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <a class="logo" href="./index.html" aria-label="Noopie, accueil"><svg viewBox="0 0 156 44" role="img" aria-label="Noopie"><defs><radialGradient id="g-gold3" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFE6A6"/><stop offset=".55" stop-color="#F2C56A"/><stop offset="1" stop-color="#C9922F"/></radialGradient></defs><text x="0" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">no</text><g transform="translate(60 22)"><circle r="14" fill="url(#g-gold3)"/><g fill="#1F6FEB" transform="translate(0 1)"><circle cx="-5" cy="-4" r="2.2"/><circle cx="0" cy="-6" r="2.2"/><circle cx="5" cy="-4" r="2.2"/><path d="M0 -1c-3.2 0-5.8 2.4-5.8 5 0 1.6 1.3 2.8 2.9 2.8 1.1 0 1.9-.5 2.9-.5s1.8.5 2.9.5c1.6 0 2.9-1.2 2.9-2.8 0-2.6-2.6-5-5.8-5Z"/></g><rect x="-3" y="-17" width="6" height="5" rx="2" fill="#CFCAC2"/></g><text x="80" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">pie</text></svg></a>
+    <nav class="nav" aria-label="Mon compte">
+      <a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg><span>Accueil</span></a>
+      <a href="#carte" data-v="carte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg><span>Carte</span></a>
+      <a href="#animaux" data-v="animaux"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><ellipse cx="6.5" cy="10" rx="2" ry="2.6"/><ellipse cx="10" cy="6.5" rx="2" ry="2.6"/><ellipse cx="14" cy="6.5" rx="2" ry="2.6"/><ellipse cx="17.5" cy="10" rx="2" ry="2.6"/><path d="M12 11c-3 0-5.5 2.6-5.5 5 0 2 2 2.6 3.6 2.2.7-.2 1.2-.5 1.9-.5s1.2.3 1.9.5c1.6.4 3.6-.2 3.6-2.2 0-2.4-2.5-5-5.5-5z"/></g></svg><span>Animaux</span></a>
+      <a href="#alertes" data-v="alertes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6z" fill="currentColor"/><path d="M10 19a2 2 0 0 0 4 0" fill="currentColor"/></svg><span>Alertes</span><b class="badge" id="badge">2</b></a>
+      <a href="#medaillons" data-v="medaillons" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="7" fill="currentColor"/><circle cx="12" cy="4.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Médaillons</span></a>
+      <a href="#zones" data-v="zones" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>Zones</span></a>
+      <a href="#partage" data-v="partage" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5" fill="currentColor"/><path d="M2.5 20c.7-3.5 3.4-5.5 6.5-5.5s5.8 2 6.5 5.5z" fill="currentColor"/><circle cx="17" cy="9" r="2.6" fill="currentColor" opacity=".6"/><path d="M15.5 14.6c3 .1 5.3 2 6 5.4h-4.4" fill="currentColor" opacity=".6"/></svg><span>Partage</span></a>
+      <a href="#commandes" data-v="commandes" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z" fill="currentColor"/><path d="M3 7l9 4 9-4M12 11v10" stroke="#fff" stroke-width="1.5" fill="none"/></svg><span>Commandes</span></a>
+      <a href="#parametres" data-v="parametres"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c1-4.2 4.4-6.5 8-6.5s7 2.3 8 6.5z" fill="currentColor"/></svg><span>Compte</span></a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-user"><span class="ini" id="u-ini">M</span><div><b id="u-name">Marie</b><span id="u-mail">marie@exemple.fr</span></div></div>
+      <button class="btn btn-white btn-sm" type="button" data-logout>Se déconnecter</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="mobile-bar"><a class="logo" href="./index.html" aria-label="Noopie, accueil"><svg viewBox="0 0 156 44" role="img" aria-label="Noopie"><defs><radialGradient id="g-gold4" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFE6A6"/><stop offset=".55" stop-color="#F2C56A"/><stop offset="1" stop-color="#C9922F"/></radialGradient></defs><text x="0" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">no</text><g transform="translate(60 22)"><circle r="14" fill="url(#g-gold4)"/><g fill="#1F6FEB" transform="translate(0 1)"><circle cx="-5" cy="-4" r="2.2"/><circle cx="0" cy="-6" r="2.2"/><circle cx="5" cy="-4" r="2.2"/><path d="M0 -1c-3.2 0-5.8 2.4-5.8 5 0 1.6 1.3 2.8 2.9 2.8 1.1 0 1.9-.5 2.9-.5s1.8.5 2.9.5c1.6 0 2.9-1.2 2.9-2.8 0-2.6-2.6-5-5.8-5Z"/></g><rect x="-3" y="-17" width="6" height="5" rx="2" fill="#CFCAC2"/></g><text x="80" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">pie</text></svg></a><button class="link" data-logout>Se déconnecter</button></div>
+
+    <!-- ACCUEIL -->
+    <section data-view="accueil">
+      <div class="topbar"><div><h1>Bonjour <span data-first>Marie</span> 👋</h1><p>Voici ce qui se passe aujourd’hui avec vos compagnons.</p></div><a class="btn btn-blue" href="#carte">Voir la carte</a></div>
+      <div class="lostbanner" data-lost-banner hidden><span><b>Mode perdu activé pour Nougat.</b> Sa fiche publique affiche « Je suis perdu ».</span><button class="btn btn-red btn-sm" type="button" data-lost-off>Nougat est retrouvé</button></div>
+      <div class="kpis">
+        <div class="card kpi"><small>Animaux suivis</small><b>2</b><span>● Tous connectés</span></div>
+        <div class="card kpi"><small>Balade du jour</small><b>2,4 km</b><span>48 min avec Nougat</span></div>
+        <div class="card kpi"><small>Alertes non lues</small><b data-unread>2</b><span style="color:var(--red)">● À consulter</span></div>
+        <div class="card kpi"><small>Batterie médaillons</small><b>82 %</b><span>Nougat · 64 % Ziggy</span></div>
+      </div>
+      <div class="grid g-dash">
+        <div class="card">
+          <div class="ttl"><h3>Position en direct</h3><a href="#carte">Agrandir ›</a></div>
+          <div class="map"><div class="zone-ring" style="left:18%;top:22%;width:44%;aspect-ratio:1"><span>Maison</span></div>
+            <button class="pin" style="left:77%;top:27%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button>
+            <button class="pin cat" style="left:38%;top:52%" aria-label="Ziggy"><img src="refs/portrait-cat.jpg" alt=""></button>
+            <div class="map-card"><img class="av" src="refs/portrait-dog.jpg" alt=""><div><b>Nougat</b><span class="muted" style="font-size:13px">Parc des Buttes-Chaumont · il y a 1 min</span></div><span class="chip chip-ok" style="margin-left:auto"><i></i>En direct</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ttl"><h3>Dernières alertes</h3><a href="#alertes">Tout voir ›</a></div>
+          <div class="feed" data-feed-mini></div>
+        </div>
+      </div>
+      <div class="grid g-2" style="margin-top:16px">
+        <div class="card"><div class="ttl"><h3>Mes animaux</h3><a href="#animaux">Gérer ›</a></div><div data-pets-mini></div></div>
+        <div class="card"><div class="ttl"><h3>Actions rapides</h3></div>
+          <div class="grid g-2">
+            <button class="btn btn-white" type="button" data-lost-on>Signaler perdu</button>
+            <a class="btn btn-white" href="#zones">Créer une zone</a>
+            <a class="btn btn-white" href="#partage">Inviter un proche</a>
+            <a class="btn btn-white" href="./commander.html">Commander un médaillon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARTE -->
+    <section data-view="carte" hidden>
+      <div class="topbar"><div><h1>Carte</h1><p>Position en direct et trajets du jour.</p></div><span class="chip chip-ok"><i></i>Mise à jour il y a 1 min</span></div>
+      <div class="card" style="padding:12px">
+        <div class="map map-lg" id="bigmap">
+          <div class="map-ctrl"><button class="on" data-pet="dog">Nougat</button><button data-pet="cat">Ziggy</button><button data-pet="all">Tous</button></div>
+          <div class="zone-ring" style="left:14%;top:18%;width:36%;aspect-ratio:1"><span>Maison · 150 m</span></div>
+          <button class="pin" data-pin="dog" style="left:78%;top:28%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button>
+          <button class="pin cat" data-pin="cat" style="left:32%;top:40%" aria-label="Ziggy"><img src="refs/portrait-cat.jpg" alt=""></button>
+          <div class="map-card" id="mapcard"></div>
+        </div>
+      </div>
+      <div class="grid g-3" style="margin-top:16px">
+        <div class="card kpi"><small>Distance aujourd’hui</small><b data-mk="dist">2,4 km</b></div>
+        <div class="card kpi"><small>Temps de sortie</small><b data-mk="time">48 min</b></div>
+        <div class="card kpi"><small>Dans la zone Maison</small><b data-mk="zone">Non</b></div>
+      </div>
+    </section>
+
+    <!-- ANIMAUX -->
+    <section data-view="animaux" hidden>
+      <div class="topbar"><div><h1>Mes animaux</h1><p>Leurs fiches, ce que voit la personne qui scanne.</p></div><button class="btn btn-blue" type="button" data-add-pet>+ Ajouter un animal</button></div>
+      <div class="grid g-3" data-pets-full></div>
+    </section>
+
+    <!-- ALERTES -->
+    <section data-view="alertes" hidden>
+      <div class="topbar"><div><h1>Alertes</h1><p>Tout ce qui concerne vos compagnons, en temps réel.</p></div><button class="btn btn-white" type="button" data-read-all>Tout marquer comme lu</button></div>
+      <div class="grid g-dash">
+        <div class="card"><div class="feed" data-feed-full></div></div>
+        <div class="card"><div class="ttl"><h3>Me prévenir quand…</h3></div>
+          <div class="toggle"><div><b>Le médaillon est détaché</b><span>Avec la dernière position connue</span></div><input class="sw" type="checkbox" checked aria-label="Médaillon détaché"></div>
+          <div class="toggle"><div><b>Sa fiche est scannée</b><span>Quelqu’un a ouvert sa fiche publique</span></div><input class="sw" type="checkbox" checked aria-label="Fiche scannée"></div>
+          <div class="toggle"><div><b>Il sort d’une zone</b><span>Maison, jardin, crèche…</span></div><input class="sw" type="checkbox" checked aria-label="Sortie de zone"></div>
+          <div class="toggle"><div><b>Batterie faible</b><span>Sous 20 %</span></div><input class="sw" type="checkbox" checked aria-label="Batterie faible"></div>
+          <div class="toggle"><div><b>Par e-mail aussi</b><span>En plus des notifications</span></div><input class="sw" type="checkbox" aria-label="Par e-mail"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDAILLONS -->
+    <section data-view="medaillons" hidden>
+      <div class="topbar"><div><h1>Médaillons</h1><p>Vos médaillons Noopie et leur état.</p></div><a class="btn btn-blue" href="./commander.html">Commander un médaillon</a></div>
+      <div class="grid g-dash">
+        <div class="card">
+          <div class="medal-row"><img src="refs/med/face-bleu.webp?v=5" alt=""><div><b>Médaillon de Nougat</b><span class="muted">Bleu Noopie · NP-7Q4K</span></div><div class="r"><span class="chip chip-ok"><i></i>Connecté</span><span class="batt" style="--b:82%"><i></i>82 %</span></div></div>
+          <div class="medal-row"><img src="refs/med/face-nude.webp?v=5" alt=""><div><b>Médaillon de Ziggy</b><span class="muted">Nude · NP-3M8T</span></div><div class="r"><span class="chip chip-ok"><i></i>Connecté</span><span class="batt" style="--b:64%"><i></i>64 %</span></div></div>
+          <button class="btn btn-white full" type="button" style="margin-top:14px" data-pair>+ Associer un nouveau médaillon</button>
+        </div>
+        <div class="card">
+          <div class="ttl"><h3>QR code de Nougat</h3></div>
+          <div class="qrbox"><img src="refs/med/qr-disc.png" alt="QR code de la fiche de Nougat"><div><b>Ce QR ouvre sa fiche publique</b><p class="muted" style="margin:4px 0 10px;font-size:13.5px">Photo, consignes et votre numéro, sans application.</p><a class="btn btn-white btn-sm" href="./maquette-app/fiche.html?pet=nougat" target="_blank" rel="noopener">Voir la fiche publique ›</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZONES -->
+    <section data-view="zones" hidden>
+      <div class="topbar"><div><h1>Zones de sécurité</h1><p>Soyez prévenu dès qu’il quitte un lieu.</p></div><button class="btn btn-blue" type="button" data-add-zone>+ Nouvelle zone</button></div>
+      <div class="grid g-dash">
+        <div class="card" style="padding:12px"><div class="map map-lg"><div class="zone-ring" data-ring style="left:22%;top:18%;width:40%;aspect-ratio:1"><span data-ring-lbl>Maison · 150 m</span></div><button class="pin" style="left:42%;top:38%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button></div></div>
+        <div class="card">
+          <div class="ttl"><h3>Zone « Maison »</h3><span class="chip chip-blue">Active</span></div>
+          <div class="field"><label for="zname">Nom</label><input id="zname" value="Maison"></div>
+          <div class="field"><label for="zr">Rayon · <span id="zrv">150</span> m</label><input id="zr" class="range" type="range" min="50" max="500" step="10" value="150"></div>
+          <div class="toggle"><div><b>Nougat</b><span>Alerte s’il sort</span></div><input class="sw" type="checkbox" checked aria-label="Nougat"></div>
+          <div class="toggle"><div><b>Ziggy</b><span>Alerte s’il sort</span></div><input class="sw" type="checkbox" checked aria-label="Ziggy"></div>
+          <button class="btn btn-blue full" type="button" data-save-zone style="margin-top:10px">Enregistrer</button>
+          <div class="ttl" style="margin-top:20px"><h3>Autres zones</h3></div>
+          <div class="pet"><span class="ic ic-green" style="width:34px;height:34px;border-radius:11px;display:grid;place-items:center;color:#fff">🌳</span><div><b>Jardin de mamie</b><span class="meta">Rayon 80 m · Nougat</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTAGE -->
+    <section data-view="partage" hidden>
+      <div class="topbar"><div><h1>Partage</h1><p>Famille, voisins, pet-sitter : chacun peut veiller sur eux.</p></div><button class="btn btn-blue" type="button" data-invite>+ Inviter un proche</button></div>
+      <div class="grid g-2">
+        <div class="card" data-people></div>
+        <div class="card"><div class="ttl"><h3>Contact de secours</h3></div><p class="muted" style="margin:0 0 12px">Affiché sur la fiche si vous ne répondez pas.</p>
+          <div class="field"><label for="sos-n">Nom</label><input id="sos-n" value="Thomas"></div>
+          <div class="field"><label for="sos-t">Téléphone</label><input id="sos-t" value="06 98 76 54 32"></div>
+          <button class="btn btn-white full" type="button" data-toast="Contact de secours enregistré">Enregistrer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMANDES -->
+    <section data-view="commandes" hidden>
+      <div class="topbar"><div><h1>Commandes</h1><p>Suivi de vos médaillons et de votre abonnement.</p></div><a class="btn btn-blue" href="./commander.html">Nouvelle commande</a></div>
+      <div class="grid g-dash">
+        <div class="card">
+          <div class="order"><img src="refs/med/face-rose.webp?v=5" alt=""><div style="flex:1;min-width:0"><b>Médaillon Rose bonbon · version chat</b><span class="muted" style="display:block;font-size:13px">Commande NP-4F2A · en préparation</span><div class="steps"><i class="on"></i><i class="on"></i><i></i><i></i></div></div><span class="chip chip-gold">En préparation</span></div>
+          <div class="order"><img src="refs/med/face-bleu.webp?v=5" alt=""><div style="flex:1;min-width:0"><b>Médaillon Bleu Noopie · version chien</b><span class="muted" style="display:block;font-size:13px">Commande NP-1C7Z · livrée</span><div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div><span class="chip chip-ok">Livrée</span></div>
+        </div>
+        <div class="card"><div class="ttl"><h3>Abonnement</h3><span class="chip chip-blue">À définir</span></div><p class="muted" style="margin:0 0 12px">La formule (suivi GPS, historique, partage) et son prix seront précisés à l’ouverture des ventes.</p><a class="btn btn-white full" href="./index.html#faq">En savoir plus</a></div>
+      </div>
+    </section>
+
+    <!-- PARAMETRES -->
+    <section data-view="parametres" hidden>
+      <div class="topbar"><div><h1>Mon compte</h1><p>Profil, confidentialité et sécurité.</p></div></div>
+      <div class="grid g-2">
+        <div class="card"><div class="ttl"><h3>Profil</h3></div>
+          <div class="field"><label for="p-n">Prénom</label><input id="p-n" value="Marie"></div>
+          <div class="field"><label for="p-e">E-mail</label><input id="p-e" value="marie@exemple.fr"></div>
+          <div class="field"><label for="p-t">Téléphone affiché sur les fiches</label><input id="p-t" value="06 12 34 56 78"></div>
+          <button class="btn btn-blue full" type="button" data-save-profile>Enregistrer</button>
+        </div>
+        <div class="card"><div class="ttl"><h3>Ce que voit la personne qui scanne</h3></div>
+          <div class="toggle"><div><b>Mon numéro de téléphone</b><span>Bouton « Appeler »</span></div><input class="sw" type="checkbox" checked aria-label="Numéro"></div>
+          <div class="toggle"><div><b>Mon prénom</b><span>« Propriétaire : Marie »</span></div><input class="sw" type="checkbox" checked aria-label="Prénom"></div>
+          <div class="toggle"><div><b>Mon adresse</b><span>Jamais affichée par défaut</span></div><input class="sw" type="checkbox" aria-label="Adresse"></div>
+          <div class="toggle"><div><b>Demander sa position</b><span>Avec son accord</span></div><input class="sw" type="checkbox" checked aria-label="Position"></div>
+        </div>
+        <div class="card"><div class="ttl"><h3>Sécurité</h3></div>
+          <div class="toggle"><div><b>Double authentification</b><span>Code par SMS à la connexion</span></div><input class="sw" type="checkbox" aria-label="2FA"></div>
+          <div class="toggle"><div><b>Mot de passe</b><span>Modifié il y a 2 mois</span></div><button class="link" type="button" data-toast="Démonstration : rien n’est modifié">Modifier</button></div>
+        </div>
+        <div class="card"><div class="ttl"><h3>Langue et données</h3></div>
+          <div class="field"><label for="p-l">Langue</label><select id="p-l"><option>Français</option><option>English</option></select></div>
+          <div class="toggle"><div><b>Exporter mes données</b><span>Fichier de vos fiches et alertes</span></div><button class="link" type="button" data-toast="Démonstration : export non disponible">Exporter</button></div>
+          <div class="toggle"><div><b>Supprimer mon compte</b><span>Définitif</span></div><button class="link" style="color:var(--red)" type="button" data-toast="Démonstration : rien n’est supprimé">Supprimer</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="modal" hidden><div class="card" role="dialog" aria-modal="true" aria-labelledby="m-t"><h3 id="m-t"></h3><div id="m-b"></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const store={get(k,d){try{const v=sessionStorage.getItem('np-'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{sessionStorage.setItem('np-'+k,JSON.stringify(v))}catch(e){}}};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2400)};
+
+let user=store.get('user',null);
+let pets=store.get('pets',[
+ {id:'nougat',name:'Nougat',img:'refs/portrait-dog.jpg',sp:'Golden retriever · 3 ans',car:'Très gentil, un peu peureux',food:'Croquettes, pas de chocolat',love:'Sa balle jaune et les câlins',health:'Allergique au poulet',med:'Bleu Noopie',lost:false},
+ {id:'ziggy',name:'Ziggy',img:'refs/portrait-cat.jpg',sp:'Chat du Bengal · 2 ans',car:'Joueur, un peu craintif',food:'Pâtée au saumon',love:'Plumes et souris en laine',health:'Stérilisé, vaccins à jour',med:'Nude',lost:false}]);
+let alerts=store.get('alerts',[
+ {ic:'red',t:'Médaillon détaché',d:'Le médaillon de Nougat a quitté son collier. Dernière position : Parc des Buttes-Chaumont.',w:'14:31',u:true},
+ {ic:'blue',t:'Fiche de Nougat scannée',d:'Quelqu’un a ouvert sa fiche publique.',w:'14:32',u:true},
+ {ic:'green',t:'Position partagée',d:'Parc des Buttes-Chaumont, Paris 19e.',w:'14:35',u:false},
+ {ic:'gold',t:'Ziggy est sorti de la zone « Maison »',d:'Il est revenu 6 minutes plus tard.',w:'Hier',u:false},
+ {ic:'green',t:'Médaillon de Ziggy associé',d:'NP-3M8T est relié à sa fiche.',w:'Lun.',u:false}]);
+let people=store.get('people',[{n:'Marie',r:'Propriétaire',c:'#1F6FEB',me:true},{n:'Thomas',r:'Peut suivre et recevoir les alertes',c:'#22B573'},{n:'Léa (pet-sitter)',r:'Accès jusqu’au 30 nov.',c:'#E4A522'}]);
+const save=()=>{store.set('pets',pets);store.set('alerts',alerts);store.set('people',people)};
+
+/* ---------- auth ---------- */
+let mode='login';
+$$('.tabs button').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;$$('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  $('#f-name').hidden=mode!=='signup';$('#f-remember').hidden=mode==='signup';
+  $('#auth-title').textContent=mode==='login'?'Se connecter':'Créer un compte';
+  $('#auth-sub').textContent=mode==='login'?'Accédez à votre espace Noopie.':'Quelques secondes et votre espace est prêt.';
+  $('#auth-submit').textContent=mode==='login'?'Se connecter':'Créer mon compte';$('#auth-err').textContent=''});
+$('#forgot').onclick=()=>toast('Démonstration : aucun e-mail n’est envoyé');
+const enter=(name,mail)=>{user={name,mail};store.set('user',user);
+  ['#pwd'].forEach(s=>$(s).value='');boot()};
+$('#auth-form').onsubmit=e=>{e.preventDefault();const m=$('#email').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)){$('#auth-err').textContent='Saisissez une adresse e-mail valide.';return}
+  if($('#pwd').value.length<4){$('#auth-err').textContent='Le mot de passe doit faire au moins 4 caractères.';return}
+  const n=(mode==='signup'&&$('#name').value.trim())||m.split('@')[0].replace(/[._-].*/,'');enter(n.charAt(0).toUpperCase()+n.slice(1),m)};
+$$('[data-sso]').forEach(b=>b.onclick=()=>enter('Marie','marie@exemple.fr'));
+$$('[data-logout]').forEach(b=>b.onclick=()=>{user=null;store.set('user',null);location.hash='';boot()});
+
+/* ---------- render ---------- */
+const ev=a=>`<div class="ev${a.u?' unread':''}"><span class="ic ic-${a.ic}">${{red:'!',blue:'QR',green:'●',gold:'↗'}[a.ic]}</span><div><b>${a.t}</b><span>${a.d}</span></div><em>${a.w}</em></div>`;
+function render(){
+  const first=user?user.name:'Marie';
+  $$('[data-first]').forEach(e=>e.textContent=first);
+  $('#u-name').textContent=first;$('#u-ini').textContent=first.charAt(0).toUpperCase();$('#u-mail').textContent=user?user.mail:'';
+  const unread=alerts.filter(a=>a.u).length;$('#badge').textContent=unread;$('#badge').hidden=!unread;$$('[data-unread]').forEach(e=>e.textContent=unread);
+  $('[data-feed-mini]').innerHTML=alerts.slice(0,3).map(ev).join('');
+  $('[data-feed-full]').innerHTML=alerts.map(ev).join('');
+  $('[data-pets-mini]').innerHTML=pets.map(p=>`<div class="pet"><img class="av" src="${p.img}" alt=""><div><b>${p.name}</b><span class="meta">${p.sp}</span></div><div class="r">${p.lost?'<span class="chip chip-red"><i></i>Perdu</span>':'<span class="chip chip-ok"><i></i>En sécurité</span>'}</div></div>`).join('');
+  $('[data-pets-full]').innerHTML=pets.map(p=>`<article class="card petcard"><div class="hd"><img src="${p.img}" alt=""><div><h3>${p.name}</h3><span class="muted">${p.sp}</span><div style="margin-top:6px">${p.lost?'<span class="chip chip-red"><i></i>Je suis perdu</span>':'<span class="chip chip-ok"><i></i>Médaillon connecté</span>'}</div></div></div>
+    <dl><div><dt>Caractère</dt><dd>${p.car}</dd></div><div><dt>Nourriture</dt><dd>${p.food}</dd></div><div><dt>Il adore</dt><dd>${p.love}</dd></div><div><dt>Santé</dt><dd>${p.health}</dd></div></dl>
+    <div class="ft"><button class="btn btn-white btn-sm" data-edit="${p.id}">Modifier la fiche</button><button class="btn btn-sm ${p.lost?'btn-blue':'btn-red'}" data-togglelost="${p.id}">${p.lost?'Il est retrouvé':'Signaler perdu'}</button></div></article>`).join('')+`<button class="card add-card" type="button" data-add-pet><div><b>+ Ajouter un animal</b><p class="muted" style="margin:4px 0 0">Chien ou chat</p></div></button>`;
+  const lost=pets.find(p=>p.lost);$$('[data-lost-banner]').forEach(b=>{b.hidden=!lost; if(lost) b.querySelector('b').textContent=`Mode perdu activé pour ${lost.name}.`});
+  $('[data-people]').innerHTML='<div class="ttl"><h3>Personnes ayant accès</h3></div>'+people.map((p,i)=>`<div class="person"><span class="ini" style="background:${p.c}">${p.n.charAt(0)}</span><div><b>${p.n}</b><span>${p.r}</span></div><div class="r">${p.me?'<span class="chip chip-blue">Vous</span>':`<button class="link" data-rm="${i}" style="color:var(--red)">Retirer</button>`}</div></div>`).join('');
+  bind();
+}
+function bind(){
+  $$('[data-togglelost]').forEach(b=>b.onclick=()=>{const p=pets.find(x=>x.id===b.dataset.togglelost);p.lost=!p.lost;save();render();toast(p.lost?`Mode perdu activé pour ${p.name}`:`${p.name} est en sécurité`)});
+  $$('[data-add-pet]').forEach(b=>b.onclick=addPet);
+  $$('[data-edit]').forEach(b=>b.onclick=()=>editPet(b.dataset.edit));
+  $$('[data-rm]').forEach(b=>b.onclick=()=>{const p=people.splice(+b.dataset.rm,1)[0];save();render();toast(`${p.n} n’a plus accès`)});
+}
+$$('[data-lost-on]').forEach(b=>b.onclick=()=>{pets[0].lost=true;save();render();toast('Mode perdu activé pour Nougat')});
+$$('[data-lost-off]').forEach(b=>b.onclick=()=>{pets.forEach(p=>p.lost=false);save();render();toast('Bonne nouvelle ! Signalement clos')});
+$('[data-read-all]').onclick=()=>{alerts.forEach(a=>a.u=false);save();render();toast('Toutes les alertes sont lues')};
+$$('[data-toast]').forEach(b=>b.onclick=()=>toast(b.dataset.toast));
+$('[data-save-profile]').onclick=()=>{const n=$('#p-n').value.trim()||'Marie';user={name:n,mail:$('#p-e').value.trim()};store.set('user',user);render();toast('Profil enregistré')};
+
+/* modal */
+const modal=(title,body,onok,ok='Enregistrer')=>{$('#m-t').textContent=title;$('#m-b').innerHTML=body+`<div class="acts"><button class="btn btn-white btn-sm" data-x>Annuler</button><button class="btn btn-blue btn-sm" data-ok>${ok}</button></div>`;
+  $('#modal').hidden=false;const close=()=>$('#modal').hidden=true;$('#m-b [data-x]').onclick=close;$('#modal').onclick=e=>{if(e.target.id==='modal')close()};
+  $('#m-b [data-ok]').onclick=()=>{if(onok()!==false)close()};const f=$('#m-b input');f&&f.focus()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#modal').hidden=true});
+const fld=(id,l,v='',ph='')=>`<div class="field"><label for="${id}">${l}</label><input id="${id}" value="${v}" placeholder="${ph}"></div>`;
+function addPet(){modal('Nouvel animal',fld('np','Nom','','Ex. Biscuit')+`<div class="field"><label for="ns">Espèce</label><select id="ns"><option>Chien</option><option>Chat</option></select></div>`+fld('nr','Race','','Ex. Labrador')+fld('nc','Caractère','','Ex. Câlin et joueur'),()=>{
+  const n=$('#np').value.trim();if(!n){$('#np').focus();return false}const cat=$('#ns').value==='Chat';
+  pets.push({id:'p'+Date.now(),name:n,img:cat?'refs/portrait-cat.jpg':'refs/portrait-dog.jpg',sp:($('#nr').value.trim()||$('#ns').value),car:$('#nc').value.trim()||'—',food:'—',love:'—',health:'—',med:'À associer',lost:false});save();render();toast(`${n} a été ajouté`)},'Ajouter')}
+function editPet(id){const p=pets.find(x=>x.id===id);modal(`Fiche de ${p.name}`,fld('ec','Caractère',p.car)+fld('ef','Nourriture',p.food)+fld('el','Il adore',p.love)+fld('eh','Santé',p.health),()=>{p.car=$('#ec').value;p.food=$('#ef').value;p.love=$('#el').value;p.health=$('#eh').value;save();render();toast('Fiche mise à jour')})}
+$('[data-invite]').onclick=()=>modal('Inviter un proche',fld('in','Prénom','','Ex. Thomas')+fld('ie','E-mail','','thomas@exemple.fr')+`<div class="field"><label for="ia">Accès</label><select id="ia"><option>Suivre et recevoir les alertes</option><option>Accès temporaire (7 jours)</option></select></div>`,()=>{const n=$('#in').value.trim();if(!n){$('#in').focus();return false}
+  people.push({n,r:$('#ia').value,c:'#6E3180'});save();render();toast(`Invitation préparée pour ${n} (démo : rien n’est envoyé)`)},'Inviter');
+$('[data-pair]').onclick=()=>modal('Associer un médaillon','<p class="muted" style="margin:0 0 12px">Dans l’application, scannez le QR code au dos du médaillon. Ici, saisissez son code :</p>'+fld('pc','Code du médaillon','','NP-XXXX'),()=>{toast('Démonstration : médaillon associé')},'Associer');
+$('[data-add-zone]').onclick=()=>modal('Nouvelle zone',fld('zn','Nom','','Ex. Crèche')+fld('zrr','Rayon (m)','100'),()=>{toast(`Zone « ${$('#zn').value||'Nouvelle zone'} » créée`)},'Créer');
+$('#zr').oninput=e=>{$('#zrv').textContent=e.target.value;const w=20+e.target.value/500*45;const r=$('[data-ring]');r.style.width=w+'%';r.style.left=(42-w/2+2)+'%';r.style.top=(38-w/2*1.0+10)+'%';$('[data-ring-lbl]').textContent=`${$('#zname').value||'Zone'} · ${e.target.value} m`};
+$('[data-save-zone]').onclick=()=>toast('Zone enregistrée');
+
+/* map */
+const PD={dog:{n:'Nougat',img:'refs/portrait-dog.jpg',w:'Parc des Buttes-Chaumont · il y a 1 min',d:'2,4 km',t:'48 min',z:'Non'},cat:{n:'Ziggy',img:'refs/portrait-cat.jpg',w:'À la maison · il y a 3 min',d:'0,3 km',t:'12 min',z:'Oui'}};
+function showPet(k){const p=PD[k==='all'?'dog':k];$('#mapcard').innerHTML=`<img class="av" src="${p.img}" alt=""><div><b>${p.n}</b><span class="muted" style="font-size:13px">${p.w}</span></div><span class="chip chip-ok" style="margin-left:auto"><i></i>En direct</span>`;
+  $$('.map-ctrl button').forEach(b=>b.classList.toggle('on',b.dataset.pet===k));$('[data-mk=dist]').textContent=p.d;$('[data-mk=time]').textContent=p.t;$('[data-mk=zone]').textContent=p.z;
+  $$('[data-pin]').forEach(x=>x.style.opacity=(k==='all'||x.dataset.pin===k)?1:.35)}
+$$('.map-ctrl button').forEach(b=>b.onclick=()=>showPet(b.dataset.pet));$$('[data-pin]').forEach(b=>b.onclick=()=>showPet(b.dataset.pin));
+
+/* routing */
+const VIEWS=['accueil','carte','animaux','alertes','medaillons','zones','partage','commandes','parametres'];
+function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'accueil';
+  $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v);$$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  if(v==='alertes'){setTimeout(()=>{alerts.forEach(a=>a.u=false);save();render()},1500)}
+  window.scrollTo(0,0)}
+function boot(){const on=!!user;$('#auth').hidden=on;$('#app').hidden=!on;if(on){render();showPet('dog');route()}}
+window.addEventListener('hashchange',()=>user&&route());
+boot();
+})();
+</script>
+</body>
+</html>
