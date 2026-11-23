@@ -9,6 +9,7 @@
 <link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="refs/vendor/maplibre/maplibre-gl.css">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--blue:#1F6FEB;--blue-2:#1A5FD6;--ink:#26211C;--ink-2:#5B544C;--muted:#7A8291;--line:#E6ECF5;--soft:#F4F7FD;--bg:#F7F9FD;--card:#fff;--ok:#1C9A63;--okbg:#E6F6EE;--red:#E5484D;--redbg:#FDECEC;--gold:#E4A522;--goldbg:#FFF4D6}
@@ -219,6 +220,19 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
 .poster p{margin:4px 0;font-weight:700}
 .poster .tel{font-family:Fredoka,sans-serif;font-size:22px;color:var(--blue-2)}
 .poster .qr{width:70px;height:70px;margin:6px auto 0;display:block}
+
+.ml-box{position:absolute;inset:0}
+.map.is-live{background:#E9EEF4}
+.map.is-live > .pin,.map.is-live > .zone-ring,.map.is-live > .nearlayer{display:none}
+.map .map-card,.map .map-ctrl{z-index:3}
+.ml-pin{width:46px;height:46px;border-radius:50%;padding:3px;border:0;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.25);animation:pulse 2s infinite}
+.ml-pin img{width:100%;height:100%;border-radius:50%;display:block}
+.ml-pin.cat{animation-delay:-1s}
+.ml-near{display:flex;flex-direction:column;align-items:center;gap:3px;pointer-events:none}
+.ml-near i{width:16px;height:16px;border-radius:50%;background:#7FA6E8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(127,166,232,.25)}
+.ml-near b{font-size:10.5px;background:rgba(255,255,255,.92);border-radius:99px;padding:1px 7px;white-space:nowrap}
+.map .maplibregl-ctrl-bottom-right{bottom:84px}
+.demo-tag{position:absolute;left:12px;top:12px;z-index:3;font-size:11px;font-weight:800;color:#7A5200;background:rgba(255,244,214,.95);border-radius:99px;padding:3px 10px}
 @media (max-width:1100px){.badges{grid-template-columns:repeat(2,minmax(0,1fr))} .kpis{grid-template-columns:repeat(2,minmax(0,1fr))} .g-dash,.g-3{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:860px){
   .auth{grid-template-columns:minmax(0,1fr)} .auth-side{display:none}
@@ -326,7 +340,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
       <div class="grid g-dash">
         <div class="card">
           <div class="ttl"><h3>Position en direct</h3><a href="#carte">Agrandir ›</a></div>
-          <div class="map"><div class="zone-ring" style="left:18%;top:22%;width:44%;aspect-ratio:1"><span>Maison</span></div>
+          <div class="map" data-realmap='{"zoom":15.3,"coop":true}'><div class="zone-ring" style="left:18%;top:22%;width:44%;aspect-ratio:1"><span>Maison</span></div>
             <button class="pin" style="left:77%;top:27%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button>
             <button class="pin cat" style="left:38%;top:52%" aria-label="Ziggy"><img src="refs/portrait-cat.jpg" alt=""></button>
             <div class="map-card"><img class="av" src="refs/portrait-dog.jpg" alt=""><div><b>Nougat</b><span class="muted" style="font-size:13px">Parc des Buttes-Chaumont · il y a 1 min</span></div><span class="chip chip-ok" style="margin-left:auto"><i></i>En direct</span></div>
@@ -356,7 +370,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
     <section data-view="carte" hidden>
       <div class="topbar"><div><h1>Carte</h1><p>Position en direct et trajets du jour.</p></div><span class="chip chip-ok"><i></i>Mise à jour il y a 1 min</span></div>
       <div class="card" style="padding:12px">
-        <div class="map map-lg" id="bigmap"><div class="nearlayer" data-nearlayer><span class="near" style="left:58%;top:62%"><i></i><b>Chien · 120 m</b></span><span class="near" style="left:22%;top:74%"><i></i><b>Chat · 300 m</b></span><span class="near" style="left:88%;top:58%"><i></i><b>Chien · 210 m</b></span><span class="near" style="left:64%;top:14%"><i></i><b>Chien · 400 m</b></span></div>
+        <div class="map map-lg" id="bigmap" data-realmap='{"near":true,"zoom":15.6,"center":[2.3825,48.8800]}'><span class="demo-tag">Positions de démonstration</span><div class="nearlayer" data-nearlayer><span class="near" style="left:58%;top:62%"><i></i><b>Chien · 120 m</b></span><span class="near" style="left:22%;top:74%"><i></i><b>Chat · 300 m</b></span><span class="near" style="left:88%;top:58%"><i></i><b>Chien · 210 m</b></span><span class="near" style="left:64%;top:14%"><i></i><b>Chien · 400 m</b></span></div>
           <div class="map-ctrl"><button class="on" data-pet="dog">Nougat</button><button data-pet="cat">Ziggy</button><button data-pet="all">Tous</button><button data-near class="on-near">Noopie à proximité</button></div>
           <div class="zone-ring" style="left:14%;top:18%;width:36%;aspect-ratio:1"><span>Maison · 150 m</span></div>
           <button class="pin" data-pin="dog" style="left:78%;top:28%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button>
@@ -416,7 +430,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
     <section data-view="zones" hidden>
       <div class="topbar"><div><h1>Zones de sécurité</h1><p>Soyez prévenu dès qu’il quitte un lieu.</p></div><button class="btn btn-blue" type="button" data-add-zone>+ Nouvelle zone</button></div>
       <div class="grid g-dash">
-        <div class="card" style="padding:12px"><div class="map map-lg"><div class="zone-ring" data-ring style="left:22%;top:18%;width:40%;aspect-ratio:1"><span data-ring-lbl>Maison · 150 m</span></div><button class="pin" style="left:42%;top:38%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button></div></div>
+        <div class="card" style="padding:12px"><div class="map map-lg" id="zonemap" data-realmap='{"pets":["dog"],"route":false,"zoom":16.2,"center":[2.3772,48.8786]}'><div class="zone-ring" data-ring style="left:22%;top:18%;width:40%;aspect-ratio:1"><span data-ring-lbl>Maison · 150 m</span></div><button class="pin" style="left:42%;top:38%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button></div></div>
         <div class="card">
           <div class="ttl"><h3>Zone « Maison »</h3><span class="chip chip-blue">Active</span></div>
           <div class="field"><label for="zname">Nom</label><input id="zname" value="Maison"></div>
@@ -673,7 +687,14 @@ const PD={dog:{n:'Nougat',img:'refs/portrait-dog.jpg',w:'Parc des Buttes-Chaumon
 function showPet(k){const p=PD[k==='all'?'dog':k];$('#mapcard').innerHTML=`<img class="av" src="${p.img}" alt=""><div><b>${p.n}</b><span class="muted" style="font-size:13px">${p.w}</span></div><span class="chip chip-ok" style="margin-left:auto"><i></i>En direct</span>`;
   $$('.map-ctrl button').forEach(b=>b.classList.toggle('on',b.dataset.pet===k));$('[data-mk=dist]').textContent=p.d;$('[data-mk=time]').textContent=p.t;$('[data-mk=zone]').textContent=p.z;
   $$('[data-pin]').forEach(x=>x.style.opacity=(k==='all'||x.dataset.pin===k)?1:.35)}
-$$('.map-ctrl button').forEach(b=>b.onclick=()=>showPet(b.dataset.pet));$$('[data-pin]').forEach(b=>b.onclick=()=>showPet(b.dataset.pin));
+
+document.addEventListener('np-pet',e=>showPet(e.detail));
+const bm=()=>$('#bigmap')._np;
+const _show=showPet; showPet=function(k){_show(k);const m=bm();if(m)m.focus(k)};
+document.addEventListener('np-map-ready',e=>{if(e.target.id==='bigmap'){bm().focus('dog')}});
+if(nb){const o=nb.onclick;nb.onclick=()=>{o();const m=bm();if(m)m.showNear(!nb.classList.contains('off'))}}
+$('#zr').addEventListener('input',e=>{const z=$('#zonemap')._np;if(z)z.setRadius(+e.target.value)});
+$$('.map-ctrl button[data-pet]').forEach(b=>b.onclick=()=>showPet(b.dataset.pet));$$('[data-pin]').forEach(b=>b.onclick=()=>showPet(b.dataset.pin));
 
 /* routing */
 const VIEWS=['accueil','carte','animaux','sante','activite','communaute','premium','alertes','medaillons','zones','partage','commandes','parametres'];
@@ -686,5 +707,7 @@ window.addEventListener('hashchange',()=>user&&route());
 boot();
 })();
 </script>
+<script src="refs/vendor/maplibre/maplibre-gl.js"></script>
+<script src="refs/noopie-map.js"></script>
 </body>
 </html>
