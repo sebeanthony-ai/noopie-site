@@ -20,8 +20,8 @@
   const st = document.createElement('style');
   st.textContent = `.np-mm,.np-mm.maplibregl-map{position:absolute!important;inset:0;z-index:0;overflow:hidden;border-radius:inherit;background:#E9EEF4;opacity:0;transition:opacity .4s}
 .np-mm.ok{opacity:1}
-.np-mm .maplibregl-ctrl-attrib{font-size:7px;padding:0 4px;background:rgba(255,255,255,.7)}
-.np-mm .maplibregl-ctrl-attrib-button{display:none}
+.np-mm .maplibregl-ctrl-attrib,.np-mm .maplibregl-ctrl-bottom-right{display:none!important}
+.np-mm-attr{position:absolute;right:3px;top:3px;z-index:2;font:500 5.5px/1.3 system-ui,sans-serif;color:rgba(38,33,28,.75);background:rgba(255,255,255,.6);border-radius:3px;padding:0 3px;max-width:60%;text-align:right;pointer-events:none}
 .np-mm-pin{width:34px;height:34px;border-radius:50%;padding:2px;box-shadow:0 4px 10px rgba(0,0,0,.3)}
 .np-mm-pin img{width:100%;height:100%;border-radius:50%;display:block}
 .np-mm-red{width:16px;height:16px;border-radius:50%;background:#FF3B30;border:3px solid #fff;box-shadow:0 0 0 8px rgba(255,59,48,.25)}
@@ -31,7 +31,8 @@
   function make(box) {
     const o = JSON.parse(box.dataset.minimap || '{}');
     const pet = PETS[o.pet || 'dog'];
-    const map = new maplibregl.Map({ container: box, style: STYLE, center: o.center || pet.pos, zoom: o.zoom || 15.4, interactive: false, attributionControl: { compact: true }, fadeDuration: 0 });
+    const map = new maplibregl.Map({ container: box, style: STYLE, center: o.center || pet.pos, zoom: o.zoom || 15.4, interactive: false, attributionControl: false, fadeDuration: 0 });
+    box.appendChild(el('np-mm-attr', '© OpenFreeMap © OpenMapTiles © OpenStreetMap'));
     map.on('load', () => {
       if (o.zone) {
         map.addSource('z', { type: 'geojson', data: circle(o.zoneAt || HOME, o.zone) });
