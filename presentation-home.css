@@ -1571,3 +1571,4 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-pm-more { font-family: "DM Sans", sans-serif; font-weight: 800; font-size: 15px; color: #fff; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.4); }
 .np-pm-more:hover { border-color: #fff; }
 .np-pm-cta { flex-wrap: wrap; } .np-pm-cta .np-a3-btn, .np-pm-more { white-space: nowrap; }
+.np-pet-toggle { display: flex; width: 100%; justify-content: center; }
