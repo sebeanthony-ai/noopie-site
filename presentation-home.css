@@ -1184,3 +1184,13 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 @media (prefers-reduced-motion: reduce) { .np-ap-screen, .np-ap-avatar-pin { animation: none; } }
 .np-ap-screen--live { background-position: 94% 0; background-size: auto 100%; }
 .np-ap-avatar-pin { left: 65%; top: 31%; }
+
+/* v10 : vue 360° du médaillon */
+.np-med-boot { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.np-med-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; cursor: grab; touch-action: pan-y; outline: none; }
+.np-med-canvas:active { cursor: grabbing; }
+.np-med-canvas:focus-visible { outline: 3px solid #FFD873; outline-offset: -3px; border-radius: 24px; }
+.np-med-hero.is-3d > img { visibility: hidden; }
+.np-med-hint { position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); z-index: 3; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; font-size: 13px; font-weight: 800; color: #1F6FEB; background: #fff; border-radius: 99px; padding: 6px 13px; box-shadow: 0 6px 16px rgba(31,111,235,.14); pointer-events: none; transition: opacity .4s; }
+.np-med-hint svg { width: 16px; height: 16px; }
+.np-med-hint.is-used { opacity: .55; }
