@@ -920,35 +920,33 @@ body {
 /* v4.1 : maquettes chat identiques au chien */
 .np-how-media--tag img.np-cat { top: 12px; bottom: 30px; height: calc(100% - 42px); }
 
-/* v5 : étape 3 « Il vous appelle » — écran d'appel entrant */
-.np-ring { background: linear-gradient(170deg, #3B82F6 0%, #1A5FD6 55%, #123E8E 100%); color: #fff; padding: 28px 9px 14px; gap: 0; }
-.np-ring-time { font-family: Fredoka, system-ui, sans-serif; font-weight: 600; font-size: 26px; line-height: 1; margin-top: 4px; letter-spacing: .01em; }
-.np-ring-notif { margin-top: 8px; width: 100%; text-align: left; background: rgba(255,255,255,.95); color: #26211C; border-radius: 12px; padding: 6px 8px; box-shadow: 0 6px 14px rgba(6,30,90,.25); }
-.np-ring-app { display: block; font-family: Fredoka, system-ui, sans-serif; font-weight: 700; font-size: 9px; color: #1F6FEB; }
-.np-ring-notif b { display: block; font-size: 10px; line-height: 1.2; }
-.np-ring-notif > span:last-child { display: block; font-size: 8.5px; color: #5B544C; font-weight: 600; }
-.np-ring-notif b span { display: inline; }
-.np-ring-who { margin-top: 14px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.np-ring-who img { width: 58px; height: 58px; border-radius: 50%; border: 3px solid rgba(255,255,255,.85); box-shadow: 0 0 0 6px rgba(255,255,255,.15), 0 0 0 12px rgba(255,255,255,.07); margin-bottom: 8px; }
-.np-ring-label { font-size: 9.5px; font-weight: 700; color: #CFE0FB; text-transform: uppercase; letter-spacing: .08em; }
-.np-ring-who b { font-family: Fredoka, system-ui, sans-serif; font-weight: 600; font-size: 15px; line-height: 1.15; padding: 0 4px; }
-.np-ring-who b span { display: inline; }
-.np-ring-via { font-size: 9.5px; color: #CFE0FB; font-weight: 600; }
-.np-ring-btns { margin-top: auto; width: 100%; display: flex; justify-content: space-around; }
-.np-ring-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 9px; font-weight: 700; color: #E6EEFF; }
-.np-ring-btn i { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; }
-.np-ring-btn svg { width: 19px; height: 19px; color: #fff; }
-.np-ring-btn--no i { background: #E5484D; }
-.np-ring-btn--no svg { transform: rotate(135deg); }
-.np-ring-btn--yes i { background: #22B573; animation: npRing 1.4s ease-in-out infinite; }
-@keyframes npRing { 0%, 100% { box-shadow: 0 0 0 0 rgba(34,181,115,.6); } 60% { box-shadow: 0 0 0 10px rgba(34,181,115,0); } }
-@media (prefers-reduced-motion: reduce) { .np-ring-btn--yes i { animation: none; } }
+/* v5 : étape 3 « Il vous appelle » — écran du passant (même style que la fiche) */
+.np-pcall { padding: 34px 12px 16px; align-items: center; text-align: center; }
+.np-pcall-status { margin-top: 22px; display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 800; color: #1C9A63; background: #E6F6EE; border-radius: 99px; padding: 3px 10px; }
+.np-pcall-status i { width: 7px; height: 7px; border-radius: 50%; background: #1C9A63; animation: npBlink 1.2s ease-in-out infinite; }
+@keyframes npBlink { 50% { opacity: .3; } }
+.np-pcall-avatar { margin-top: 14px; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: #1F6FEB; color: #fff; font-family: Fredoka, system-ui, sans-serif; font-weight: 700; font-size: 28px; box-shadow: 0 0 0 6px #EEF4FE; }
+.np-pcall-name { margin-top: 10px; font-family: Fredoka, system-ui, sans-serif; font-weight: 700; font-size: 20px; color: #1A5FD6; line-height: 1.1; }
+.np-pcall-role { font-size: 10.5px; font-weight: 700; color: #5B544C; }
+.np-pcall-role span { display: inline; }
+.np-pcall-tel { margin-top: 2px; font-size: 12px; font-weight: 800; color: #26211C; }
+.np-pcall-pet { margin-top: 14px; width: 100%; display: flex; align-items: center; gap: 8px; text-align: left; background: #F4F7FD; border-radius: 12px; padding: 7px 8px; }
+.np-pcall-pet img { width: 34px; height: 34px; border-radius: 50%; flex: none; }
+.np-pcall-pet b { display: block; font-size: 11.5px; color: #1A5FD6; }
+.np-pcall-pet b span { display: inline; }
+.np-pcall-pet div > span { display: block; font-size: 9.5px; font-weight: 700; color: #5B544C; }
+.np-pcall-btns { margin-top: auto; width: 100%; display: flex; justify-content: space-between; }
+.np-pcall-btns > span { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 8.5px; font-weight: 700; color: #5B544C; width: 33%; }
+.np-pcall-btns i { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #EEF2F8; color: #26211C; }
+.np-pcall-btns svg { width: 18px; height: 18px; }
+.np-pcall-end i { background: #E5484D; color: #fff; }
+.np-pcall-end svg { transform: rotate(135deg); }
+@media (prefers-reduced-motion: reduce) { .np-pcall-status i { animation: none; } }
 /* version chat : accents nude */
-#np-pet-cat:checked ~ * .np-ring { background: linear-gradient(170deg, #E9D2BE 0%, #C9A27E 55%, #8E6646 100%); }
-#np-pet-cat:checked ~ * .np-ring-app { color: #B5835F; }
-#np-pet-cat:checked ~ * .np-ring-label, #np-pet-cat:checked ~ * .np-ring-via { color: #FFF4EA; }
-.np-ring { padding: 34px 12px 18px; }
-.np-ring-time { font-size: 30px; }
-.np-ring-who img { width: 66px; height: 66px; }
-.np-ring-who b { font-size: 16px; }
-.np-ring-btn i { width: 44px; height: 44px; }
+#np-pet-cat:checked ~ * .np-pcall .np-fiche-top, #np-pet-cat:checked ~ * .np-pcall-name, #np-pet-cat:checked ~ * .np-pcall-pet b { color: #B5835F; }
+#np-pet-cat:checked ~ * .np-pcall-avatar { background: #C9A27E; box-shadow: 0 0 0 6px #F8EFE7; }
+#np-pet-cat:checked ~ * .np-pcall-pet { background: #F8EFE7; }
+.np-pcall-status { white-space: nowrap; }
+.np-pcall-avatar { margin-top: 12px; }
+.np-pcall-pet { margin-top: 10px; }
+.np-pcall-btns { margin-top: auto; padding-top: 8px; }
