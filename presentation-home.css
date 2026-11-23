@@ -1423,3 +1423,5 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-use-phone .np-ap-screen--live, .np-app3 .np-ap-screen--live { background-position: 62% 0; }
 .np-use-phone .np-ap-avatar-pin, .np-app3 .np-ap-avatar-pin { left: 58%; }
 .np-use-phone .np-ap-avatar-pin, .np-app3 .np-ap-avatar-pin { left: 87%; top: 31%; }
+/* hero : phrase d'accroche supprimée */
+#top p.text-ink-2 { display: none; }
