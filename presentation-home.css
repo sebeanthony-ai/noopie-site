@@ -1572,3 +1572,7 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-pm-more:hover { border-color: #fff; }
 .np-pm-cta { flex-wrap: wrap; } .np-pm-cta .np-a3-btn, .np-pm-more { white-space: nowrap; }
 .np-pet-toggle { display: flex; width: 100%; justify-content: center; }
+/* v3.5 : titre de la grille des fonctionnalités */
+.np-feat-head { margin-top: clamp(3.5rem, 7vw, 6rem); }
+.np-feat-head + .np-a3-bento { margin-top: clamp(1.5rem, 3vw, 2.2rem); }
+.np-q-h { text-wrap: balance; }
