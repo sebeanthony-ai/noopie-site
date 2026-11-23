@@ -7,7 +7,7 @@
     dog: { name: 'Nougat', img: 'refs/portrait-dog.jpg', pos: [2.3842, 48.8803], color: '#1F6FEB' },
     cat: { name: 'Ziggy', img: 'refs/portrait-cat.jpg', pos: [2.3775, 48.8788], color: '#C9A27E' },
   };
-  const ROUTE = [HOME, [2.3784, 48.8790], [2.3797, 48.8795], [2.3806, 48.8791], [2.3818, 48.8797], [2.3826, 48.8806], [2.3834, 48.8809], PETS.dog.pos];
+  const ROUTE = [HOME, [2.3781, 48.8783], [2.3794, 48.8779], [2.3808, 48.8781], [2.3822, 48.8786], [2.3833, 48.8792], [2.3840, 48.8798], PETS.dog.pos];
   const NEAR = [[2.3810, 48.8780, 'Chien · 120 m'], [2.3758, 48.8772, 'Chat · 300 m'], [2.3864, 48.8790, 'Chien · 210 m'], [2.3822, 48.8826, 'Chien · 400 m']];
 
   function circle(center, meters, n = 72) {

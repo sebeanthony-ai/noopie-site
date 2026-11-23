@@ -176,7 +176,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:#1C1C1E;color:#fff;border-radius:14px;padding:12px 16px;font-weight:700;font-size:14px;transition:.25s;z-index:50;pointer-events:none;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translateX(-50%)}
 .modal{position:fixed;inset:0;background:rgba(10,20,40,.45);display:grid;place-items:center;padding:16px;z-index:40}
-.modal .card{width:100%;max-width:460px;max-height:calc(100vh - 32px);overflow:auto}
+.modal .card{width:100%;max-width:500px;max-height:calc(100vh - 32px);overflow:auto}
 .modal h3{margin:0 0 4px;font-size:22px;color:var(--blue-2)}
 .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap}
 .range{width:100%;accent-color:var(--blue)}
@@ -627,7 +627,7 @@ function render(){
   $('[data-pets-mini]').innerHTML=pets.map(p=>`<div class="pet"><img class="av" src="${p.img}" alt=""><div><b>${p.name}</b><span class="meta">${p.sp}</span></div><div class="r">${p.lost?'<span class="chip chip-red"><i></i>Perdu</span>':'<span class="chip chip-ok"><i></i>En sécurité</span>'}</div></div>`).join('');
   $('[data-pets-full]').innerHTML=pets.map(p=>`<article class="card petcard"><div class="hd"><img src="${p.img}" alt=""><div><h3>${p.name}</h3><span class="muted">${p.sp}</span><div style="margin-top:6px">${p.lost?'<span class="chip chip-red"><i></i>Je suis perdu</span>':'<span class="chip chip-ok"><i></i>Médaillon connecté</span>'}</div></div></div>
     <dl><div><dt>Caractère</dt><dd>${p.car}</dd></div><div><dt>Nourriture</dt><dd>${p.food}</dd></div><div><dt>Il adore</dt><dd>${p.love}</dd></div><div><dt>Santé</dt><dd>${p.health}</dd></div></dl>
-    <div class="ft"><button class="btn btn-white btn-sm" data-edit="${p.id}">Modifier la fiche</button><button class="btn btn-sm ${p.lost?'btn-blue':'btn-red'}" data-togglelost="${p.id}">${p.lost?'Il est retrouvé':'Signaler perdu'}</button></div></article>`).join('')+`<button class="card add-card" type="button" data-add-pet><div><b>+ Ajouter un animal</b><p class="muted" style="margin:4px 0 0">Chien ou chat</p></div></button>`;
+    <div class="ft"><button class="btn btn-white btn-sm" data-edit="${p.id}">Modifier la fiche</button>${p.lost?`<button class="btn btn-white btn-sm" data-poster>Partager l’affiche</button>`:''}<button class="btn btn-sm ${p.lost?'btn-blue':'btn-red'}" data-togglelost="${p.id}">${p.lost?'Il est retrouvé':'Signaler perdu'}</button></div></article>`).join('')+`<button class="card add-card" type="button" data-add-pet><div><b>+ Ajouter un animal</b><p class="muted" style="margin:4px 0 0">Chien ou chat</p></div></button>`;
   const lost=pets.find(p=>p.lost);$$('[data-lost-banner]').forEach(b=>{b.hidden=!lost; if(lost) b.querySelector('b').textContent=`Mode perdu activé pour ${lost.name}.`});
   $('[data-people]').innerHTML='<div class="ttl"><h3>Personnes ayant accès</h3></div>'+people.map((p,i)=>`<div class="person"><span class="ini" style="background:${p.c}">${p.n.charAt(0)}</span><div><b>${p.n}</b><span>${p.r}</span></div><div class="r">${p.me?'<span class="chip chip-blue">Vous</span>':`<button class="link" data-rm="${i}" style="color:var(--red)">Retirer</button>`}</div></div>`).join('');
   bind();
@@ -636,6 +636,7 @@ function bind(){
   $$('[data-togglelost]').forEach(b=>b.onclick=()=>{const p=pets.find(x=>x.id===b.dataset.togglelost);p.lost=!p.lost;save();render();toast(p.lost?`Mode perdu activé : les membres Noopie du quartier sont prévenus`:`${p.name} est en sécurité`)});
   $$('[data-add-pet]').forEach(b=>b.onclick=addPet);
   $$('[data-edit]').forEach(b=>b.onclick=()=>editPet(b.dataset.edit));
+  $$('[data-poster]').forEach(b=>b.onclick=poster);
   $$('[data-rm]').forEach(b=>b.onclick=()=>{const p=people.splice(+b.dataset.rm,1)[0];save();render();toast(`${p.n} n’a plus accès`)});
 }
 $$('[data-lost-on]').forEach(b=>b.onclick=()=>{pets[0].lost=true;save();render();toast('Mode perdu activé : les membres Noopie du quartier sont prévenus')});
@@ -665,7 +666,7 @@ $('[data-save-zone]').onclick=()=>toast('Zone enregistrée');
 /* --- nouvelles fonctions --- */
 const nb=$('[data-near]');if(nb)nb.onclick=()=>{const l=$('[data-nearlayer]');l.classList.toggle('off');nb.classList.toggle('off')};
 $('[data-intense]').onchange=e=>toast(e.target.checked?'Recherche intensive activée : position toutes les 10 s':'Recherche intensive désactivée');
-function poster(){const p=pets.find(x=>x.lost)||pets[0];modal('Affiche « Perdu »',`<div class="poster"><h4>PERDU</h4><img class="ph" src="${p.img}" alt=""><b>${p.name}</b><p>${p.sp}</p><p>${p.car}</p><p>Vu pour la dernière fois : Parc des Buttes-Chaumont</p><p class="tel">06 12 34 56 78</p><img class="qr" src="refs/med/qr-disc.png" alt=""><p class="muted" style="font-size:12px">Scannez pour ouvrir sa fiche</p></div>`,()=>toast('Démonstration : téléchargement non disponible ici'),'Télécharger en PDF')}
+function poster(){const p=pets.find(x=>x.lost)||pets[0];modal('Affiche « Perdu »',`<div class="poster"><h4>PERDU</h4><img class="ph" src="${p.img}" alt=""><b>${p.name}</b><p>${p.sp}</p><p>${p.car}</p><p>Vu pour la dernière fois : Parc des Buttes-Chaumont</p><p class="tel">06 12 34 56 78</p><img class="qr" src="refs/med/qr-disc.png" alt=""><p class="muted" style="font-size:12px">Scannez pour ouvrir sa fiche</p></div><h4 style="margin:16px 0 8px;font-family:Fredoka,sans-serif;font-size:18px;color:var(--blue-2);text-align:center">Partager sur les réseaux</h4><div data-poster-share data-share-url="./perdu-${p.id==='ziggy'?'ziggy':'nougat'}.html" data-share-text="PERDU : ${p.name}, vu Parc des Buttes-Chaumont. Aidez-nous à le retrouver 🙏"></div>`,()=>toast('Démonstration : téléchargement non disponible ici'),'Télécharger en PDF');const sh=document.querySelector('[data-poster-share]');if(sh&&window.NoopieShare)NoopieShare.render(sh)}
 $$('[data-poster]').forEach(b=>b.onclick=poster);
 const HEALTH={nougat:{rem:[['ic-gold','💉','Rappel vaccin CHPPiL','Dans 12 jours · 5 déc.'],['ic-blue','💊','Vermifuge','Dans 3 semaines'],['ic-green','✂️','Toilettage','Dans 1 mois']],hist:[['ic-green','✓','Vaccin rage','Fait le 2 mars'],['ic-green','✓','Contrôle annuel','Fait le 14 janv. · RAS']],info:[['Puce','250 26 000 000 000'],['Allergie','Poulet'],['Groupe sanguin','DEA 1.1 −'],['Stérilisé','Non']],w:[28,28.4,28.9,29.1,29,29.2]},
  ziggy:{rem:[['ic-gold','💉','Rappel vaccin typhus','Dans 2 mois'],['ic-blue','💊','Antipuces','Dans 9 jours']],hist:[['ic-green','✓','Stérilisation','Faite le 8 juin'],['ic-green','✓','Vaccin typhus','Fait le 20 janv.']],info:[['Puce','250 26 000 000 001'],['Allergie','Aucune'],['Groupe sanguin','A'],['Stérilisé','Oui']],w:[4.1,4.3,4.4,4.5,4.5,4.6]}};
@@ -709,5 +710,6 @@ boot();
 </script>
 <script src="refs/vendor/maplibre/maplibre-gl.js"></script>
 <script src="refs/noopie-map.js"></script>
+<script src="refs/noopie-share.js"></script>
 </body>
 </html>
