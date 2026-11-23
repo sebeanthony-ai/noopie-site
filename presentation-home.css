@@ -1465,3 +1465,5 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-a3-minimap.mm-live > :not(.np-mm):not(.np-a3-live) { display: none; }
 .np-a3-minimap .np-a3-live { z-index: 2; }
 .np-a3-minimap { overflow: hidden; }
+.np-how-media--app .np-shot { container-type: inline-size; }
+.np-shot-btn { font-size: 7cqw; padding-block: 4.5cqw; border-radius: 4cqw; white-space: nowrap; }

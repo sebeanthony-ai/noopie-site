@@ -18,7 +18,7 @@
     });
   }
   const st = document.createElement('style');
-  st.textContent = `.np-mm{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit;background:#E9EEF4;opacity:0;transition:opacity .4s}
+  st.textContent = `.np-mm,.np-mm.maplibregl-map{position:absolute!important;inset:0;z-index:0;overflow:hidden;border-radius:inherit;background:#E9EEF4;opacity:0;transition:opacity .4s}
 .np-mm.ok{opacity:1}
 .np-mm .maplibregl-ctrl-attrib{font-size:7px;padding:0 4px;background:rgba(255,255,255,.7)}
 .np-mm .maplibregl-ctrl-attrib-button{display:none}
