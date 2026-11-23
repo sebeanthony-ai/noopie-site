@@ -1576,3 +1576,13 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-feat-head { margin-top: clamp(3.5rem, 7vw, 6rem); }
 .np-feat-head + .np-a3-bento { margin-top: clamp(1.5rem, 3vw, 2.2rem); }
 .np-q-h { text-wrap: balance; }
+/* v3.6 : grille des fonctionnalités épurée */
+.np-feat-head + .np-f6 { margin-top: clamp(1.5rem, 3vw, 2.2rem); }
+.np-f6 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.np-f6-c { background: #fff; border-radius: 22px; padding: 26px 24px; box-shadow: 0 1px 0 #EEF2F8 inset, 0 10px 30px rgba(31,111,235,.06); }
+.np-f6-ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: #EEF4FE; color: #1F6FEB; }
+.np-f6-ico svg { width: 22px; height: 22px; }
+.np-f6-c h3 { margin: 16px 0 6px; font-family: Fredoka, system-ui, sans-serif; font-weight: 700; font-size: 21px; color: #1A5FD6; }
+#app .np-f6-c p { margin: 0; font-family: "DM Sans", system-ui, sans-serif; font-weight: 800; font-size: 15.5px; line-height: 1.5; color: rgb(38, 33, 28); }
+@media (max-width: 900px) { .np-f6 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .np-f6 { grid-template-columns: minmax(0, 1fr); gap: 12px; } .np-f6-c { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; padding: 18px; } .np-f6-ico { grid-row: span 2; } .np-f6-c h3 { margin: 0 0 4px; font-size: 19px; } }
