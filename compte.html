@@ -342,6 +342,80 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
 @media (max-width:560px){.pm-feats{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.nitem{flex-wrap:wrap}.nitem .btn{width:100%;margin-left:52px;width:calc(100% - 52px)}.visrow .seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.visrow .seg button{font-size:12px;padding:8px 4px;white-space:normal;text-align:center}[data-near-r]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}[data-near-r] button{padding:8px 4px;flex-direction:column;gap:2px}}
 
+
+/* ---------- Pet-sitters ---------- */
+.ps-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
+.ps-f label{display:block;font-size:12px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px}
+.ps-f input,.ps-f select{width:100%;font:inherit;font-weight:700;font-size:14.5px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;color:var(--ink)}
+.ps-svc{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+.ps-why{display:flex;gap:12px;align-items:flex-start;margin:16px 0;padding:14px 16px;border-radius:16px;background:#EAF1FE}
+.ps-why > span{font-size:22px} .ps-why b{display:block;color:var(--blue-2)} .ps-why div span{display:block;font-size:13.5px;font-weight:600;color:#4B5563}
+.ps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ps-card{position:relative;display:flex;flex-direction:column;gap:12px;background:#fff;border-radius:20px;padding:18px;box-shadow:0 1px 0 #EEF2F8 inset,0 8px 24px rgba(31,111,235,.06);cursor:pointer;transition:transform .15s,box-shadow .15s;text-align:left;border:0;font:inherit;color:inherit}
+.ps-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(31,111,235,.12)}
+.ps-card:focus-visible{outline:3px solid #9CC0FF}
+.ps-top{display:flex;gap:12px;align-items:center}
+.ps-av{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:Fredoka,sans-serif;font-weight:700;font-size:22px;position:relative}
+.ps-av.lg{width:96px;height:96px;font-size:36px}
+.ps-av i{position:absolute;right:-2px;bottom:-2px;width:20px;height:20px;border-radius:50%;background:#22B573;border:3px solid #fff;font-style:normal;font-size:10px;display:grid;place-items:center}
+.ps-av.lg i{width:28px;height:28px;font-size:13px}
+.ps-name b{display:block;font-family:Fredoka,sans-serif;font-size:19px;color:var(--blue-2)} .ps-name span{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.stars{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:14px}
+.stars .st{position:relative;display:inline-block;font-size:15px;letter-spacing:1px;color:#E1E5EC;line-height:1}
+.stars .st::before{content:"★★★★★"}
+.stars .st i{position:absolute;inset:0;overflow:hidden;color:#F5B400;font-style:normal;white-space:nowrap}
+.stars .st i::before{content:"★★★★★"}
+.stars em{font-style:normal;color:var(--muted);font-weight:700;font-size:13px}
+.ps-meta{display:flex;flex-wrap:wrap;gap:6px}
+.ps-tag{font-size:12px;font-weight:800;border-radius:99px;padding:3px 9px;background:var(--soft);color:var(--ink-2)}
+.ps-tag.ok{background:var(--okbg);color:var(--ok)} .ps-tag.blue{background:#EAF1FE;color:var(--blue-2)} .ps-tag.gold{background:var(--goldbg);color:#9A6800}
+.ps-card p{margin:0;font-size:14px;color:#4B5563;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ps-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid var(--line)}
+.ps-foot b{font-family:Fredoka,sans-serif;font-size:20px;color:var(--ink)} .ps-foot small{font-size:12.5px;color:var(--muted);font-weight:700}
+.ps-fav{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:0;background:var(--soft);cursor:pointer;font-size:16px;color:#B5BCC8;display:grid;place-items:center}
+.ps-fav.on{color:#E5484D;background:#FDECEC}
+.ps-empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--muted);font-weight:700;background:#fff;border-radius:20px}
+/* fiche */
+.ps-back{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--blue);background:none;border:0;cursor:pointer;padding:0;margin:0 0 14px;font-size:15px}
+.ps-hero{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;background:linear-gradient(135deg,#EAF2FF,#F7FAFF);border-radius:24px;padding:24px}
+.ps-hero h1{margin:0 0 4px;font-size:clamp(26px,3vw,34px);color:var(--blue-2)}
+.ps-hero .sub{font-weight:700;color:var(--ink-2);margin:0 0 8px}
+.ps-hero .acts{display:grid;gap:8px;min-width:200px}
+.ps-cols{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;margin-top:16px;align-items:start}
+.ps-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ps-kpis div{background:var(--soft);border-radius:14px;padding:12px;text-align:center}
+.ps-kpis b{display:block;font-family:Fredoka,sans-serif;font-size:22px;color:var(--blue-2)} .ps-kpis span{font-size:12px;font-weight:700;color:var(--muted)}
+.ps-txt{margin:0;font-weight:600;color:#374151;line-height:1.6}
+.ps-tbl{width:100%;border-collapse:collapse}
+.ps-tbl td{padding:11px 0;border-bottom:1px solid var(--line);font-weight:700;font-size:14.5px}
+.ps-tbl td:last-child{text-align:right;font-family:Fredoka,sans-serif;font-size:17px;color:var(--ink)}
+.ps-tbl small{display:block;font-family:"DM Sans",sans-serif;font-size:12.5px;color:var(--muted);font-weight:600}
+.ps-tbl tr:last-child td{border-bottom:0}
+.ps-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;text-align:center}
+.ps-week b{font-size:12px;color:var(--muted)}
+.ps-week span{display:block;border-radius:10px;padding:8px 0;font-size:12px;font-weight:800;background:#F1F3F7;color:#A9B1BE}
+.ps-week span.on{background:var(--okbg);color:var(--ok)}
+.ps-checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ps-checks li{display:flex;gap:10px;align-items:center;font-weight:700;font-size:14.5px}
+.ps-checks li span{width:24px;height:24px;border-radius:50%;background:var(--okbg);color:var(--ok);display:grid;place-items:center;font-size:12px;flex:none}
+.ps-rate{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;margin-bottom:14px}
+.ps-big{text-align:center} .ps-big b{display:block;font-family:Fredoka,sans-serif;font-size:46px;color:var(--ink);line-height:1}
+.ps-bars{display:grid;gap:5px}
+.ps-bars div{display:grid;grid-template-columns:28px minmax(0,1fr) 40px;gap:8px;align-items:center;font-size:12.5px;font-weight:800;color:var(--muted)}
+.ps-bars i{height:8px;border-radius:99px;background:#EEF1F6;overflow:hidden;display:block}
+.ps-bars i u{display:block;height:100%;background:#F5B400;border-radius:99px;text-decoration:none}
+.ps-crit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin:0 0 14px}
+.ps-crit div{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700}
+.ps-rev{padding:14px 0;border-top:1px solid var(--line)}
+.ps-rev .h{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.ps-rev .h > i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;color:#fff;font-weight:800;font-size:13px;flex:none}
+.ps-rev .h b{display:block;font-size:14.5px} .ps-rev .h small{display:block;font-size:12px;color:var(--muted);font-weight:700}
+.ps-rev p{margin:0;font-weight:600;color:#374151;font-size:14px;line-height:1.5}
+.ps-rev .h .stars{margin-left:auto}
+.ps-noopie{display:flex;gap:12px;align-items:center;padding:14px;border-radius:16px;background:#EAF1FE;margin-top:12px}
+.ps-noopie b{display:block;color:var(--blue-2)} .ps-noopie span{font-size:13px;font-weight:600;color:#4B5563}
+@media (max-width:1100px){.ps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ps-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.ps-cols{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.ps-av.lg{width:64px;height:64px;font-size:24px}.ps-hero{padding:18px;gap:14px}.ps-grid{grid-template-columns:minmax(0,1fr)}.ps-hero{grid-template-columns:auto minmax(0,1fr)}.ps-hero .acts{grid-column:1/-1;min-width:0}.ps-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.ps-filters{grid-template-columns:minmax(0,1fr)}.ps-crit{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.pin{animation:none}}
 </style>
 </head>
@@ -402,6 +476,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
       <a href="#medaillons" data-v="medaillons" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="7" fill="currentColor"/><circle cx="12" cy="4.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Médaillons</span></a>
       <a href="#zones" data-v="zones" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>Zones</span></a>
       <a href="#partage" data-v="partage" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5" fill="currentColor"/><path d="M2.5 20c.7-3.5 3.4-5.5 6.5-5.5s5.8 2 6.5 5.5z" fill="currentColor"/><circle cx="17" cy="9" r="2.6" fill="currentColor" opacity=".6"/><path d="M15.5 14.6c3 .1 5.3 2 6 5.4h-4.4" fill="currentColor" opacity=".6"/></svg><span>Partage</span></a>
+      <a href="#petsitters" data-v="petsitters" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 7.5h-2.6V20a1 1 0 0 1-1 1H6.6a1 1 0 0 1-1-1v-9.5H3z" fill="currentColor"/><g fill="#fff"><ellipse cx="9.6" cy="12.6" rx="1" ry="1.3"/><ellipse cx="12" cy="11.4" rx="1" ry="1.3"/><ellipse cx="14.4" cy="12.6" rx="1" ry="1.3"/><path d="M12 14c-1.6 0-2.8 1.2-2.8 2.4 0 .8.6 1.3 1.4 1.3.6 0 .9-.2 1.4-.2s.8.2 1.4.2c.8 0 1.4-.5 1.4-1.3 0-1.2-1.2-2.4-2.8-2.4z"/></g></svg><span>Pet-sitters</span></a>
       <a href="#commandes" data-v="commandes" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z" fill="currentColor"/><path d="M3 7l9 4 9-4M12 11v10" stroke="#fff" stroke-width="1.5" fill="none"/></svg><span>Commandes</span></a>
       <a href="#premium" data-v="premium" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="currentColor"/></svg><span>Premium</span></a>
       <a href="#parametres" data-v="parametres"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c1-4.2 4.4-6.5 8-6.5s7 2.3 8 6.5z" fill="currentColor"/></svg><span>Compte</span></a>
@@ -449,6 +524,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
             <a class="btn btn-white" href="./commander.html">Commander un médaillon</a>
             <button class="btn btn-white" type="button" data-poster>Affiche « Perdu »</button>
             <a class="btn btn-white" href="#sante">Carnet de santé</a>
+            <a class="btn btn-white" href="#petsitters">Trouver un pet-sitter</a>
           </div>
         </div>
       </div>
@@ -652,7 +728,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
       <div class="pm-feats"><article class="pm-f only"><span class="ico">📍</span><span class="tag prochip">Premium</span><h4>Sa position en direct</h4><p>Où qu’il soit, voyez-le bouger sur la carte, avec ses trajets du jour et des alertes dès qu’il sort de sa zone.</p></article><article class="pm-f only"><span class="ico">🫶</span><span class="tag prochip">Premium</span><h4>Le quartier en renfort</h4><p>Déclarez-le perdu : les membres Noopie jusqu’à 5 km reçoivent sa photo, peuvent signaler l’avoir vu, et l’alerte est relancée jusqu’à ce qu’il soit retrouvé.</p></article><article class="pm-f only"><span class="ico">⚡</span><span class="tag prochip">Premium</span><h4>Recherche intensive</h4><p>Position toutes les 5 secondes, lumière et son à distance, et un lien de suivi en direct à envoyer à ceux qui vous aident.</p></article><article class="pm-f"><span class="ico">🚨</span><span class="tag prochip">Premium</span><h4>Médaillon arraché ?</h4><p>Vous êtes prévenu à la seconde où le médaillon quitte son collier, avec sa dernière position.</p></article><article class="pm-f"><span class="ico">🐾</span><span class="tag prochip">Premium</span><h4>Copains de balade</h4><p>Voyez les Noopie autour de vous, vos copains en balade, et proposez une sortie au parc. Vous choisissez qui vous voit.</p></article><article class="pm-f"><span class="ico">🩺</span><span class="tag prochip">Premium</span><h4>Bilan bien-être</h4><p>Chaque mois, activité, sommeil et poids résumés, avec une alerte si son comportement change.</p></article><article class="pm-f"><span class="ico">🕒</span><span class="tag prochip">Premium</span><h4>Zones intelligentes</h4><p>Zones illimitées et à horaires : le jardin la journée, la maison la nuit, la crèche le mardi.</p></article><article class="pm-f"><span class="ico">👨‍👩‍👧</span><span class="tag prochip">Premium</span><h4>Toute la famille</h4><p>Proches illimités, accès temporaire pour le pet-sitter ou la pension, avec date de fin automatique.</p></article><article class="pm-f"><span class="ico">🔳</span><span class="tag chip chip-ok">Même sans abonnement</span><h4>Le QR, toujours là</h4><p>Même sans abonnement, batterie vide ou hors réseau, quiconque scanne le médaillon ouvre sa fiche et peut vous appeler.</p></article></div>
       <h3 class="pm-sec" id="pm-compare">Médaillon seul ou Premium ?</h3>
       <p class="pm-sub">Premium est offert le premier mois avec chaque médaillon, puis 10 € par mois.</p>
-      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Fonction</th><th>Médaillon seul<small>sans abonnement</small></th><th>Premium ★<small>10 €/mois</small></th></tr></thead><tbody><tr class="grp"><td colspan="3">Le retrouver</td></tr><tr><td>Fiche QR : on vous appelle en scannant le médaillon</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Position partagée par la personne qui scanne</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte quand sa fiche est scannée</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Mode perdu sur sa fiche publique</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Position GPS en direct, partout</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte médaillon détaché</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Lumière et son à distance</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Recherche intensive (position toutes les 5 s)</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte au quartier en cas de perte</td><td><span class="n">—</span></td><td><span class="p">5 km + relances</span></td></tr><tr><td>Lien de suivi en direct pour ceux qui aident</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Sa sécurité au quotidien</td></tr><tr><td>Zones de sécurité</td><td><span class="n">—</span></td><td><span class="p">Illimitées, à horaires</span></td></tr><tr><td>Historique des trajets</td><td><span class="n">—</span></td><td><span class="p">365 jours</span></td></tr><tr><td>Alertes batterie faible et hors réseau</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Communauté</td></tr><tr><td>Choisir qui voit votre animal (tous, copains, personne)</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Voir les Noopie autour de vous</td><td><span class="n">—</span></td><td><span class="p">jusqu’à 3 km</span></td></tr><tr><td>Copains de balade et balades à plusieurs</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Lieux adaptés aux animaux</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Santé et bien-être</td></tr><tr><td>Carnet de santé</td><td><span class="p">Fiche simple</span></td><td><span class="p">Complet</span></td></tr><tr><td>Rappels vaccins, vermifuges, antiparasitaires</td><td><span class="p">1</span></td><td><span class="p">Illimités</span></td></tr><tr><td>Activité, sommeil et objectifs</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Bilan bien-être mensuel et alerte comportement inhabituel</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Rétrospective de l’année et carte de ses balades</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Famille et services</td></tr><tr><td>Personnes pouvant suivre l’animal</td><td><span class="p">Vous seul</span></td><td><span class="p">Illimité</span></td></tr><tr><td>Accès pet-sitter temporaire</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Export de l’historique</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Garantie perte et casse du médaillon (partenaire)</td><td><span class="n">—</span></td><td><span class="p">Bientôt</span></td></tr><tr><td>Conseil vétérinaire en ligne (partenaire)</td><td><span class="n">—</span></td><td><span class="p">Bientôt</span></td></tr></tbody></table></div>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Fonction</th><th>Médaillon seul<small>sans abonnement</small></th><th>Premium ★<small>10 €/mois</small></th></tr></thead><tbody><tr class="grp"><td colspan="3">Le retrouver</td></tr><tr><td>Fiche QR : on vous appelle en scannant le médaillon</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Position partagée par la personne qui scanne</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte quand sa fiche est scannée</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Mode perdu sur sa fiche publique</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Position GPS en direct, partout</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte médaillon détaché</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Lumière et son à distance</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Recherche intensive (position toutes les 5 s)</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Alerte au quartier en cas de perte</td><td><span class="n">—</span></td><td><span class="p">5 km + relances</span></td></tr><tr><td>Lien de suivi en direct pour ceux qui aident</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Sa sécurité au quotidien</td></tr><tr><td>Zones de sécurité</td><td><span class="n">—</span></td><td><span class="p">Illimitées, à horaires</span></td></tr><tr><td>Historique des trajets</td><td><span class="n">—</span></td><td><span class="p">365 jours</span></td></tr><tr><td>Alertes batterie faible et hors réseau</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Communauté</td></tr><tr><td>Choisir qui voit votre animal (tous, copains, personne)</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Voir les Noopie autour de vous</td><td><span class="n">—</span></td><td><span class="p">jusqu’à 3 km</span></td></tr><tr><td>Copains de balade et balades à plusieurs</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Lieux adaptés aux animaux</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Santé et bien-être</td></tr><tr><td>Carnet de santé</td><td><span class="p">Fiche simple</span></td><td><span class="p">Complet</span></td></tr><tr><td>Rappels vaccins, vermifuges, antiparasitaires</td><td><span class="p">1</span></td><td><span class="p">Illimités</span></td></tr><tr><td>Activité, sommeil et objectifs</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Bilan bien-être mensuel et alerte comportement inhabituel</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Rétrospective de l’année et carte de ses balades</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr class="grp"><td colspan="3">Famille et services</td></tr><tr><td>Personnes pouvant suivre l’animal</td><td><span class="p">Vous seul</span></td><td><span class="p">Illimité</span></td></tr><tr><td>Trouver un pet-sitter noté par les membres</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>Accès Noopie du pet-sitter pendant la garde, trajets des promenades</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Export de l’historique</td><td><span class="n">—</span></td><td><span class="y">✓</span></td></tr><tr><td>Garantie perte et casse du médaillon (partenaire)</td><td><span class="n">—</span></td><td><span class="p">Bientôt</span></td></tr><tr><td>Conseil vétérinaire en ligne (partenaire)</td><td><span class="n">—</span></td><td><span class="p">Bientôt</span></td></tr></tbody></table></div>
       <h3 class="pm-sec">Questions fréquentes</h3>
       <div class="pm-faq">
         <details><summary>Que se passe-t-il après le mois offert ?</summary><p>Premium continue à 10 € par mois. Si vous ne le gardez pas, vous passez sur « Médaillon seul » : la fiche QR reste active, mais le suivi GPS en direct et les alertes s’arrêtent.</p></details>
@@ -661,6 +737,24 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
         <details><summary>Qui voit mon animal sur la carte ?</summary><p>C’est vous qui choisissez, animal par animal : tout le monde de façon anonyme, vos copains seulement, ou personne (mode fantôme). Réglage dans Carte, rubrique « Noopie autour de Nougat ».</p></details>
       </div>
       <div class="card" style="margin-top:16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:220px"><h3 style="margin:0 0 4px;color:var(--blue-2)">10 €/mois, le 1er mois offert</h3><p class="muted" style="margin:0">Le prix d’un sac de croquettes pour savoir où il est, à chaque instant.</p></div><button class="btn btn-blue" type="button" data-pm-start>Activer Premium</button></div>
+    </section>
+
+    <!-- PET-SITTERS -->
+    <section data-view="petsitters" hidden>
+      <div data-ps-list>
+      <div class="topbar"><div><h1>Trouver un pet-sitter</h1><p>Des gardiens de confiance près de chez vous, notés par les membres Noopie.</p></div><span class="chip chip-blue" data-ps-count></span></div>
+      <p class="demo" style="margin:0 0 14px">Profils, notes et avis d’exemple, fictifs, pour la démonstration.</p>
+      <div class="card ps-filters">
+        <div class="ps-f"><label for="ps-where">Où ?</label><input id="ps-where" value="Paris 19e · Buttes-Chaumont"></div>
+        <div class="ps-f"><label for="ps-when">Quand ?</label><input id="ps-when" value="Du 20 au 27 déc."></div>
+        <div class="ps-f"><label for="ps-pet">Pour qui ?</label><select id="ps-pet"><option value="all">Nougat et Ziggy</option><option value="dog">Nougat (chien)</option><option value="cat">Ziggy (chat)</option></select></div>
+        <div class="ps-f"><label for="ps-sort">Trier par</label><select id="ps-sort"><option value="note">Mieux notés</option><option value="dist">Plus proches</option><option value="prix">Prix</option></select></div>
+        <div class="ps-svc" role="group" aria-label="Service"><button type="button" class="fchip on" data-ps-svc="all">Tous les services</button><button type="button" class="fchip" data-ps-svc="promenade">🦮 Promenade</button><button type="button" class="fchip" data-ps-svc="visite">🏠 Visites à domicile</button><button type="button" class="fchip" data-ps-svc="garde">🌙 Garde à domicile</button><button type="button" class="fchip" data-ps-svc="pension">🧳 Pension chez le sitter</button><button type="button" class="fchip" data-ps-fav>♥ Mes favoris</button></div>
+      </div>
+      <div class="ps-why"><span>📍</span><div><b>Gardé avec son Noopie</b><span>Pendant la garde, le pet-sitter reçoit un accès temporaire au suivi de votre animal, et vous recevez le trajet de chaque promenade. L’accès s’arrête tout seul à la fin.</span></div></div>
+      <div class="ps-grid" data-ps-grid></div>
+      </div>
+      <div data-ps-detail hidden></div>
     </section>
 
     <!-- COMMANDES -->
@@ -907,10 +1001,107 @@ function renderPremium(){$$('[data-pm-on]').forEach(x=>x.hidden=!premium);$$('[d
 const _render=render;render=function(){_render();if(typeof ncfg!=='undefined')renderNear()};
 [['[data-intense]','La recherche intensive'],['[data-add-zone]','Créer une zone de sécurité'],['[data-invite]','Inviter un proche'],['[data-save-zone]','Les zones de sécurité']].forEach(([q,l])=>$$(q).forEach(x=>x.dataset.proLock=l));
 const gA=$('[data-goto-autour]');if(gA)gA.addEventListener('click',()=>setTimeout(()=>{const t=$('#autour');t&&t.scrollIntoView({behavior:'smooth',block:'start'})},120));
+
+/* --- Pet-sitters (profils et avis d'exemple, fictifs) --- */
+const SVC={promenade:['🦮','Promenade','30 min à 1 h, avec trajet Noopie'],visite:['🏠','Visite à domicile','Repas, câlins, litière, 30 min'],garde:['🌙','Garde à domicile','Le sitter dort chez vous, par nuit'],pension:['🧳','Pension chez le sitter','Par nuit, jardin ou appartement']};
+const SITTERS=[
+ {id:'camille',pr:'Camille',nm:'Durand',age:29,q:'Paris 19e · Buttes-Chaumont',d:0.4,note:4.9,n:127,c:'#1F6FEB',an:['dog','cat'],exp:8,rep:'< 1 h',fid:68,noo:14,svc:{promenade:15,visite:14,garde:38,pension:30},
+  bio:'Éducatrice canine diplômée, j’ai grandi avec des goldens et je partage aujourd’hui mon appartement avec Pistache, une chatte européenne. J’adore les longues balades aux Buttes-Chaumont et j’envoie photos et trajet après chaque sortie.',
+  langs:'Français, anglais',home:'Appartement 65 m², balcon sécurisé, pas d’enfants',badges:['Identité vérifiée','Formation premiers secours animaliers','Éducatrice canine diplômée','Gardienne Noopie certifiée'],
+  wk:[1,1,1,1,1,0,1],crit:{Communication:5,Fiabilité:4.9,'Soin des animaux':5,'Ponctualité':4.8},dist:[88,9,2,1,0],
+  rev:[['Julie','Golden retriever, 4 ans',5,'oct. 2026','Camille a gardé Oslo une semaine : photos chaque jour, trajets des balades dans l’app Noopie, et un chien ravi à notre retour. On ne cherche plus ailleurs.'],['Mehdi','Chat de gouttière, 9 ans',5,'sept. 2026','Très attentive aux médicaments de Gribouille. Messages clairs, toujours à l’heure.'],['Sophie','Border collie, 2 ans',4,'août 2026','Super contact avec Lune, qui a beaucoup d’énergie. Petit retard le premier jour, prévenu à l’avance.']]},
+ {id:'yanis',pr:'Yanis',nm:'Benali',age:34,q:'Paris 19e · Belleville',d:0.9,note:4.8,n:96,c:'#22B573',an:['dog'],exp:6,rep:'< 2 h',fid:61,noo:9,svc:{promenade:14,garde:35,pension:28},
+  bio:'Ancien maître-chien, je propose des promenades sportives et des pensions dans ma maison avec jardin à Belleville. Idéal pour les chiens dynamiques qui ont besoin de se dépenser.',
+  langs:'Français, arabe, anglais',home:'Maison avec jardin clos de 120 m²',badges:['Identité vérifiée','Formation premiers secours animaliers','Gardien Noopie certifié'],
+  wk:[1,1,0,1,1,1,1],crit:{Communication:4.7,Fiabilité:4.9,'Soin des animaux':4.9,'Ponctualité':4.8},dist:[82,13,3,2,0],
+  rev:[['Thomas','Husky, 3 ans',5,'oct. 2026','Yanis est le seul qui arrive à fatiguer Kaïko ! Balades de 1 h 30 avec le trajet dans l’app.'],['Claire','Labrador, 6 ans',5,'juil. 2026','Pension de 10 jours, Lucky est revenu en pleine forme. Jardin top.'],['Nadia','Beagle, 5 ans',4,'juin 2026','Très bien, juste un peu moins de photos que prévu.']]},
+ {id:'lea',pr:'Léa',nm:'Martin',age:24,q:'Paris 20e · Jourdain',d:1.3,note:5.0,n:58,c:'#E4A522',an:['cat'],exp:4,rep:'< 30 min',fid:74,noo:6,svc:{visite:13,garde:32},
+  bio:'Étudiante vétérinaire, spécialisée chats. Je viens chez vous pour les repas, la litière, le jeu et les soins (injections, comprimés). Les chats craintifs sont les bienvenus !',
+  langs:'Français, italien',home:'Je me déplace chez vous uniquement',badges:['Identité vérifiée','Étudiante vétérinaire','Soins et médicaments','Gardienne Noopie certifiée'],
+  wk:[1,1,1,1,1,1,1],crit:{Communication:5,Fiabilité:5,'Soin des animaux':5,'Ponctualité':5},dist:[97,3,0,0,0],
+  rev:[['Antoine','Maine coon, 7 ans',5,'nov. 2026','Léa a géré l’insuline de Moka sans aucun souci. Compte-rendu après chaque visite.'],['Inès','Persan, 12 ans',5,'sept. 2026','Ma chatte, très craintive, est venue la voir dès la deuxième visite. Merveilleuse.']]},
+ {id:'hugo',pr:'Hugo',nm:'Lefèvre',age:41,q:'Paris 10e · Canal Saint-Martin',d:2.1,note:4.7,n:203,c:'#6E3180',an:['dog','cat'],exp:12,rep:'< 3 h',fid:55,noo:21,svc:{promenade:13,visite:12,garde:30,pension:26},
+  bio:'Pet-sitter à plein temps depuis 12 ans. Promenades en petit groupe (3 chiens maximum) le long du canal, pensions à la maison avec mon vieux labrador Gaston, très sociable.',
+  langs:'Français, anglais, espagnol',home:'Appartement 90 m², proche parc de la Villette',badges:['Identité vérifiée','Auto-entrepreneur déclaré','Formation premiers secours animaliers'],
+  wk:[1,1,1,1,1,0,0],crit:{Communication:4.6,Fiabilité:4.8,'Soin des animaux':4.8,'Ponctualité':4.6},dist:[76,17,4,2,1],
+  rev:[['Marion','Cocker, 3 ans',5,'oct. 2026','Hugo est une valeur sûre. Gaston et notre Pépite sont devenus inséparables.'],['Paul','Chartreux, 4 ans',4,'sept. 2026','Bonnes visites, mais créneau horaire parfois décalé de 30 min.'],['Lina','Shiba inu, 2 ans',5,'août 2026','Hyper patient avec un chien têtu !']]},
+ {id:'ines',pr:'Inès',nm:'Moreau',age:31,q:'Paris 19e · Jaurès',d:0.7,note:4.6,n:41,c:'#E5484D',an:['dog','cat'],exp:3,rep:'< 1 h',fid:49,noo:4,svc:{promenade:12,visite:12,garde:29},
+  bio:'Infirmière de nuit, je suis disponible en journée pour les promenades et visites. J’ai un caniche, Biscotte, qui adore rencontrer d’autres chiens.',
+  langs:'Français',home:'Appartement 50 m² au rez-de-chaussée',badges:['Identité vérifiée','Gardienne Noopie certifiée'],
+  wk:[0,1,1,0,1,1,1],crit:{Communication:4.7,Fiabilité:4.5,'Soin des animaux':4.8,'Ponctualité':4.5},dist:[71,20,6,3,0],
+  rev:[['Karim','Bouledogue, 5 ans',5,'oct. 2026','Inès est adorable et très douce avec Rocco, qui a peur des autres chiens.'],['Emma','Siamois, 3 ans',4,'sept. 2026','Visites sérieuses, photos à chaque passage.']]},
+ {id:'sofia',pr:'Sofia',nm:'Rossi',age:27,q:'Paris 19e · Place des Fêtes',d:0.6,note:4.9,n:73,c:'#0EA5B7',an:['dog','cat'],exp:5,rep:'< 1 h',fid:66,noo:11,svc:{promenade:14,visite:13,garde:34,pension:29},
+  bio:'Graphiste en télétravail, je suis à la maison toute la journée : votre compagnon n’est jamais seul. Grand appartement calme, idéal pour les seniors et les convalescents.',
+  langs:'Français, italien, anglais',home:'Appartement 80 m², calme, sans autres animaux',badges:['Identité vérifiée','Formation premiers secours animaliers','Gardienne Noopie certifiée'],
+  wk:[1,1,1,1,1,1,0],crit:{Communication:5,Fiabilité:4.9,'Soin des animaux':4.9,'Ponctualité':4.8},dist:[90,8,1,1,0],
+  rev:[['Hélène','Teckel, 13 ans',5,'nov. 2026','Notre vieux Félix a été chouchouté comme jamais. Sofia a même adapté les balades à son arthrose.'],['Victor','British shorthair, 6 ans',5,'oct. 2026','Calme, rassurante, et des nouvelles tous les jours.']]},
+];
+let psSvc='all',psFavOnly=false,psFav=store.get('psfav',['camille']);
+const stars=(v,count,bare)=>`<span class="stars"><span class="st" aria-hidden="true"><i style="width:${v/5*100}%"></i></span>${bare?'':v.toFixed(1).replace('.',',')}${count!=null?` <em>(${count} avis)</em>`:''}<span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">${v} sur 5</span></span>`;
+const ini=x=>`${x.pr[0]}${x.nm[0]}`;
+const minPrice=x=>Math.min(...Object.values(x.svc));
+const anim=x=>x.an.map(a=>a==='dog'?'🐶 Chiens':'🐱 Chats').join(' · ');
+function psFiltered(){const pet=$('#ps-pet').value,sort=$('#ps-sort').value;
+  let l=SITTERS.filter(x=>(psSvc==='all'||x.svc[psSvc]!=null)&&(pet==='all'?x.an.length===2:x.an.includes(pet))&&(!psFavOnly||psFav.includes(x.id)));
+  l.sort((a,b)=>sort==='dist'?a.d-b.d:sort==='prix'?(psSvc==='all'?minPrice(a)-minPrice(b):a.svc[psSvc]-b.svc[psSvc]):(b.note-a.note||b.n-a.n));return l}
+function renderSitters(){const l=psFiltered();$('[data-ps-count]').textContent=`${l.length} pet-sitter${l.length>1?'s':''} près de vous`;
+  $$('[data-ps-svc]').forEach(b=>b.classList.toggle('on',b.dataset.psSvc===psSvc));$$('[data-ps-fav]').forEach(b=>b.classList.toggle('on',psFavOnly));
+  $('[data-ps-grid]').innerHTML=l.length?l.map(x=>{const pr=psSvc==='all'?minPrice(x):x.svc[psSvc];return `<article class="ps-card" tabindex="0" role="button" data-ps-open="${x.id}" aria-label="Voir la fiche de ${x.pr} ${x.nm[0]}.">
+    <button type="button" class="ps-fav ${psFav.includes(x.id)?'on':''}" data-ps-like="${x.id}" aria-label="Ajouter ${x.pr} aux favoris" aria-pressed="${psFav.includes(x.id)}">♥</button>
+    <div class="ps-top"><span class="ps-av" style="background:${x.c}">${ini(x)}<i title="Identité vérifiée">✓</i></span><div class="ps-name"><b>${x.pr} ${x.nm[0]}.</b><span>${x.q} · ${String(x.d).replace('.',',')} km</span></div></div>
+    ${stars(x.note,x.n)}
+    <div class="ps-meta"><span class="ps-tag blue">${anim(x)}</span><span class="ps-tag">${x.exp} ans d’expérience</span>${x.noo?`<span class="ps-tag ok">📍 ${x.noo} gardes avec Noopie</span>`:''}</div>
+    <p>${x.bio}</p>
+    <div class="ps-meta">${Object.keys(x.svc).map(k=>`<span class="ps-tag">${SVC[k][0]} ${SVC[k][1]}</span>`).join('')}</div>
+    <div class="ps-foot"><span><small>À partir de</small><br><b>${pr} €</b> <small>${psSvc==='garde'||psSvc==='pension'?'/ nuit':psSvc==='all'?'':'/ passage'}</small></span><span class="btn btn-white btn-sm">Voir la fiche</span></div></article>`}).join(''):`<div class="ps-empty">Aucun pet-sitter ne correspond à ces filtres.</div>`}
+function openSitter(id){const x=SITTERS.find(y=>y.id===id);if(!x)return;const D=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+  $('[data-ps-list]').hidden=true;const el=$('[data-ps-detail]');el.hidden=false;
+  el.innerHTML=`<button type="button" class="ps-back" data-ps-back>← Tous les pet-sitters</button>
+  <div class="ps-hero"><span class="ps-av lg" style="background:${x.c}">${ini(x)}<i title="Identité vérifiée">✓</i></span>
+    <div><h1>${x.pr} ${x.nm}</h1><p class="sub">${x.age} ans · ${x.q} · à ${String(x.d).replace('.',',')} km de chez vous</p>${stars(x.note,x.n)}
+    <div class="ps-meta" style="margin-top:10px"><span class="ps-tag blue">${anim(x)}</span><span class="ps-tag">Répond en ${x.rep}</span><span class="ps-tag ok">✓ Identité vérifiée</span></div></div>
+    <div class="acts"><button class="btn btn-blue" type="button" data-ps-book="${x.id}">Réserver ${x.pr}</button><button class="btn btn-white" type="button" data-ps-msg="${x.id}">Envoyer un message</button><button class="btn btn-white" type="button" data-ps-like="${x.id}" aria-pressed="${psFav.includes(x.id)}">${psFav.includes(x.id)?'♥ Dans vos favoris':'♡ Ajouter aux favoris'}</button></div></div>
+  <div class="ps-cols"><div class="grid" style="align-content:start">
+    <div class="card"><div class="ps-kpis"><div><b>${x.n}</b><span>avis</span></div><div><b>${x.exp} ans</b><span>d’expérience</span></div><div><b>${x.fid} %</b><span>clients fidèles</span></div><div><b>${x.noo}</b><span>gardes Noopie</span></div></div></div>
+    <div class="card"><div class="ttl"><h3>À propos de ${x.pr}</h3></div><p class="ps-txt">${x.bio}</p>
+      <table class="ps-tbl" style="margin-top:12px"><tr><td>Langues</td><td style="font-family:inherit;font-size:14.5px">${x.langs}</td></tr><tr><td>Logement</td><td style="font-family:inherit;font-size:14.5px">${x.home}</td></tr><tr><td>Animaux acceptés</td><td style="font-family:inherit;font-size:14.5px">${anim(x)}</td></tr></table></div>
+    <div class="card"><div class="ttl"><h3>Avis des clients</h3><span class="chip chip-gold">Exemples fictifs</span></div>
+      <div class="ps-rate"><div class="ps-big"><b>${x.note.toFixed(1).replace('.',',')}</b>${stars(x.note,null,true)}<div class="muted" style="font-size:12.5px">${x.n} avis</div></div>
+        <div class="ps-bars">${x.dist.map((v,i)=>`<div><span>${5-i} ★</span><i><u style="width:${v}%"></u></i><span>${v} %</span></div>`).join('')}</div></div>
+      <div class="ps-crit">${Object.entries(x.crit).map(([k,v])=>`<div><span>${k}</span>${stars(v)}</div>`).join('')}</div>
+      ${x.rev.map(r=>`<div class="ps-rev"><div class="h"><i style="background:${x.c}">${r[0][0]}</i><div><b>${r[0]}</b><small>${r[1]} · ${r[3]}</small></div>${stars(r[2])}</div><p>${r[4]}</p></div>`).join('')}
+    </div></div>
+    <div class="grid" style="align-content:start">
+    <div class="card"><div class="ttl"><h3>Services et tarifs</h3></div><table class="ps-tbl">${Object.entries(x.svc).map(([k,v])=>`<tr><td>${SVC[k][0]} ${SVC[k][1]}<small>${SVC[k][2]}</small></td><td>${v} €</td></tr>`).join('')}</table></div>
+    <div class="card"><div class="ttl"><h3>Disponibilités</h3><span class="muted" style="font-size:12.5px">Cette semaine</span></div><div class="ps-week">${D.map((d,i)=>`<div><b>${d}</b><span class="${x.wk[i]?'on':''}">${x.wk[i]?'Libre':'—'}</span></div>`).join('')}</div></div>
+    <div class="card"><div class="ttl"><h3>Vérifications et formations</h3></div><ul class="ps-checks">${x.badges.map(b=>`<li><span>✓</span>${b}</li>`).join('')}</ul>
+      <div class="ps-noopie"><span style="font-size:22px">📍</span><div><b>Gardé avec son Noopie</b><span>Pendant la garde, ${x.pr} suit votre animal sur la carte et vous recevez le trajet de chaque promenade. L’accès s’arrête tout seul à la fin.</span></div></div></div>
+    </div></div>`;
+  window.scrollTo(0,0)}
+function closeSitter(){$('[data-ps-detail]').hidden=true;$('[data-ps-list]').hidden=false;renderSitters()}
+function bookSitter(id){const x=SITTERS.find(y=>y.id===id);
+  modal(`Réserver ${x.pr} ${x.nm[0]}.`,`<div class="field"><label for="bk-s">Service</label><select id="bk-s">${Object.entries(x.svc).map(([k,v])=>`<option value="${k}">${SVC[k][1]} · ${v} €</option>`).join('')}</select></div>`+fld('bk-d','Dates','Du 20 au 27 déc.')+`<div class="field"><label for="bk-p">Pour</label><select id="bk-p">${pets.filter(p=>x.an.includes(p.img.includes('cat')?'cat':'dog')).map(p=>`<option>${p.name}</option>`).join('')}</select></div>`+
+   `<div class="toggle"><div><b>Donner l’accès Noopie pendant la garde</b><span>${premium?'Suivi de votre animal, uniquement pendant les dates choisies':'Fait partie de Premium'}</span></div><input class="sw" type="checkbox" id="bk-a" ${premium?'checked':'disabled'} aria-label="Accès Noopie"></div>`,
+   ()=>{const a=$('#bk-a').checked;if(a){people.push({n:`${x.pr} ${x.nm[0]}. (pet-sitter)`,r:`Accès temporaire · ${$('#bk-d').value}`,c:x.c});save();render()}
+     toast(`Demande envoyée à ${x.pr}${a?' · accès Noopie prévu pendant la garde':''} (démonstration : rien n’est envoyé)`)},'Envoyer la demande')}
+document.addEventListener('click',e=>{
+  const lk=e.target.closest('[data-ps-like]');if(lk){e.stopPropagation();const id=lk.dataset.psLike;psFav=psFav.includes(id)?psFav.filter(v=>v!==id):[...psFav,id];store.set('psfav',psFav);toast(psFav.includes(id)?'Ajouté à vos favoris':'Retiré de vos favoris');if(!$('[data-ps-detail]').hidden)openSitter(id);else renderSitters();return}
+  const op=e.target.closest('[data-ps-open]');if(op){openSitter(op.dataset.psOpen);return}
+  const b=e.target.closest('button');if(!b)return;
+  if(b.matches('[data-ps-svc]')){psSvc=b.dataset.psSvc;renderSitters()}
+  else if(b.matches('[data-ps-fav]')){psFavOnly=!psFavOnly;renderSitters()}
+  else if(b.matches('[data-ps-back]')){closeSitter()}
+  else if(b.matches('[data-ps-book]')){bookSitter(b.dataset.psBook)}
+  else if(b.matches('[data-ps-msg]')){const x=SITTERS.find(y=>y.id===b.dataset.psMsg);modal(`Message à ${x.pr}`,`<div class="field"><label for="ps-m">Votre message</label><textarea id="ps-m" rows="4">Bonjour ${x.pr}, seriez-vous disponible pour garder Nougat du 20 au 27 décembre ?</textarea></div>`,()=>toast(`Message prêt pour ${x.pr} (démonstration : rien n’est envoyé)`),'Envoyer')}
+});
+document.addEventListener('keydown',e=>{const op=e.target.closest&&e.target.closest('[data-ps-open]');if(op&&(e.key==='Enter'||e.key===' ')&&e.target===op){e.preventDefault();openSitter(op.dataset.psOpen)}});
+['#ps-pet','#ps-sort'].forEach(q=>$(q).addEventListener('change',renderSitters));
+renderSitters();
 /* routing */
-const VIEWS=['accueil','carte','animaux','sante','activite','communaute','premium','alertes','medaillons','zones','partage','commandes','parametres'];
+const VIEWS=['accueil','carte','animaux','sante','activite','communaute','premium','alertes','medaillons','zones','partage','petsitters','commandes','parametres'];
 function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'accueil';
   $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v);$$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  if(v==='petsitters'&&typeof closeSitter==='function'&&!$('[data-ps-detail]').hidden)closeSitter();
   if(v==='alertes'){setTimeout(()=>{alerts.forEach(a=>a.u=false);save();render()},1500)}
   window.scrollTo(0,0)}
 function boot(){const on=!!user;$('#auth').hidden=on;$('#app').hidden=!on;if(on){render();showPet('dog');renderNear();renderPremium();route()}}
