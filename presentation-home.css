@@ -920,33 +920,21 @@ body {
 /* v4.1 : maquettes chat identiques au chien */
 .np-how-media--tag img.np-cat { top: 12px; bottom: 30px; height: calc(100% - 42px); }
 
-/* v5 : étape 3 « Il vous appelle » — écran du passant (même style que la fiche) */
-.np-pcall { padding: 34px 12px 16px; align-items: center; text-align: center; }
-.np-pcall-status { margin-top: 22px; display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 800; color: #1C9A63; background: #E6F6EE; border-radius: 99px; padding: 3px 10px; }
-.np-pcall-status i { width: 7px; height: 7px; border-radius: 50%; background: #1C9A63; animation: npBlink 1.2s ease-in-out infinite; }
-@keyframes npBlink { 50% { opacity: .3; } }
-.np-pcall-avatar { margin-top: 14px; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: #1F6FEB; color: #fff; font-family: Fredoka, system-ui, sans-serif; font-weight: 700; font-size: 28px; box-shadow: 0 0 0 6px #EEF4FE; }
-.np-pcall-name { margin-top: 10px; font-family: Fredoka, system-ui, sans-serif; font-weight: 700; font-size: 20px; color: #1A5FD6; line-height: 1.1; }
-.np-pcall-role { font-size: 10.5px; font-weight: 700; color: #5B544C; }
-.np-pcall-role span { display: inline; }
-.np-pcall-tel { margin-top: 2px; font-size: 12px; font-weight: 800; color: #26211C; }
-.np-pcall-pet { margin-top: 14px; width: 100%; display: flex; align-items: center; gap: 8px; text-align: left; background: #F4F7FD; border-radius: 12px; padding: 7px 8px; }
-.np-pcall-pet img { width: 34px; height: 34px; border-radius: 50%; flex: none; }
-.np-pcall-pet b { display: block; font-size: 11.5px; color: #1A5FD6; }
-.np-pcall-pet b span { display: inline; }
-.np-pcall-pet div > span { display: block; font-size: 9.5px; font-weight: 700; color: #5B544C; }
-.np-pcall-btns { margin-top: auto; width: 100%; display: flex; justify-content: space-between; }
-.np-pcall-btns > span { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 8.5px; font-weight: 700; color: #5B544C; width: 33%; }
-.np-pcall-btns i { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #EEF2F8; color: #26211C; }
-.np-pcall-btns svg { width: 18px; height: 18px; }
-.np-pcall-end i { background: #E5484D; color: #fff; }
-.np-pcall-end svg { transform: rotate(135deg); }
-@media (prefers-reduced-motion: reduce) { .np-pcall-status i { animation: none; } }
-/* version chat : accents nude */
-#np-pet-cat:checked ~ * .np-pcall .np-fiche-top, #np-pet-cat:checked ~ * .np-pcall-name, #np-pet-cat:checked ~ * .np-pcall-pet b { color: #B5835F; }
-#np-pet-cat:checked ~ * .np-pcall-avatar { background: #C9A27E; box-shadow: 0 0 0 6px #F8EFE7; }
-#np-pet-cat:checked ~ * .np-pcall-pet { background: #F8EFE7; }
-.np-pcall-status { white-space: nowrap; }
-.np-pcall-avatar { margin-top: 12px; }
-.np-pcall-pet { margin-top: 10px; }
-.np-pcall-btns { margin-top: auto; padding-top: 8px; }
+/* v5 : étape 3 « Il vous appelle » — écran d'appel iPhone réaliste */
+.np-ios .np-phone-screen { background:
+  radial-gradient(120% 70% at 50% 0%, #5B6B86 0%, transparent 60%),
+  linear-gradient(180deg, #3A4559 0%, #1E2533 55%, #12161F 100%); color: #fff; padding: 10px 14px 16px; align-items: center; font-family: -apple-system, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif; }
+.np-ios-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 2px 8px 0; font-size: 11px; font-weight: 600; }
+.np-ios-sig { display: flex; align-items: flex-end; gap: 1.5px; height: 9px; }
+.np-ios-sig i { width: 3px; background: #fff; border-radius: 1px; }
+.np-ios-sig i:nth-child(1) { height: 3px; } .np-ios-sig i:nth-child(2) { height: 5px; } .np-ios-sig i:nth-child(3) { height: 7px; } .np-ios-sig i:nth-child(4) { height: 9px; }
+.np-ios-state { margin-top: 38px; font-size: 12px; color: rgba(255,255,255,.7); }
+.np-ios-name { margin-top: 2px; font-size: 27px; font-weight: 400; letter-spacing: -.01em; line-height: 1.15; }
+.np-ios-num { font-size: 11px; color: rgba(255,255,255,.6); }
+.np-ios-grid { margin-top: auto; width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 12px; }
+.np-ios-grid span { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 8.5px; color: #fff; }
+.np-ios-grid i { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.18); backdrop-filter: blur(6px); }
+.np-ios-grid svg { width: 19px; height: 19px; color: #fff; }
+.np-ios-end { margin-top: 18px; }
+.np-ios-end i { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; background: #FF3B30; }
+.np-ios-end svg { width: 22px; height: 22px; color: #fff; transform: rotate(135deg); }
