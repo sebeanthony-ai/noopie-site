@@ -92,6 +92,25 @@
     .dot{width:38px;height:38px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.plans{display:grid;gap:10px}
+.popt{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:start;border:2px solid var(--line);border-radius:20px;padding:16px 18px;cursor:pointer;background:#fff;transition:border-color .15s,box-shadow .15s}
+.popt input{position:absolute;opacity:0;width:1px;height:1px}
+.popt .rad{width:22px;height:22px;border-radius:50%;border:2px solid #C9D3E3;margin-top:2px;display:grid;place-items:center}
+.popt .rad::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--blue);transform:scale(0);transition:transform .15s}
+.popt:has(input:checked){border-color:var(--blue);box-shadow:0 0 0 4px #DCE8FD}
+.popt:has(input:checked) .rad{border-color:var(--blue)} .popt:has(input:checked) .rad::after{transform:scale(1)}
+.popt:has(input:focus-visible){outline:3px solid #9CC0FF;outline-offset:2px}
+.popt b{font-family:Fredoka,sans-serif;font-weight:600;font-size:19px;color:var(--blue-2)}
+.popt .pr{font-weight:800;text-align:right;white-space:nowrap}
+.popt .pr small{display:block;font-size:12px;color:var(--ink-2);font-weight:700}
+.popt .tag{display:inline-block;margin-left:6px;vertical-align:middle;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:#FFD25A;color:#3A2A00;border-radius:99px;padding:2px 8px}
+.popt ul{grid-column:2/-1;list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
+.popt li{font-size:14px;font-weight:700;color:var(--ink);padding-left:22px;position:relative}
+.popt li::before{content:"✓";position:absolute;left:0;color:#1C9A63;font-weight:800}
+.popt li.no{color:#8A93A3} .popt li.no::before{content:"—";color:#B5BCC8}
+.popt--pro{background:linear-gradient(180deg,#F5F9FF,#fff)}
+@media (max-width:480px){.popt{grid-template-columns:auto minmax(0,1fr)}.popt .pr{grid-column:2;text-align:left}}
 </style>
 </head>
 <body>
@@ -159,6 +178,13 @@
             <div class="row"><span>Quantité</span><strong><span class="qty"><button id="qm" aria-label="Retirer un">−</button><output id="qn">1</output><button id="qp" aria-label="Ajouter un">+</button></span></strong></div>
             <div class="row"><span>Prix</span><strong id="rc-price">À définir</strong></div>
           </div>
+          <p class="label" style="margin-top:22px">Votre abonnement</p>
+          <div class="plans" role="radiogroup" aria-label="Abonnement">
+            <label class="popt popt--pro"><input type="radio" name="plan" value="premium" checked><span class="rad"></span><span><b>Noopie Premium</b><span class="tag">1er mois offert</span></span><span class="pr">0 € aujourd’hui<small>puis 10 €/mois</small></span>
+              <ul><li>Position GPS en direct et trajets</li><li>Alertes : médaillon détaché, sortie de zone, batterie</li><li>Recherche intensive, lumière et son</li><li>Noopie du quartier et alerte « animal perdu »</li><li>Santé, activité, famille et pet-sitter</li></ul></label>
+            <label class="popt"><input type="radio" name="plan" value="none"><span class="rad"></span><span><b>Médaillon seul</b></span><span class="pr">0 €<small>sans abonnement</small></span>
+              <ul><li>Fiche QR : on peut vous appeler en le scannant</li><li>Position partagée par la personne qui scanne</li><li class="no">Pas de suivi GPS en direct ni d’alertes</li></ul></label>
+          </div>
           <div class="actions">
             <button class="btn btn-ghost" data-go="2">← Version</button>
             <a class="btn btn-primary" id="pay" href="./paiement.html">
@@ -189,9 +215,9 @@ const COLORS = [
   {id:"nuage",  name:"Blanc nuage",   body:"#F2EFE8", dark:"#C8C0B2", paw:"#1E4FC4", halo:"#EEF2F8"},
 ];
 const VERS = {chien:"Version chien", chat:"Version chat"};
-const state = {color:COLORS[0], ver:null, qty:1};
-try{ const s=JSON.parse(sessionStorage.getItem("noopie-order")||"null"); if(s && /^#(version|paiement)$/.test(location.hash)){ state.color=COLORS.find(c=>c.id===s.c)||state.color; state.ver=s.v||null; state.qty=s.q||1; } }catch(e){}
-const save=()=>{ try{ sessionStorage.setItem("noopie-order",JSON.stringify({c:state.color.id,v:state.ver,q:state.qty})) }catch(e){} };
+const state = {color:COLORS[0], ver:null, qty:1, plan:"premium"};
+try{ const s=JSON.parse(sessionStorage.getItem("noopie-order")||"null"); if(s && /^#(version|paiement)$/.test(location.hash)){ state.color=COLORS.find(c=>c.id===s.c)||state.color; state.ver=s.v||null; state.qty=s.q||1; state.plan=s.p||"premium"; } }catch(e){}
+const save=()=>{ try{ sessionStorage.setItem("noopie-order",JSON.stringify({c:state.color.id,v:state.ver,q:state.qty,p:state.plan})) }catch(e){} };
 
 function paw(fill){
   return `<g fill="${fill}"><ellipse cx="-30" cy="-14" rx="11" ry="14" transform="rotate(-22 -30 -14)"/><ellipse cx="-11" cy="-34" rx="11" ry="14.5"/><ellipse cx="11" cy="-34" rx="11" ry="14.5"/><ellipse cx="30" cy="-14" rx="11" ry="14" transform="rotate(22 30 -14)"/><path d="M0 -8c-15 0-31 15-31 29 0 13 12 15 20 13 4-1 7-3 11-3s7 2 11 3c8 2 20 0 20-13 0-14-16-29-31-29Z"/></g>`;
@@ -228,6 +254,7 @@ document.getElementById("to2").onclick=()=>go(2);
 document.getElementById("to3").onclick=()=>go(3);
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(+b.dataset.go));
 document.getElementById("qm").onclick=()=>{state.qty=Math.max(1,state.qty-1);save();render()};
+document.querySelectorAll('input[name="plan"]').forEach(r=>r.onchange=()=>{state.plan=r.value;save();render()});
 document.getElementById("qp").onclick=()=>{state.qty=Math.min(10,state.qty+1);save();render()};
 
 let step=1;
@@ -242,6 +269,7 @@ function render(pop){
   sw.querySelectorAll(".sw").forEach(b=>b.setAttribute("aria-pressed", b.dataset.c===state.color.id));
   document.querySelectorAll(".ver").forEach(b=>{b.setAttribute("aria-pressed", b.dataset.v===state.ver);});
   document.getElementById("to3").disabled=!state.ver;
+  document.querySelectorAll('input[name="plan"]').forEach(r=>r.checked=r.value===state.plan);
   document.getElementById("rc-dot").style.background=state.color.body;
   document.getElementById("rc-color").textContent=state.color.name;
   document.getElementById("rc-ver").textContent=state.ver?VERS[state.ver]:"—";
@@ -250,7 +278,7 @@ function render(pop){
   const pay=document.getElementById("pay");
   pay.href = PAYMENT_LINK
     ? (()=>{const u=new URL(PAYMENT_LINK); u.searchParams.set("client_reference_id",`${state.color.id}-${state.ver}-x${state.qty}`); return u.toString()})()
-    : `./paiement.html?c=${state.color.id}&v=${state.ver||"chien"}&q=${state.qty}`;
+    : `./paiement.html?c=${state.color.id}&v=${state.ver||"chien"}&q=${state.qty}&p=${state.plan}`;
 }
 function fromHash(){ const h=location.hash.slice(1); step = h==="version"?2 : h==="paiement"?(state.ver?3:2) : 1; render(); }
 window.addEventListener("hashchange",fromHash);

@@ -1560,3 +1560,14 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 }
 @media (max-width: 480px) { .np-q-seg span { font-size: 12.5px; padding: 9px 3px; } .np-q-o b { font-size: 10.5px; } }
 @media (prefers-reduced-motion: reduce) { .np-q-me { animation: none; } }
+/* v3.4 : formules Médaillon seul / Premium 10 €/mois */
+#app .np-pm-sub { margin: 0 0 6px; font-family: "DM Sans", sans-serif; font-weight: 800; font-size: 15px; color: #5B544C; }
+.np-pm-card li.no { color: #8A93A3; }
+.np-pm-card li.no::before { content: "—"; background: #F1F3F7; color: #A9B1BE; }
+.np-pm-price { display: flex; align-items: baseline; gap: 6px; margin: 0 0 8px; color: #fff; }
+.np-pm-price b { font-family: Fredoka, system-ui, sans-serif; font-weight: 700; font-size: 46px; line-height: 1; }
+.np-pm-price span { font-family: "DM Sans", sans-serif; font-weight: 800; font-size: 16px; opacity: .9; }
+.np-pm-cta { flex-direction: row; align-items: center; gap: 16px; }
+.np-pm-more { font-family: "DM Sans", sans-serif; font-weight: 800; font-size: 15px; color: #fff; text-decoration: none; border-bottom: 2px solid rgba(255,255,255,.4); }
+.np-pm-more:hover { border-color: #fff; }
+.np-pm-cta { flex-wrap: wrap; } .np-pm-cta .np-a3-btn, .np-pm-more { white-space: nowrap; }

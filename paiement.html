@@ -98,6 +98,11 @@
     .summary{position:static}
   }
   @media (prefers-reduced-motion:reduce){.spin{animation:none}}
+
+.gift{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:#FFD25A;color:#3A2A00;border-radius:99px;padding:2px 8px;margin-left:4px;white-space:nowrap}
+.plan-note{margin:12px 0 0;font-size:13.5px;font-weight:700;color:#1A5FD6;background:#EEF4FE;border-radius:14px;padding:10px 12px}
+.plan-note:empty{display:none}
+.d-plan{font-weight:700}
 </style>
 </head>
 <body>
@@ -124,8 +129,10 @@
       <div class="lines">
         <div class="line"><span>Sous-total</span><span id="sum-sub"></span></div>
         <div class="line"><span>Livraison</span><span>À définir</span></div>
+        <div class="line" id="sum-plan-line"><span>Noopie Premium <em class="gift">1er mois offert</em></span><span>0,00 €</span></div>
         <div class="line total"><span>Total</span><span id="sum-total"></span></div>
       </div>
+      <p class="plan-note" id="sum-plan-note"></p>
       <p class="muted">Prix et frais de livraison à confirmer avant l’ouverture des ventes.</p>
       <a class="edit" id="edit" href="./commander.html">← Changer la couleur ou la version</a>
     </aside>
@@ -172,7 +179,7 @@
           </div>
         </div>
 
-        <label class="check"><input type="checkbox" id="cgv"> J’accepte les conditions générales de vente.</label>
+        <label class="check"><input type="checkbox" id="cgv"> <span>J’accepte les conditions générales de vente<span id="cgv-plan">, ainsi que l’abonnement Noopie Premium à 10 €/mois après le mois offert</span>.</span></label>
         <span class="err" data-for="cgv"></span>
 
         <button class="btn" id="paybtn" type="submit">
@@ -192,6 +199,7 @@
     <div class="ok"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
     <h1>Merci, c’est commandé !</h1>
     <p>Un e-mail de confirmation sera envoyé à <strong id="d-email"></strong>.</p>
+    <p class="d-plan" id="d-plan"></p>
     <span class="ref" id="d-ref"></span>
     <div class="scene" aria-label="Nougat et Ziggy préparent le colis Noopie">
       <img class="dog" src="refs/hero-dog-noshadow.webp" alt="Nougat" width="623" height="502">
@@ -223,6 +231,9 @@ const c=COLORS[cid];
 const ver=qs.get("v")==="chat"?"chat":"chien";
 const VER=ver;
 const qty=Math.min(10,Math.max(1,parseInt(qs.get("q"),10)||1));
+const PLAN=qs.get("p")==="none"?"none":"premium";
+const PREMIUM_PRICE=10;            // € par mois, après le 1er mois offert
+const renewal=(()=>{const d=new Date();d.setMonth(d.getMonth()+1);return d.toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})})();
 const fmt=n=>n.toLocaleString("fr-FR",{style:"currency",currency:"EUR"});
 
 function paw(f){return `<g fill="${f}"><ellipse cx="-30" cy="-14" rx="11" ry="14" transform="rotate(-22 -30 -14)"/><ellipse cx="-11" cy="-34" rx="11" ry="14.5"/><ellipse cx="11" cy="-34" rx="11" ry="14.5"/><ellipse cx="30" cy="-14" rx="11" ry="14" transform="rotate(22 30 -14)"/><path d="M0 -8c-15 0-31 15-31 29 0 13 12 15 20 13 4-1 7-3 11-3s7 2 11 3c8 2 20 0 20-13 0-14-16-29-31-29Z"/></g>`}
@@ -281,6 +292,12 @@ document.getElementById("paylabel").textContent = UNIT_PRICE ? `Payer ${total}` 
 const back=`./commander.html#paiement`;
 document.getElementById("back").href=back; document.getElementById("edit").href="./commander.html";
 document.getElementById("demo").hidden=!DEMO;
+// Abonnement
+document.getElementById("sum-plan-line").hidden = PLAN!=="premium";
+document.getElementById("cgv-plan").hidden = PLAN!=="premium";
+document.getElementById("sum-plan-note").textContent = PLAN==="premium"
+  ? `Premium est offert pendant 1 mois, puis ${PREMIUM_PRICE} €/mois à partir du ${renewal}.`
+  : "Médaillon seul, sans abonnement : fiche QR uniquement. Vous pourrez activer Premium à tout moment depuis l’app.";
 
 // Mise en forme des champs carte
 const cc=document.getElementById("cc"), exp=document.getElementById("exp"), cvc=document.getElementById("cvc"), brand=document.getElementById("brand");
@@ -316,6 +333,7 @@ document.getElementById("form").addEventListener("submit",e=>{
   btn.innerHTML='<i class="spin"></i>Paiement en cours…';
   setTimeout(()=>{
     document.getElementById("d-email").textContent=v("email");
+    document.getElementById("d-plan").textContent = PLAN==="premium" ? `Noopie Premium est activé : 1er mois offert, puis ${PREMIUM_PRICE} €/mois à partir du ${renewal}.` : "";
     document.getElementById("d-ref").textContent="Commande NP-"+Math.random().toString(36).slice(2,8).toUpperCase()+" · "+c.name+" · Version "+ver+" × "+qty;
     // On efface les données saisies : rien n'est conservé.
     document.getElementById("form").reset(); cc.value=exp.value=cvc.value="";
