@@ -15,7 +15,7 @@
   const dist = (a, b) => { const R = 6371000, r = Math.PI / 180, dLa = (b[1] - a[1]) * r, dLo = (b[0] - a[0]) * r;
     const h = Math.sin(dLa / 2) ** 2 + Math.cos(a[1] * r) * Math.cos(b[1] * r) * Math.sin(dLo / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
   const fmt = m => m < 1000 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toFixed(1).replace('.', ',')} km`;
-  const nearLabel = (n, from) => (n.friend ? `${n.friend} · ` : (n.sp === 'cat' ? 'Chat · ' : 'Chien · ')) + fmt(dist(from, n.pos));
+  const nearLabel = (n, from) => (n.friend ? `${n.friend} · ` : 'Noopie friend · ') + fmt(dist(from, n.pos));
 
   function circle(center, meters, n = 72) {
     const [lng, lat] = center, out = [];

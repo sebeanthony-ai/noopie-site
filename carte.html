@@ -156,7 +156,7 @@ const PETS={
    feed:[['#22B573','●','Position partagée','Parc des Buttes-Chaumont','14:35'],['#1F6FEB','↗','Sortie de la zone Maison','Départ en balade','13:47'],['#E4A522','🔋','Batterie 82 %','Tout va bien','09:00']]},
  cat:{name:'Ziggy',sp:'Chat du Bengal',img:'refs/portrait-cat.jpg',color:'#C9A27E',route:CATR,place:'À la maison · cour intérieure',d:'0,3 km',t:'12 min',z:'Dedans',b:'64 %',share:'./perdu-ziggy.html',
    feed:[['#22B573','●','Revenu dans la zone Maison','Après 6 min dehors','14:20'],['#1F6FEB','↗','Sortie de la zone Maison','Cour intérieure','14:14']]}};
-const NEAR=[[2.3810,48.8780,'Chien · 120 m'],[2.3758,48.8772,'Chat · 300 m'],[2.3864,48.8790,'Chien · 210 m'],[2.3822,48.8826,'Chien · 400 m'],[2.3795,48.8812,'Chien · 260 m']];
+const NEAR=[[2.3810,48.8780,'Noopie friend · 120 m'],[2.3758,48.8772,'Noopie friend · 300 m'],[2.3864,48.8790,'Noopie friend · 210 m'],[2.3822,48.8826,'Noopie friend · 400 m'],[2.3795,48.8812,'Noopie friend · 260 m']];
 const lost={dog:false,cat:false};
 let sel='dog';
 const circle=(c,m,n=96)=>{const o=[],a=m/111320,b=m/(111320*Math.cos(c[1]*Math.PI/180));for(let i=0;i<=n;i++){const t=i/n*2*Math.PI;o.push([c[0]+b*Math.cos(t),c[1]+a*Math.sin(t)])}return{type:'Feature',geometry:{type:'Polygon',coordinates:[o]}}};

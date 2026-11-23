@@ -961,7 +961,7 @@ function renderNear(){
   const L=$('[data-near-list]');
   if(L) L.innerHTML=!premium?`<div class="nempty">Voir les Noopie autour de vous fait partie de Premium.<br><a class="link" href="#premium">Activer Premium · 1er mois offert</a></div>`:!ncfg.show?`<div class="nempty">Vous ne voyez pas les autres Noopie.<br>Activez « Voir les autres Noopie » pour les afficher.</div>`:!list.length?`<div class="nempty">Aucun Noopie dans ce rayon pour le moment.</div>`:list.map(n=>n.friend
     ?`<div class="nitem"><span class="nic friend"><img src="${n.img}" alt=""></span><div><b>${n.friend} · ${n.br}</b><span>Copain · ${n.st} · ${fmtD(n.d)}</span></div><button class="btn btn-white btn-sm" type="button" data-walk="${n.friend}">Proposer une balade</button></div>`
-    :`<div class="nitem"><span class="nic ${n.sp==='cat'?'cat':''}">${n.sp==='cat'?'🐱':'🐶'}</span><div><b>${n.sp==='cat'?'Chat':'Chien'} · ${fmtD(n.d)}</b><span>Membre Noopie · position approximative</span></div><button class="btn btn-white btn-sm" type="button" data-wave>👋 Coucou</button></div>`).join('');
+    :`<div class="nitem"><span class="nic ${n.sp==='cat'?'cat':''}">${n.sp==='cat'?'🐱':'🐶'}</span><div><b>Noopie friend · ${fmtD(n.d)}</b><span>${n.sp==='cat'?'Un chat':'Un chien'} du quartier · position approximative</span></div><button class="btn btn-white btn-sm" type="button" data-wave>👋 Coucou</button></div>`).join('');
   // visibilité par animal
   const rows=pets.map(p=>{const v=ncfg.vis[p.id]||'all';return `<div class="visrow"><img src="${p.img}" alt=""><div><b>${p.name}</b><small>${VIS[v][2]}</small></div><div class="seg" role="group" aria-label="Qui peut voir ${p.name}">${Object.entries(VIS).map(([k,x])=>`<button type="button" data-vis="${p.id}" data-v="${k}" class="${k===v?'on':''}" aria-pressed="${k===v}">${x[0]} ${x[1]}</button>`).join('')}</div></div>`}).join('');
   $$('[data-vis-rows]').forEach(x=>x.innerHTML=rows);
@@ -970,7 +970,7 @@ function renderNear(){
   // carte statique (si la vraie carte ne charge pas)
   const lay=$('[data-nearlayer]');
   if(lay){const X=lng=>(lng-2.3700)/(2.3960-2.3700)*100,Yp=lat=>(48.8870-lat)/(48.8870-48.8740)*100;
-    lay.innerHTML=NEARD.filter(nearVisible).filter(n=>X(n.pos[0])>3&&X(n.pos[0])<97&&Yp(n.pos[1])>3&&Yp(n.pos[1])<97).map(n=>`<span class="near ${n.sp==='cat'?'cat':''} ${n.friend?'friend':''}" style="left:${X(n.pos[0]).toFixed(1)}%;top:${Yp(n.pos[1]).toFixed(1)}%"><i${n.friend?` style="background-image:url(${n.img})"`:''}></i><b>${n.friend||(n.sp==='cat'?'Chat':'Chien')} · ${fmtD(n.d)}</b></span>`).join('')}
+    lay.innerHTML=NEARD.filter(nearVisible).filter(n=>X(n.pos[0])>3&&X(n.pos[0])<97&&Yp(n.pos[1])>3&&Yp(n.pos[1])<97).map(n=>`<span class="near ${n.sp==='cat'?'cat':''} ${n.friend?'friend':''}" style="left:${X(n.pos[0]).toFixed(1)}%;top:${Yp(n.pos[1]).toFixed(1)}%"><i${n.friend?` style="background-image:url(${n.img})"`:''}></i><b>${n.friend||'Noopie friend'} · ${fmtD(n.d)}</b></span>`).join('')}
   const nbt=$('[data-near]'); if(nbt) nbt.classList.toggle('off',!ncfg.show);
   const m=$('#bigmap')&&$('#bigmap')._np; if(m&&m.setNear) m.setNear({show:ncfg.show&&premium,radius:ncfg.r,dog:ncfg.dog,cat:ncfg.cat,friends:ncfg.fr});
 }
@@ -1110,7 +1110,7 @@ boot();
 })();
 </script>
 <script src="refs/vendor/maplibre/maplibre-gl.js"></script>
-<script src="refs/noopie-map.js"></script>
+<script src="refs/noopie-map.js?v=2"></script>
 <script src="refs/noopie-share.js"></script>
 </body>
 </html>
