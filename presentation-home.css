@@ -938,3 +938,35 @@ body {
 .np-ios-end { margin-top: 18px; }
 .np-ios-end i { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; background: #FF3B30; }
 .np-ios-end svg { width: 22px; height: 22px; color: #fff; transform: rotate(135deg); }
+
+/* v6 : étape 1 « Il scanne » — iPhone en mode appareil photo, 3 téléphones de même taille */
+.np-lost-visual { height: 420px; align-items: flex-end; }
+.np-cam-screen { background: #000; padding: 0; color: #fff; font-family: -apple-system, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif; }
+.np-cam-view { position: absolute; left: 0; right: 0; top: 40px; width: 100%; height: calc(100% - 128px); object-fit: cover; object-position: 50% 62%; }
+.np-cam-top { position: absolute; top: 0; left: 0; right: 0; height: 40px; background: #000; }
+.np-cam-top i { position: absolute; top: 24px; right: 14px; width: 6px; height: 6px; border-radius: 50%; background: #34C759; }
+.np-cam-qr { position: absolute; left: 50%; top: calc(40px + (100% - 168px) * .66); width: 74px; height: 74px; transform: translate(-50%, -50%); }
+.np-cam-qr i { position: absolute; width: 16px; height: 16px; border: 3px solid #FFD60A; }
+.np-cam-qr i:nth-child(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; border-radius: 6px 0 0 0; }
+.np-cam-qr i:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; border-radius: 0 6px 0 0; }
+.np-cam-qr i:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; border-radius: 0 0 0 6px; }
+.np-cam-qr i:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; border-radius: 0 0 6px 0; }
+.np-cam-link { position: absolute; left: 50%; bottom: 98px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; white-space: nowrap; background: #FFD60A; color: #1C1C1E; border-radius: 99px; padding: 5px 11px 5px 6px; box-shadow: 0 4px 12px rgba(0,0,0,.35); animation: npLinkIn 3.5s ease-in-out infinite; }
+.np-cam-link svg { width: 18px; height: 18px; flex: none; }
+.np-cam-link > span { display: flex; flex-direction: column; line-height: 1.15; font-size: 8.5px; font-weight: 500; }
+.np-cam-link b { font-size: 10px; font-weight: 700; }
+.np-cam-link span span { display: inline; }
+@keyframes npLinkIn { 0%, 12% { opacity: 0; transform: translate(-50%, 6px); } 22%, 100% { opacity: 1; transform: translate(-50%, 0); } }
+.np-cam-bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 88px; background: #000; display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 8px; }
+.np-cam-modes { display: flex; gap: 12px; font-size: 8px; letter-spacing: .04em; color: rgba(255,255,255,.7); }
+.np-cam-modes b { color: #FFD60A; font-weight: 600; }
+.np-cam-ctrl { width: 100%; display: flex; align-items: center; justify-content: space-around; padding: 0 14px; }
+.np-cam-thumb { width: 26px; height: 26px; border-radius: 6px; background: #3A3A3C; border: 1px solid rgba(255,255,255,.25); }
+.np-cam-shutter { width: 46px; height: 46px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px #000, 0 0 0 5px #fff; }
+.np-cam-flip { width: 26px; height: 26px; border-radius: 50%; background: #3A3A3C; }
+@media (prefers-reduced-motion: reduce) { .np-cam-link { animation: none; } }
+.np-cam-link, .np-cam-link * { white-space: nowrap; }
+.np-cam-link { animation: npLinkIn .6s ease-out both; }
+@keyframes npLinkIn { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.np-cam-link > span { display: block; text-align: left; }
+.np-cam-link b { display: block; }
