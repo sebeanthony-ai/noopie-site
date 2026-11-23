@@ -1425,3 +1425,23 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-use-phone .np-ap-avatar-pin, .np-app3 .np-ap-avatar-pin { left: 87%; top: 31%; }
 /* hero : phrase d'accroche supprimée */
 #top p.text-ink-2 { display: none; }
+
+/* v11 : nouvelles fonctionnalités dans la section app */
+.np-a3-bento .np-a3-tile:last-child { grid-column: auto; display: flex; grid-template-columns: none; }
+.np-a3-bento .np-a3-tile:last-child .np-a3-avs { margin-top: auto; }
+.np-a3-near { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: #7FA6E8; border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(127,166,232,.25); }
+.np-a3-badges { margin-top: auto; padding-top: 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+.np-a3-badges span { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 22px; background: #FFF7E0; border-radius: 14px; padding: 8px 10px; min-width: 76px; }
+.np-a3-badges b { font-size: 11px; font-family: "DM Sans", sans-serif; color: rgb(38,33,28); }
+.np-a3-poster { margin-top: auto; align-self: flex-start; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid #E5484D; border-radius: 14px; padding: 8px 14px; background: #fff; transform: rotate(-3deg); box-shadow: 0 10px 22px rgba(0,0,0,.08); }
+.np-a3-poster b { font-family: Fredoka, sans-serif; color: #E5484D; font-size: 18px; letter-spacing: .04em; }
+.np-a3-poster img { width: 54px; height: 54px; border-radius: 50%; }
+.np-a3-poster span { font-size: 11px; font-weight: 800; color: rgb(38,33,28); }
+.np-a3-light { margin-top: auto; display: flex; align-items: center; gap: 10px; background: #0E1F45; color: #fff; border-radius: 14px; padding: 12px 14px; }
+.np-a3-light b { flex: 1; font-size: 13px; } .np-a3-light em { font-style: normal; font-size: 11px; color: #FFD873; }
+.np-a3-glowdot { width: 18px; height: 18px; border-radius: 50%; background: #FFD873; box-shadow: 0 0 0 0 rgba(255,216,115,.7); animation: npGlow 1s ease-in-out infinite; }
+@keyframes npGlow { 50% { box-shadow: 0 0 0 10px rgba(255,216,115,0); opacity: .5; } }
+@media (prefers-reduced-motion: reduce) { .np-a3-glowdot { animation: none; } }
+.np-a3-bento .np-a3-tile:last-child { flex-direction: column; text-align: left; align-items: stretch; }
+.np-a3-bento .np-a3-tile:last-child .np-a3-ico { align-self: flex-start; }
+.np-a3-bento .np-a3-tile:last-child h3 { margin: 14px 0 6px; }

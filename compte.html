@@ -180,7 +180,46 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
 .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap}
 .range{width:100%;accent-color:var(--blue)}
 
-@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))} .g-dash,.g-3{grid-template-columns:minmax(0,1fr)}}
+
+.nearlayer{position:absolute;inset:0;pointer-events:none;transition:opacity .3s}
+.nearlayer.off{opacity:0}
+.near{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px}
+.near i{width:16px;height:16px;border-radius:50%;background:#7FA6E8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(127,166,232,.25)}
+.near b{font-size:10.5px;background:rgba(255,255,255,.92);border-radius:99px;padding:1px 7px;white-space:nowrap}
+.map-ctrl button.on-near{background:#EAF1FE;color:var(--blue)} .map-ctrl button.on-near.off{background:#fff;color:var(--ink)}
+.kv{margin:0;display:grid;gap:8px} .kv div{display:flex;justify-content:space-between;gap:10px;background:var(--soft);border-radius:12px;padding:8px 12px} .kv dt{font-weight:800;color:var(--muted);font-size:13px} .kv dd{margin:0;font-weight:800;text-align:right}
+.spark{height:90px;display:flex;align-items:flex-end;gap:6px}
+.spark i{flex:1;border-radius:6px 6px 0 0;background:#DCE8FD}
+.spark i:last-child{background:var(--blue)}
+.bars{height:220px;display:flex;align-items:flex-end;gap:10px;padding-top:10px}
+.bars div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.bars i{width:100%;max-width:44px;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#5B9BFF,#1F6FEB)}
+.bars b{font-size:11px;color:var(--muted)} .bars em{font-style:normal;font-size:11px;font-weight:800}
+.badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bdg{text-align:center;padding:12px 6px;border-radius:14px;background:var(--soft);opacity:.45;filter:grayscale(1)}
+.bdg.on{opacity:1;filter:none;background:#FFF7E0}
+.bdg span{font-size:26px;display:block} .bdg b{display:block;font-size:13.5px} .bdg small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.lostcard{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:var(--soft);flex-wrap:wrap}
+.lostcard + .lostcard{margin-top:10px}
+.lostcard img{width:60px;height:60px;border-radius:50%;object-fit:cover}
+.lostcard > div{flex:1;min-width:160px} .lostcard b{display:block} .lostcard .muted{display:block;font-size:13px}
+.acts2{display:flex;gap:8px;flex:0 0 auto!important;min-width:0!important}
+.mini-sel{font:inherit;font-weight:800;font-size:13px;border:1.5px solid var(--line);border-radius:10px;padding:5px 8px;margin-left:auto}
+.plan{position:relative}
+.plan h3{margin:0;font-size:24px;color:var(--blue-2)}
+.plan ul{list-style:none;padding:0;margin:14px 0 16px;display:grid;gap:8px}
+.plan li{padding-left:26px;position:relative;font-weight:800}
+.plan li::before{content:"✓";position:absolute;left:0;width:18px;height:18px;border-radius:50%;background:#EAF1FE;color:var(--blue);font-size:11px;display:grid;place-items:center;top:2px}
+.plan-pro{box-shadow:0 0 0 2px var(--blue),0 16px 36px rgba(31,111,235,.16)}
+.ribbon{position:absolute;top:16px;right:16px;background:var(--blue);color:#fff;font-size:12px;font-weight:800;border-radius:99px;padding:3px 10px}
+.poster{background:#fff;border:3px solid var(--red);border-radius:16px;padding:16px;text-align:center}
+.poster h4{margin:0;font-family:Fredoka,sans-serif;font-size:34px;color:var(--red);letter-spacing:.02em}
+.poster img.ph{width:150px;height:150px;border-radius:50%;object-fit:cover;margin:8px auto;display:block;border:4px solid #FDECEC}
+.poster b{font-family:Fredoka,sans-serif;font-size:24px;color:var(--ink)}
+.poster p{margin:4px 0;font-weight:700}
+.poster .tel{font-family:Fredoka,sans-serif;font-size:22px;color:var(--blue-2)}
+.poster .qr{width:70px;height:70px;margin:6px auto 0;display:block}
+@media (max-width:1100px){.badges{grid-template-columns:repeat(2,minmax(0,1fr))} .kpis{grid-template-columns:repeat(2,minmax(0,1fr))} .g-dash,.g-3{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:860px){
   .auth{grid-template-columns:minmax(0,1fr)} .auth-side{display:none}
   .app{grid-template-columns:minmax(0,1fr)}
@@ -254,11 +293,15 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
       <a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg><span>Accueil</span></a>
       <a href="#carte" data-v="carte"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg><span>Carte</span></a>
       <a href="#animaux" data-v="animaux"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><ellipse cx="6.5" cy="10" rx="2" ry="2.6"/><ellipse cx="10" cy="6.5" rx="2" ry="2.6"/><ellipse cx="14" cy="6.5" rx="2" ry="2.6"/><ellipse cx="17.5" cy="10" rx="2" ry="2.6"/><path d="M12 11c-3 0-5.5 2.6-5.5 5 0 2 2 2.6 3.6 2.2.7-.2 1.2-.5 1.9-.5s1.2.3 1.9.5c1.6.4 3.6-.2 3.6-2.2 0-2.4-2.5-5-5.5-5z"/></g></svg><span>Animaux</span></a>
+      <a href="#sante" data-v="sante" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4.5-2.6-8-6-8-10.2A4.8 4.8 0 0 1 12 7a4.8 4.8 0 0 1 8 3.8C20 15 16.5 18.4 12 21z" fill="currentColor"/><path d="M7 12h2.5l1.5-3 2 6 1.5-3H17" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Santé</span></a>
+      <a href="#activite" data-v="activite" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Activité</span></a>
+      <a href="#communaute" data-v="communaute" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".3"/></svg><span>Communauté</span></a>
       <a href="#alertes" data-v="alertes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6z" fill="currentColor"/><path d="M10 19a2 2 0 0 0 4 0" fill="currentColor"/></svg><span>Alertes</span><b class="badge" id="badge">2</b></a>
       <a href="#medaillons" data-v="medaillons" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="7" fill="currentColor"/><circle cx="12" cy="4.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Médaillons</span></a>
       <a href="#zones" data-v="zones" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>Zones</span></a>
       <a href="#partage" data-v="partage" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5" fill="currentColor"/><path d="M2.5 20c.7-3.5 3.4-5.5 6.5-5.5s5.8 2 6.5 5.5z" fill="currentColor"/><circle cx="17" cy="9" r="2.6" fill="currentColor" opacity=".6"/><path d="M15.5 14.6c3 .1 5.3 2 6 5.4h-4.4" fill="currentColor" opacity=".6"/></svg><span>Partage</span></a>
       <a href="#commandes" data-v="commandes" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z" fill="currentColor"/><path d="M3 7l9 4 9-4M12 11v10" stroke="#fff" stroke-width="1.5" fill="none"/></svg><span>Commandes</span></a>
+      <a href="#premium" data-v="premium" class="hide-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="currentColor"/></svg><span>Premium</span></a>
       <a href="#parametres" data-v="parametres"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c1-4.2 4.4-6.5 8-6.5s7 2.3 8 6.5z" fill="currentColor"/></svg><span>Compte</span></a>
     </nav>
     <div class="side-foot">
@@ -273,7 +316,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
     <!-- ACCUEIL -->
     <section data-view="accueil">
       <div class="topbar"><div><h1>Bonjour <span data-first>Marie</span> 👋</h1><p>Voici ce qui se passe aujourd’hui avec vos compagnons.</p></div><a class="btn btn-blue" href="#carte">Voir la carte</a></div>
-      <div class="lostbanner" data-lost-banner hidden><span><b>Mode perdu activé pour Nougat.</b> Sa fiche publique affiche « Je suis perdu ».</span><button class="btn btn-red btn-sm" type="button" data-lost-off>Nougat est retrouvé</button></div>
+      <div class="lostbanner" data-lost-banner hidden><span><b>Mode perdu activé pour Nougat.</b> Sa fiche affiche « Je suis perdu », la recherche intensive est lancée et <b style="color:inherit">les membres Noopie du quartier ont été prévenus.</b></span><span style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-white btn-sm" type="button" data-poster>Créer l’affiche « Perdu »</button><button class="btn btn-red btn-sm" type="button" data-lost-off>Il est retrouvé</button></span></div>
       <div class="kpis">
         <div class="card kpi"><small>Animaux suivis</small><b>2</b><span>● Tous connectés</span></div>
         <div class="card kpi"><small>Balade du jour</small><b>2,4 km</b><span>48 min avec Nougat</span></div>
@@ -302,6 +345,8 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
             <a class="btn btn-white" href="#zones">Créer une zone</a>
             <a class="btn btn-white" href="#partage">Inviter un proche</a>
             <a class="btn btn-white" href="./commander.html">Commander un médaillon</a>
+            <button class="btn btn-white" type="button" data-poster>Affiche « Perdu »</button>
+            <a class="btn btn-white" href="#sante">Carnet de santé</a>
           </div>
         </div>
       </div>
@@ -311,8 +356,8 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
     <section data-view="carte" hidden>
       <div class="topbar"><div><h1>Carte</h1><p>Position en direct et trajets du jour.</p></div><span class="chip chip-ok"><i></i>Mise à jour il y a 1 min</span></div>
       <div class="card" style="padding:12px">
-        <div class="map map-lg" id="bigmap">
-          <div class="map-ctrl"><button class="on" data-pet="dog">Nougat</button><button data-pet="cat">Ziggy</button><button data-pet="all">Tous</button></div>
+        <div class="map map-lg" id="bigmap"><div class="nearlayer" data-nearlayer><span class="near" style="left:58%;top:62%"><i></i><b>Chien · 120 m</b></span><span class="near" style="left:22%;top:74%"><i></i><b>Chat · 300 m</b></span><span class="near" style="left:88%;top:58%"><i></i><b>Chien · 210 m</b></span><span class="near" style="left:64%;top:14%"><i></i><b>Chien · 400 m</b></span></div>
+          <div class="map-ctrl"><button class="on" data-pet="dog">Nougat</button><button data-pet="cat">Ziggy</button><button data-pet="all">Tous</button><button data-near class="on-near">Noopie à proximité</button></div>
           <div class="zone-ring" style="left:14%;top:18%;width:36%;aspect-ratio:1"><span>Maison · 150 m</span></div>
           <button class="pin" data-pin="dog" style="left:78%;top:28%" aria-label="Nougat"><img src="refs/portrait-dog.jpg" alt=""></button>
           <button class="pin cat" data-pin="cat" style="left:32%;top:40%" aria-label="Ziggy"><img src="refs/portrait-cat.jpg" alt=""></button>
@@ -324,6 +369,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
         <div class="card kpi"><small>Temps de sortie</small><b data-mk="time">48 min</b></div>
         <div class="card kpi"><small>Dans la zone Maison</small><b data-mk="zone">Non</b></div>
       </div>
+      <div class="card" style="margin-top:16px"><div class="ttl"><h3>Noopie à proximité</h3><span class="chip chip-blue">4 dans un rayon de 500 m</span></div><p class="muted" style="margin:0 0 10px">Les autres animaux équipés d’un médaillon Noopie apparaissent de façon anonyme et approximative. Pratique pour croiser des copains de balade… et indispensable en cas d’alerte « animal perdu ».</p><div class="toggle"><div><b>Me rendre visible des Noopie proches</b><span>Position arrondie à ~100 m, sans nom ni photo</span></div><input class="sw" type="checkbox" checked aria-label="Visible"></div></div>
     </section>
 
     <!-- ANIMAUX -->
@@ -342,6 +388,8 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
           <div class="toggle"><div><b>Sa fiche est scannée</b><span>Quelqu’un a ouvert sa fiche publique</span></div><input class="sw" type="checkbox" checked aria-label="Fiche scannée"></div>
           <div class="toggle"><div><b>Il sort d’une zone</b><span>Maison, jardin, crèche…</span></div><input class="sw" type="checkbox" checked aria-label="Sortie de zone"></div>
           <div class="toggle"><div><b>Batterie faible</b><span>Sous 20 %</span></div><input class="sw" type="checkbox" checked aria-label="Batterie faible"></div>
+          <div class="toggle"><div><b>Un animal est perdu près de moi</b><span>Alertes communautaires du quartier</span></div><input class="sw" type="checkbox" checked aria-label="Animal perdu proche"></div>
+          <div class="toggle"><div><b>Rappels de santé</b><span>Vaccins, vermifuges, rendez-vous</span></div><input class="sw" type="checkbox" checked aria-label="Rappels santé"></div>
           <div class="toggle"><div><b>Par e-mail aussi</b><span>En plus des notifications</span></div><input class="sw" type="checkbox" aria-label="Par e-mail"></div>
         </div>
       </div>
@@ -355,6 +403,7 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
           <div class="medal-row"><img src="refs/med/face-bleu.webp?v=5" alt=""><div><b>Médaillon de Nougat</b><span class="muted">Bleu Noopie · NP-7Q4K</span></div><div class="r"><span class="chip chip-ok"><i></i>Connecté</span><span class="batt" style="--b:82%"><i></i>82 %</span></div></div>
           <div class="medal-row"><img src="refs/med/face-nude.webp?v=5" alt=""><div><b>Médaillon de Ziggy</b><span class="muted">Nude · NP-3M8T</span></div><div class="r"><span class="chip chip-ok"><i></i>Connecté</span><span class="batt" style="--b:64%"><i></i>64 %</span></div></div>
           <button class="btn btn-white full" type="button" style="margin-top:14px" data-pair>+ Associer un nouveau médaillon</button>
+          <div class="ttl" style="margin-top:20px"><h3>Le retrouver tout près</h3></div><div class="grid g-2"><button class="btn btn-white" type="button" data-toast="Le médaillon de Nougat clignote pendant 30 s">💡 Faire clignoter</button><button class="btn btn-white" type="button" data-toast="Le médaillon de Nougat émet un son pendant 10 s">🔊 Faire sonner</button></div><div class="toggle"><div><b>Mode recherche intensive</b><span>Position toutes les 10 s pendant une fugue (consomme plus de batterie)</span></div><input class="sw red" type="checkbox" data-intense aria-label="Recherche intensive"></div>
         </div>
         <div class="card">
           <div class="ttl"><h3>QR code de Nougat</h3></div>
@@ -392,6 +441,83 @@ h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif}
           <button class="btn btn-white full" type="button" data-toast="Contact de secours enregistré">Enregistrer</button>
         </div>
       </div>
+    </section>
+
+
+    <!-- SANTE -->
+    <section data-view="sante" hidden>
+      <div class="topbar"><div><h1>Carnet de santé</h1><p>Vaccins, traitements, vétérinaire et rappels au même endroit.</p></div><button class="btn btn-blue" type="button" data-add-care>+ Ajouter un soin</button></div>
+      <div class="map-ctrl" style="position:static;margin-bottom:14px" data-health-pick><button class="on" data-h="nougat">Nougat</button><button data-h="ziggy">Ziggy</button></div>
+      <div class="grid g-dash">
+        <div class="card"><div class="ttl"><h3>Prochains rappels</h3></div><div class="feed" data-reminders></div>
+          <div class="ttl" style="margin-top:18px"><h3>Historique</h3></div><div class="feed" data-care-hist></div></div>
+        <div class="grid" style="align-content:start">
+          <div class="card"><div class="ttl"><h3>Infos médicales</h3></div><dl class="kv" data-med-info></dl></div>
+          <div class="card"><div class="ttl"><h3>Vétérinaire</h3></div><div class="pet"><span class="ic ic-blue" style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:800">Dr</span><div><b>Clinique des Buttes</b><span class="meta">12 rue Manin · 01 42 00 00 00</span></div></div>
+            <div class="toggle"><div><b>Afficher le vétérinaire sur la fiche</b><span>Visible par la personne qui scanne</span></div><input class="sw" type="checkbox" aria-label="Vétérinaire public"></div></div>
+          <div class="card"><div class="ttl"><h3>Poids</h3><span class="chip chip-ok">Stable</span></div><div class="spark" data-weight></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITE -->
+    <section data-view="activite" hidden>
+      <div class="topbar"><div><h1>Activité</h1><p>Balades, jeu et repos de vos compagnons.</p></div><div class="map-ctrl" style="position:static" data-act-range><button class="on" data-r="sem">Semaine</button><button data-r="mois">Mois</button></div></div>
+      <div class="kpis">
+        <div class="card kpi"><small>Distance</small><b data-ak="d">14,8 km</b><span>+12 % vs semaine dernière</span></div>
+        <div class="card kpi"><small>Temps de balade</small><b data-ak="t">5 h 20</b><span>Objectif : 6 h</span></div>
+        <div class="card kpi"><small>Pas estimés</small><b data-ak="p">48 600</b><span>Moyenne 6 940 / jour</span></div>
+        <div class="card kpi"><small>Série en cours</small><b>7 jours</b><span>🔥 Record personnel</span></div>
+      </div>
+      <div class="grid g-dash">
+        <div class="card"><div class="ttl"><h3>Distance par jour</h3><span class="muted" style="font-size:13px">Nougat</span></div><div class="bars" data-bars></div></div>
+        <div class="card"><div class="ttl"><h3>Badges</h3></div><div class="badges">
+          <div class="bdg on"><span>🏅</span><b>100 km</b><small>parcourus ensemble</small></div>
+          <div class="bdg on"><span>🔥</span><b>7 jours</b><small>de balade d’affilée</small></div>
+          <div class="bdg on"><span>🌳</span><b>Explorateur</b><small>10 parcs visités</small></div>
+          <div class="bdg"><span>🌙</span><b>Noctambule</b><small>5 balades après 21 h</small></div>
+          <div class="bdg"><span>🏔️</span><b>500 km</b><small>parcourus ensemble</small></div>
+          <div class="bdg"><span>🤝</span><b>Super-voisin</b><small>aider à retrouver un animal</small></div>
+        </div></div>
+      </div>
+      <div class="card" style="margin-top:16px"><div class="ttl"><h3>Comportement</h3><span class="chip chip-ok">Normal</span></div>
+        <div class="toggle"><div><b>Me prévenir d’une activité inhabituelle</b><span>Beaucoup moins actif que d’habitude, sommeil agité…</span></div><input class="sw" type="checkbox" checked aria-label="Activité inhabituelle"></div></div>
+    </section>
+
+    <!-- COMMUNAUTE -->
+    <section data-view="communaute" hidden>
+      <div class="topbar"><div><h1>Communauté</h1><p>Les membres Noopie du quartier s’entraident.</p></div><span class="chip chip-blue">248 membres à moins de 2 km</span></div>
+      <div class="grid g-dash">
+        <div class="card"><div class="ttl"><h3>Animaux perdus près de chez vous</h3></div>
+          <div class="lostcard"><img src="avatars/dog-05-beagle.jpg" alt=""><div><b>Pixel · Beagle</b><span class="muted">Perdu il y a 35 min · 650 m · Rue de Belleville</span><span class="chip chip-red" style="margin-top:6px"><i></i>Recherché</span></div><div class="acts2"><button class="btn btn-blue btn-sm" type="button" data-toast="Merci ! Le propriétaire de Pixel est prévenu que vous l’avez vu">Je l’ai vu</button><button class="btn btn-white btn-sm" type="button" data-toast="Démonstration : partage non envoyé">Partager</button></div></div>
+          <div class="lostcard"><img src="avatars/cat-06-ragdoll.jpg" alt="" onerror="this.src='refs/portrait-cat.jpg'"><div><b>Neige · Ragdoll</b><span class="muted">Retrouvée hier grâce à 3 voisins Noopie</span><span class="chip chip-ok" style="margin-top:6px"><i></i>Retrouvée 🎉</span></div></div>
+          <div class="toggle" style="margin-top:8px"><div><b>Recevoir les alertes « animal perdu » du quartier</b><span>Dans un rayon de</span></div><select class="mini-sel" aria-label="Rayon"><option>500 m</option><option selected>1 km</option><option>2 km</option></select><input class="sw" type="checkbox" checked aria-label="Alertes quartier"></div>
+        </div>
+        <div class="grid" style="align-content:start">
+          <div class="card"><div class="ttl"><h3>Lieux adaptés aux animaux</h3></div>
+            <div class="feed">
+              <div class="ev"><span class="ic ic-green">🌳</span><div><b>Parc des Buttes-Chaumont</b><span>Chiens en laisse · 300 m</span></div></div>
+              <div class="ev"><span class="ic ic-red">✚</span><div><b>Clinique vétérinaire de garde</b><span>Ouverte 24 h/24 · 1,2 km</span></div></div>
+              <div class="ev"><span class="ic ic-gold">☕</span><div><b>Café Le Chien Qui Fume</b><span>Animaux acceptés · 450 m</span></div></div>
+              <div class="ev"><span class="ic ic-blue">🐕</span><div><b>Espace canin Belleville</b><span>Liberté sans laisse · 800 m</span></div></div>
+            </div></div>
+          <div class="card"><div class="ttl"><h3>Profil public de Nougat</h3></div><p class="muted" style="margin:0 0 10px">Une page à partager avec photos, badges et balades préférées.</p>
+            <div class="toggle"><div><b>Profil public</b><span>noopie.fr/nougat</span></div><input class="sw" type="checkbox" aria-label="Profil public"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section data-view="premium" hidden>
+      <div class="topbar"><div><h1>Noopie Premium</h1><p>Pour ceux qui veulent tout, tout le temps.</p></div></div>
+      <div class="grid g-2 plans">
+        <div class="card plan"><h3>Essentiel</h3><p class="muted">Inclus avec le médaillon</p><ul>
+          <li>Position en direct</li><li>Fiche par QR code</li><li>Alertes médaillon détaché</li><li>Mode perdu</li><li>1 zone de sécurité</li><li>Historique 24 h</li></ul><span class="chip chip-ok">Votre formule</span></div>
+        <div class="card plan plan-pro"><span class="ribbon">Recommandé</span><h3>Premium</h3><p class="muted">Prix à définir</p><ul>
+          <li>Tout Essentiel</li><li>Alertes communautaires du quartier</li><li>Mode recherche intensive</li><li>Zones illimitées</li><li>Historique et statistiques illimités</li><li>Partage familial et pet-sitter</li><li>Carnet de santé avec rappels</li><li>Affiche « Perdu » en un clic</li></ul>
+          <button class="btn btn-blue full" type="button" data-toast="Démonstration : l’abonnement ouvrira avec les ventes">Passer à Premium</button></div>
+      </div>
+      <div class="card" style="margin-top:16px"><div class="ttl"><h3>Assurance santé animale</h3><span class="chip chip-gold">Bientôt</span></div><p class="muted" style="margin:0">Une assurance proposée avec un partenaire, directement depuis l’app. Les conditions seront précisées au lancement.</p></div>
     </section>
 
     <!-- COMMANDES -->
@@ -493,12 +619,12 @@ function render(){
   bind();
 }
 function bind(){
-  $$('[data-togglelost]').forEach(b=>b.onclick=()=>{const p=pets.find(x=>x.id===b.dataset.togglelost);p.lost=!p.lost;save();render();toast(p.lost?`Mode perdu activé pour ${p.name}`:`${p.name} est en sécurité`)});
+  $$('[data-togglelost]').forEach(b=>b.onclick=()=>{const p=pets.find(x=>x.id===b.dataset.togglelost);p.lost=!p.lost;save();render();toast(p.lost?`Mode perdu activé : les membres Noopie du quartier sont prévenus`:`${p.name} est en sécurité`)});
   $$('[data-add-pet]').forEach(b=>b.onclick=addPet);
   $$('[data-edit]').forEach(b=>b.onclick=()=>editPet(b.dataset.edit));
   $$('[data-rm]').forEach(b=>b.onclick=()=>{const p=people.splice(+b.dataset.rm,1)[0];save();render();toast(`${p.n} n’a plus accès`)});
 }
-$$('[data-lost-on]').forEach(b=>b.onclick=()=>{pets[0].lost=true;save();render();toast('Mode perdu activé pour Nougat')});
+$$('[data-lost-on]').forEach(b=>b.onclick=()=>{pets[0].lost=true;save();render();toast('Mode perdu activé : les membres Noopie du quartier sont prévenus')});
 $$('[data-lost-off]').forEach(b=>b.onclick=()=>{pets.forEach(p=>p.lost=false);save();render();toast('Bonne nouvelle ! Signalement clos')});
 $('[data-read-all]').onclick=()=>{alerts.forEach(a=>a.u=false);save();render();toast('Toutes les alertes sont lues')};
 $$('[data-toast]').forEach(b=>b.onclick=()=>toast(b.dataset.toast));
@@ -521,6 +647,27 @@ $('[data-add-zone]').onclick=()=>modal('Nouvelle zone',fld('zn','Nom','','Ex. Cr
 $('#zr').oninput=e=>{$('#zrv').textContent=e.target.value;const w=20+e.target.value/500*45;const r=$('[data-ring]');r.style.width=w+'%';r.style.left=(42-w/2+2)+'%';r.style.top=(38-w/2*1.0+10)+'%';$('[data-ring-lbl]').textContent=`${$('#zname').value||'Zone'} · ${e.target.value} m`};
 $('[data-save-zone]').onclick=()=>toast('Zone enregistrée');
 
+
+/* --- nouvelles fonctions --- */
+const nb=$('[data-near]');if(nb)nb.onclick=()=>{const l=$('[data-nearlayer]');l.classList.toggle('off');nb.classList.toggle('off')};
+$('[data-intense]').onchange=e=>toast(e.target.checked?'Recherche intensive activée : position toutes les 10 s':'Recherche intensive désactivée');
+function poster(){const p=pets.find(x=>x.lost)||pets[0];modal('Affiche « Perdu »',`<div class="poster"><h4>PERDU</h4><img class="ph" src="${p.img}" alt=""><b>${p.name}</b><p>${p.sp}</p><p>${p.car}</p><p>Vu pour la dernière fois : Parc des Buttes-Chaumont</p><p class="tel">06 12 34 56 78</p><img class="qr" src="refs/med/qr-disc.png" alt=""><p class="muted" style="font-size:12px">Scannez pour ouvrir sa fiche</p></div>`,()=>toast('Démonstration : téléchargement non disponible ici'),'Télécharger en PDF')}
+$$('[data-poster]').forEach(b=>b.onclick=poster);
+const HEALTH={nougat:{rem:[['ic-gold','💉','Rappel vaccin CHPPiL','Dans 12 jours · 5 déc.'],['ic-blue','💊','Vermifuge','Dans 3 semaines'],['ic-green','✂️','Toilettage','Dans 1 mois']],hist:[['ic-green','✓','Vaccin rage','Fait le 2 mars'],['ic-green','✓','Contrôle annuel','Fait le 14 janv. · RAS']],info:[['Puce','250 26 000 000 000'],['Allergie','Poulet'],['Groupe sanguin','DEA 1.1 −'],['Stérilisé','Non']],w:[28,28.4,28.9,29.1,29,29.2]},
+ ziggy:{rem:[['ic-gold','💉','Rappel vaccin typhus','Dans 2 mois'],['ic-blue','💊','Antipuces','Dans 9 jours']],hist:[['ic-green','✓','Stérilisation','Faite le 8 juin'],['ic-green','✓','Vaccin typhus','Fait le 20 janv.']],info:[['Puce','250 26 000 000 001'],['Allergie','Aucune'],['Groupe sanguin','A'],['Stérilisé','Oui']],w:[4.1,4.3,4.4,4.5,4.5,4.6]}};
+let hpet='nougat';
+function health(){const h=HEALTH[hpet];const row=r=>`<div class="ev"><span class="ic ${r[0]}">${r[1]}</span><div><b>${r[2]}</b><span>${r[3]}</span></div></div>`;
+ $('[data-reminders]').innerHTML=h.rem.map(row).join('');$('[data-care-hist]').innerHTML=h.hist.map(row).join('');
+ $('[data-med-info]').innerHTML=h.info.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+ const mx=Math.max(...h.w),mn=Math.min(...h.w)*0.95;$('[data-weight]').innerHTML=h.w.map(v=>`<i style="height:${20+(v-mn)/(mx-mn)*70}%" title="${v} kg"></i>`).join('')+`<b style="margin-left:8px;font-family:Fredoka;font-size:22px;color:var(--blue-2)">${h.w.at(-1)} kg</b>`;
+ $$('[data-h]').forEach(b=>b.classList.toggle('on',b.dataset.h===hpet))}
+$$('[data-h]').forEach(b=>b.onclick=()=>{hpet=b.dataset.h;health()});
+$('[data-add-care]').onclick=()=>modal('Ajouter un soin',fld('cn','Soin','','Ex. Vaccin, vermifuge…')+fld('cd','Date','','Ex. 12 déc.')+`<div class="toggle"><div><b>Me rappeler</b><span>3 jours avant</span></div><input class="sw" type="checkbox" checked aria-label="Rappel"></div>`,()=>{const n=$('#cn').value.trim();if(!n){$('#cn').focus();return false}HEALTH[hpet].rem.unshift(['ic-blue','🗓️',n,$('#cd').value||'Bientôt']);health();toast('Soin ajouté avec rappel')},'Ajouter');
+const ACT={sem:{d:'14,8 km',t:'5 h 20',p:'48 600',v:[1.8,2.6,1.2,2.9,2.1,2.4,1.8],l:['L','M','M','J','V','S','D']},mois:{d:'61,3 km',t:'22 h 40',p:'201 000',v:[13.2,15.6,17.7,14.8],l:['S1','S2','S3','S4']}};
+function act(r){const a=ACT[r];$('[data-ak=d]').textContent=a.d;$('[data-ak=t]').textContent=a.t;$('[data-ak=p]').textContent=a.p;const mx=Math.max(...a.v);
+ $('[data-bars]').innerHTML=a.v.map((v,i)=>`<div><em>${String(v).replace('.',',')}</em><i style="height:${v/mx*80}%"></i><b>${a.l[i]}</b></div>`).join('');$$('[data-r]').forEach(b=>b.classList.toggle('on',b.dataset.r===r))}
+$$('[data-r]').forEach(b=>b.onclick=()=>act(b.dataset.r));
+health();act('sem');
 /* map */
 const PD={dog:{n:'Nougat',img:'refs/portrait-dog.jpg',w:'Parc des Buttes-Chaumont · il y a 1 min',d:'2,4 km',t:'48 min',z:'Non'},cat:{n:'Ziggy',img:'refs/portrait-cat.jpg',w:'À la maison · il y a 3 min',d:'0,3 km',t:'12 min',z:'Oui'}};
 function showPet(k){const p=PD[k==='all'?'dog':k];$('#mapcard').innerHTML=`<img class="av" src="${p.img}" alt=""><div><b>${p.n}</b><span class="muted" style="font-size:13px">${p.w}</span></div><span class="chip chip-ok" style="margin-left:auto"><i></i>En direct</span>`;
@@ -529,7 +676,7 @@ function showPet(k){const p=PD[k==='all'?'dog':k];$('#mapcard').innerHTML=`<img 
 $$('.map-ctrl button').forEach(b=>b.onclick=()=>showPet(b.dataset.pet));$$('[data-pin]').forEach(b=>b.onclick=()=>showPet(b.dataset.pin));
 
 /* routing */
-const VIEWS=['accueil','carte','animaux','alertes','medaillons','zones','partage','commandes','parametres'];
+const VIEWS=['accueil','carte','animaux','sante','activite','communaute','premium','alertes','medaillons','zones','partage','commandes','parametres'];
 function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'accueil';
   $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v);$$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
   if(v==='alertes'){setTimeout(()=>{alerts.forEach(a=>a.u=false);save();render()},1500)}
