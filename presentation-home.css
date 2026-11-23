@@ -1416,3 +1416,10 @@ main :is(p, li, dd, figcaption span, summary, .np-med-feat div span, .np-med-col
 .np-u-zone { top: 30%; width: 140px; height: 140px; margin: -70px 0 0 -70px; }
 .np-u-zpin { top: 30%; }
 @media (max-width: 900px) { .np-use-visual { position: relative; top: auto; } }
+.np-u-scan { background: radial-gradient(circle at 50% 40%, #3a3f47, #15171b); }
+.np-u-scan img { width: 64%; height: 64%; border-radius: 10px; object-fit: contain; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35)); }
+.np-u-row { grid-template-columns: .8fr 1.2fr; }
+.np-u-row .np-u-field { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.np-use-phone .np-ap-screen--live, .np-app3 .np-ap-screen--live { background-position: 62% 0; }
+.np-use-phone .np-ap-avatar-pin, .np-app3 .np-ap-avatar-pin { left: 58%; }
+.np-use-phone .np-ap-avatar-pin, .np-app3 .np-ap-avatar-pin { left: 87%; top: 31%; }
