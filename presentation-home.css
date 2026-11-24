@@ -1625,3 +1625,8 @@ header #menu-mobile a[href="./compte.html"], header #menu-mobile a[href="./compt
 @media (max-width: 560px) { #app .np-f6-c h3 { font-size: 18px; } }
 .np-st b, .np-st small { white-space: nowrap; }
 @media (max-width: 420px) { .np-st { gap: 8px; padding: 9px 12px 9px 10px; } .np-st svg { width: 22px; height: 22px; } .np-st b { font-size: 15px; } }
+
+/* v4.4 — En-tête stable quand on change de langue : largeurs fixes des boutons */
+header .np-hd-cta { min-width: 137px; justify-content: center; text-align: center; }
+header .np-hd-login { min-width: 166px; justify-content: center; text-align: center; }
+header .np-lang { width: 83px; justify-content: center; }
