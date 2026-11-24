@@ -1645,3 +1645,7 @@ header .np-lang { width: 92px; }
   font-family: "DM Sans", system-ui, sans-serif !important; font-weight: 800; letter-spacing: -.02em;
 }
 .np-use-n { letter-spacing: 0; }
+
+/* v4.8 — Ziggy triste en bas à droite de la carte « Médaillon seul » */
+.np-pm-card .np-pm-cat { position: absolute; right: 14px; bottom: 14px; width: min(230px, 42%); height: auto; pointer-events: none; filter: drop-shadow(0 10px 14px rgba(16,24,40,.16)); }
+@media (max-width: 760px) { .np-pm-card .np-pm-cat { position: static; align-self: flex-end; width: 170px; margin: 8px -6px -8px 0; } }
