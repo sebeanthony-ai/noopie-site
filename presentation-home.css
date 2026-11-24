@@ -1595,3 +1595,13 @@ header nav[aria-label="Navigation principale"] a { font-family: "DM Sans", syste
 header nav[aria-label="Navigation principale"] a { font-weight: 600 !important; }
 /* v4.0 : accroche « le lien. » au surligneur jaune */
 [data-testid="tagline"] .np-hl { display: inline-block; background: #FFD25A; color: rgb(38, 33, 28); border-radius: .28em; padding: 0 .26em .06em; margin-left: .06em; transform: rotate(-2deg); box-shadow: 0 .12em .3em rgba(228, 165, 34, .25); }
+/* v4.1 : header — Tarifs, FAQ et bouton Commander */
+header .np-hd-cta { align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 99px; background: #1F6FEB; color: #fff; font-family: Fredoka, system-ui, sans-serif; font-weight: 600; font-size: 17px; text-decoration: none; white-space: nowrap; box-shadow: 0 10px 24px rgba(31,111,235,.32); }
+header .np-hd-cta:hover { background: #1A5FD6; }
+header .np-hd-login > a { background: #fff !important; color: #1A5FD6 !important; box-shadow: inset 0 0 0 2px rgba(31,111,235,.28) !important; padding-left: 18px !important; padding-right: 18px !important; }
+header .np-hd-login > a:hover { background: #F4F7FD !important; }
+#formules, #faq { scroll-margin-top: 24px; }
+@media (max-width: 1180px) { header nav[aria-label="Navigation principale"] a { font-size: 15px !important; padding-left: 7px; padding-right: 7px; } }
+
+@media (max-width: 1023px) { header nav[aria-label="Navigation principale"] { display: none !important; } header [data-testid="burger"] { display: inline-flex !important; } header #menu-mobile { display: block !important; } header .np-hd-login { display: none !important; } }
+header #menu-mobile a[href="./compte.html"], header #menu-mobile a[href="./compte.html"] * { color: #fff !important; }
