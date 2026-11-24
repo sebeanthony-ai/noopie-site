@@ -1629,7 +1629,7 @@ header #menu-mobile a[href="./compte.html"], header #menu-mobile a[href="./compt
 /* v4.4 — En-tête stable quand on change de langue : largeurs fixes des boutons */
 header .np-hd-cta { min-width: 137px; justify-content: center; text-align: center; }
 header .np-hd-login { min-width: 166px; justify-content: center; text-align: center; }
-header .np-lang { width: 83px; justify-content: center; }
+header .np-lang { width: 92px; }
 
 /* v4.5 — Étape 1 : médaillon 3D qui tourne à 360° (QR au dos), manille en acier poli */
 .np-3d-boot { display: none !important; }
@@ -1638,3 +1638,10 @@ header .np-lang { width: 83px; justify-content: center; }
 .np-how-media--tag .np3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; outline: none; }
 .np-how-media--tag .np3d canvas:active { cursor: grabbing; }
 .np-how-media--tag .np3d-hint { display: none; }
+
+/* v4.6 — Titres de cartes et encadrés en DM Sans (les grands titres de section restent en Fredoka) */
+#comment .np-how-step h3, .np-how-mini b, .np-lost-step h4, .np-med-feat b, .np-med-views figcaption b,
+.np-app-tab b, .np-a3-tile h3, .np-use-step b, .np-use-n, .np-why-t thead th, .np-pm-card h4 {
+  font-family: "DM Sans", system-ui, sans-serif !important; font-weight: 800; letter-spacing: -.02em;
+}
+.np-use-n { letter-spacing: 0; }
