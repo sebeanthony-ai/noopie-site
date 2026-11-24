@@ -1605,3 +1605,23 @@ header .np-hd-login > a:hover { background: #F4F7FD !important; }
 
 @media (max-width: 1023px) { header nav[aria-label="Navigation principale"] { display: none !important; } header [data-testid="burger"] { display: inline-flex !important; } header #menu-mobile { display: block !important; } header .np-hd-login { display: none !important; } }
 header #menu-mobile a[href="./compte.html"], header #menu-mobile a[href="./compte.html"] * { color: #fff !important; }
+
+/* v4.2 — Application : badges « Bientôt sur l'App Store / Google Play » à la place des deux boutons */
+.np-st-wrap { margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.np-st-lab { display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 "DM Sans", system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #1F6FEB; background: #EAF2FF; padding: 7px 12px; border-radius: 99px; }
+.np-st-lab::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #1F6FEB; box-shadow: 0 0 0 3px rgba(31,111,235,.18); }
+.np-st-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.np-st { display: inline-flex; align-items: center; gap: 10px; min-width: 176px; padding: 10px 18px 10px 14px; border-radius: 14px; background: #0B0B0F; color: #fff; text-align: left; cursor: default; user-select: none; box-shadow: 0 8px 20px rgba(11,11,15,.14); }
+.np-st svg { width: 26px; height: 26px; flex: none; }
+.np-st > span { display: flex; flex-direction: column; gap: 2px; }
+.np-st small { font: 500 11px/1 "DM Sans", system-ui, sans-serif; color: rgba(255,255,255,.78); }
+.np-st b { font: 700 18px/1.05 "DM Sans", system-ui, sans-serif; letter-spacing: -.01em; color: #fff; }
+@media (max-width: 420px) { .np-st { min-width: 0; flex: 1 1 140px; padding: 9px 12px; } .np-st b { font-size: 16px; } }
+
+/* v4.3 — Fonctionnalités : sous-titre centré, titres des cartes en DM Sans */
+#app .np-why-head .np-q-p { margin-left: auto; margin-right: auto; text-align: center; }
+#app .np-f6-c h3 { font-family: "DM Sans", system-ui, sans-serif; font-weight: 800; letter-spacing: -.02em; font-size: 20px; line-height: 1.2; }
+#app .np-f6-c p { font-weight: 500; color: #4A4540; }
+@media (max-width: 560px) { #app .np-f6-c h3 { font-size: 18px; } }
+.np-st b, .np-st small { white-space: nowrap; }
+@media (max-width: 420px) { .np-st { gap: 8px; padding: 9px 12px 9px 10px; } .np-st svg { width: 22px; height: 22px; } .np-st b { font-size: 15px; } }
