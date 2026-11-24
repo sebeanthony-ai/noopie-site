@@ -74,33 +74,13 @@ async function create(host, opts = {}) {
     const hole = new THREE.Path(); hole.absarc(0, -108, 9, 0, Math.PI * 2, true); sh.holes.push(hole);
     const tab = extrude([sh], 14, 5, sil); tab.position.z = -0.125; medal.add(tab);
   }
-  { // Manille « lyre » en acier inoxydable poli, avec axe vissé (remplace l'anneau brisé)
-    const hy = 108 * S;               // centre du trou
-    const w = 0.25, h = 0.56, tube = 0.046;
-    // Profil en U évasé (forme lyre), dans le plan Y-Z, ouvert vers le bas où passe l'axe
-    class Lyre extends THREE.Curve {
-      getPoint(t, target = new THREE.Vector3()) {
-        const a = Math.PI * (1 - t);          // de π (gauche) à 0 (droite)
-        const z = Math.cos(a) * w * (1 + 0.18 * Math.sin(a) ** 2);
-        const y = Math.sin(a) * h;
-        return target.set(0, hy + 0.06 + y, z);
-      }
-    }
-    const bow = new THREE.Mesh(new THREE.TubeGeometry(new Lyre(), 160, tube, 28, false), polished);
-    medal.add(bow);
-    // Oreilles de la manille (petits anneaux qui reçoivent l'axe)
-    for (const s of [-1, 1]) {
-      const ear = new THREE.Mesh(new THREE.TorusGeometry(0.062, 0.028, 20, 48), polished);
-      ear.position.set(0, hy + 0.06, s * w); medal.add(ear);
-    }
-    // Axe qui traverse le trou du médaillon
-    const pin = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 2 * w + 0.14, 32), satin);
-    pin.rotation.x = Math.PI / 2; pin.position.set(0, hy + 0.06, 0); medal.add(pin);
-    // Tête de vis bombée d'un côté, embout de l'autre
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.075, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), polished);
-    head.rotation.x = Math.PI / 2; head.position.set(0, hy + 0.06, w + 0.07); medal.add(head);
-    const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.05, 32), satin);
-    cap.rotation.x = Math.PI / 2; cap.position.set(0, hy + 0.06, -w - 0.07); medal.add(cap);
+  { // Anneau rond plein en acier inoxydable poli miroir (version premium de l'anneau d'origine : plus épais, une seule boucle, sans spire visible)
+    const hy = 108 * S;
+    const ringM = new THREE.Mesh(new THREE.TorusGeometry(0.28, 0.05, 48, 160), polished);
+    ringM.position.set(0, hy + 0.25, 0); ringM.rotation.y = Math.PI / 2; medal.add(ringM);
+    // fin liseré satiné au centre du jonc pour accrocher la lumière
+    const band = new THREE.Mesh(new THREE.TorusGeometry(0.28, 0.0515, 8, 160, Math.PI * 2), satin);
+    band.scale.set(1, 1, 0.18); band.position.copy(ringM.position); band.rotation.y = Math.PI / 2; medal.add(band);
   }
   { // patte en relief (face)
     const paw = new THREE.Group();
