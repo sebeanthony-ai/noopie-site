@@ -109,7 +109,7 @@ body {
 #top > div[aria-hidden="true"]:first-child {
   height: clamp(230px, 27vw, 365px);
   background:
-    url("refs/hero-trail.svg?v=2") center bottom / cover no-repeat,
+    url("refs/hero-trail-anim.svg?v=1") center bottom / cover no-repeat,
     #fff;
 }
 #top > div[aria-hidden="true"]:first-child > svg { display: none; }
@@ -1593,3 +1593,5 @@ header nav[aria-label="Navigation principale"] a { font-family: "DM Sans", syste
 #faq h2 { font-family: "DM Sans", system-ui, sans-serif; font-weight: 800; color: rgb(38, 33, 28); letter-spacing: -0.02em; }
 /* v3.9 : onglets du header moins gras */
 header nav[aria-label="Navigation principale"] a { font-weight: 600 !important; }
+/* v4.0 : accroche « le lien. » au surligneur jaune */
+[data-testid="tagline"] .np-hl { display: inline-block; background: #FFD25A; color: rgb(38, 33, 28); border-radius: .28em; padding: 0 .26em .06em; margin-left: .06em; transform: rotate(-2deg); box-shadow: 0 .12em .3em rgba(228, 165, 34, .25); }
