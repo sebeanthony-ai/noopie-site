@@ -425,8 +425,18 @@ h1,h2,h3,h4,.f{font-weight:800;letter-spacing:-.02em}
 .btn{font-weight:700;letter-spacing:-.005em}
 .kpi b{font-weight:800;letter-spacing:-.02em}
 @media (prefers-reduced-motion:reduce){.pin{animation:none}}
+.pay-card{display:flex;align-items:center;gap:14px;padding:14px;border-radius:16px;background:linear-gradient(135deg,#1F6FEB,#5B8CF5);color:#fff;margin-bottom:6px}
+.pay-card>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.pay-card b{font-size:16px}.pay-card span{font-size:13px;opacity:.85}
+.pay-brand{flex:none;font:900 italic 15px/1 "DM Sans",system-ui,sans-serif;letter-spacing:.04em;background:#fff;color:#1A1F71;border-radius:8px;padding:8px 10px}
+.pay-card .chip{background:rgba(255,255,255,.18);color:#fff}
+.pay-note{font-size:12.5px;margin:12px 0 0}
+.bill-h{margin:16px 0 6px;font-size:14px}
+.bill-list{list-style:none;margin:0;padding:0}
+.bill-list li{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line,#EEF2F8)}
+.bill-list li>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.bill-list li b{font-size:14px}.bill-list li span{font-size:12.5px;color:var(--muted,#6B6560)}
+.bill-list em{font-style:normal;font-weight:800;font-size:14px;white-space:nowrap}
 </style>
-<script src="refs/noopie-i18n.js?v=4"></script>
+<script src="refs/noopie-i18n.js?v=5"></script>
 </head>
 <body>
 
@@ -801,6 +811,23 @@ h1,h2,h3,h4,.f{font-weight:800;letter-spacing:-.02em}
         <div class="card"><div class="ttl"><h3>Sécurité</h3></div>
           <div class="toggle"><div><b>Double authentification</b><span>Code par SMS à la connexion</span></div><input class="sw" type="checkbox" aria-label="2FA"></div>
           <div class="toggle"><div><b>Mot de passe</b><span>Modifié il y a 2 mois</span></div><button class="link" type="button" data-toast="Démonstration : rien n’est modifié">Modifier</button></div>
+        </div>
+        <div class="card"><div class="ttl"><h3>Moyen de paiement</h3></div>
+          <div class="pay-card"><span class="pay-brand" aria-hidden="true">VISA</span><div><b>Visa •••• 4242</b><span>Expire le 12/28 · carte de test</span></div><span class="chip chip-ok"><i></i>Par défaut</span></div>
+          <div class="toggle"><div><b>Changer de carte</b><span>Pour l’abonnement et les commandes</span></div><button class="link" type="button" data-toast="Démonstration : rien n’est modifié">Modifier</button></div>
+          <div class="toggle"><div><b>Ajouter un moyen de paiement</b><span>Carte, Apple Pay ou Google Pay</span></div><button class="link" type="button" data-toast="Démonstration : rien n’est modifié">Ajouter</button></div>
+          <p class="muted pay-note">🔒 Paiement sécurisé par Stripe. Vos données bancaires ne transitent jamais par Noopie.</p>
+        </div>
+        <div class="card"><div class="ttl"><h3>Facturation</h3><a href="#premium">Gérer mon abonnement</a></div>
+          <div class="toggle" style="padding-top:0"><div><b>Abonnement</b><span data-sub-txt></span></div></div>
+          <div class="toggle"><div><b>Adresse de facturation</b><span>Marie · 75019 Paris, France</span></div><button class="link" type="button" data-toast="Démonstration : rien n’est modifié">Modifier</button></div>
+          <div class="toggle"><div><b>Factures par e-mail</b><span>Envoyées à chaque paiement</span></div><input class="sw" type="checkbox" checked aria-label="Factures par e-mail"></div>
+          <h4 class="bill-h">Mes factures</h4>
+          <ul class="bill-list">
+            <li><div><b>Abonnement Premium · 1er mois offert</b><span>Facture NP-F-0002</span></div><em>0,00 €</em><button class="link" type="button" data-toast="Démonstration : téléchargement non disponible ici">PDF</button></li>
+            <li><div><b>Médaillon Noopie · commande NP-1C7Z</b><span>Facture NP-F-0001</span></div><em>Prix à confirmer</em><button class="link" type="button" data-toast="Démonstration : téléchargement non disponible ici">PDF</button></li>
+          </ul>
+          <p class="muted pay-note">Démonstration : factures fictives, aucun paiement n’a été effectué.</p>
         </div>
         <div class="card"><div class="ttl"><h3>Langue et données</h3></div>
           <div class="field"><label for="p-l">Langue</label><select id="p-l"><option>Français</option><option>English</option></select></div>
