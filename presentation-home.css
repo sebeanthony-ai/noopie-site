@@ -1630,3 +1630,11 @@ header #menu-mobile a[href="./compte.html"], header #menu-mobile a[href="./compt
 header .np-hd-cta { min-width: 137px; justify-content: center; text-align: center; }
 header .np-hd-login { min-width: 166px; justify-content: center; text-align: center; }
 header .np-lang { width: 83px; justify-content: center; }
+
+/* v4.5 — Étape 1 : médaillon 3D qui tourne à 360° (QR au dos), manille en acier poli */
+.np-3d-boot { display: none !important; }
+.np-how-media--tag.is-3d > img { opacity: 0; pointer-events: none; }
+.np-how-media--tag .np3d { position: absolute; inset: 0 0 26px; width: 100%; height: auto; z-index: 1; }
+.np-how-media--tag .np3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; outline: none; }
+.np-how-media--tag .np3d canvas:active { cursor: grabbing; }
+.np-how-media--tag .np3d-hint { display: none; }

@@ -1,20 +1,34 @@
-// Noopie — médaillon 3D à 360° pour la page de commande (three.js), aux couleurs choisies.
+// Noopie — médaillon 3D à 360° (three.js). Plusieurs instances possibles :
+//  - page de commande : NoopieMed3D.show(target, body, paw) (aux couleurs choisies)
+//  - accueil : tout élément [data-np3d-auto] reçoit un médaillon qui tourne tout seul et montre le QR au dos.
 const CDN = new URL('./vendor/three', import.meta.url).href;
 
-async function boot() {
-  const test = document.createElement('canvas');
-  if (!(test.getContext('webgl2') || test.getContext('webgl'))) return;
+let LIB = null;
+async function lib() {
+  if (LIB) return LIB;
   const THREE = await import(`${CDN}/three.module.js`);
   const { RoomEnvironment } = await import(`${CDN}/RoomEnvironment.js`);
   const { SVGLoader } = await import(`${CDN}/SVGLoader.js`);
+  const qrTexUrl = new URL('med/qr-disc.png', import.meta.url).href;
+  LIB = { THREE, RoomEnvironment, SVGLoader, qrTexUrl };
+  return LIB;
+}
 
-  const wrap = document.createElement('div'); wrap.className = 'np3d';
+const HINT_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14.5-4.6M20 12a8 8 0 0 1-14.5 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 3v4.4h-4.4M5.5 21v-4.4h4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+async function create(host, opts = {}) {
+  const { THREE, RoomEnvironment, SVGLoader, qrTexUrl } = await lib();
+  const auto = !!opts.auto;
+  const en = document.documentElement.lang === 'en';
+
+  const wrap = document.createElement('div'); wrap.className = 'np3d' + (auto ? ' np3d--auto' : '');
   const canvas = document.createElement('canvas');
-  canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', 'Médaillon Noopie en 3D : glissez pour le faire tourner à 360°');
+  canvas.setAttribute('role', 'img');
+  canvas.setAttribute('aria-label', en ? 'Noopie tag in 3D: drag to spin it 360°' : 'Médaillon Noopie en 3D : glissez pour le faire tourner à 360°');
   canvas.tabIndex = 0; wrap.appendChild(canvas);
   const hint = document.createElement('span'); hint.className = 'np3d-hint';
-  hint.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14.5-4.6M20 12a8 8 0 0 1-14.5 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 3v4.4h-4.4M5.5 21v-4.4h4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Glissez pour faire tourner · 360°';
-  wrap.appendChild(hint);
+  hint.innerHTML = HINT_SVG + '<span>Glissez pour faire tourner · 360°</span>';
+  if (opts.hint !== false) wrap.appendChild(hint);
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2.5));
@@ -23,17 +37,19 @@ async function boot() {
   const scene = new THREE.Scene();
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  scene.environmentIntensity = 0.7;
+  scene.environmentIntensity = 0.75;
   const cam = new THREE.PerspectiveCamera(26, 1, 0.1, 50);
-  cam.position.set(0, 0.25, 7.6); cam.lookAt(0, 0.25, 0);
+  const camY = 0.36, camZ = auto ? 7.4 : 7.8;
+  cam.position.set(0, camY, camZ); cam.lookAt(0, camY, 0);
   scene.add(new THREE.HemisphereLight(0xffffff, 0xdfe6f2, 0.8));
   const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(-3, 5, 6); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xfff3e6, 0.8); rim.position.set(4, 2, -5); scene.add(rim);
-  const COLORS = { bleu: { body: 0x1E4FC4, paw: 0xF4EBDD } };
+  const rim = new THREE.DirectionalLight(0xfff3e6, 0.9); rim.position.set(4, 2, -5); scene.add(rim);
   const S = 1 / 96;
-  const sil = new THREE.MeshPhysicalMaterial({ color: COLORS.bleu.body, roughness: 0.55, clearcoat: 0.3, clearcoatRoughness: 0.55, sheen: 0.35, sheenColor: 0xffffff });
-  const pawMat = new THREE.MeshPhysicalMaterial({ color: COLORS.bleu.paw, roughness: 0.42, clearcoat: 0.4, clearcoatRoughness: 0.4 });
-  const steel = new THREE.MeshStandardMaterial({ color: 0xdde1e6, metalness: 1, roughness: 0.18 });
+  const sil = new THREE.MeshPhysicalMaterial({ color: opts.body || 0x1E4FC4, roughness: 0.55, clearcoat: 0.3, clearcoatRoughness: 0.55, sheen: 0.35, sheenColor: 0xffffff });
+  const pawMat = new THREE.MeshPhysicalMaterial({ color: opts.paw || 0xF4EBDD, roughness: 0.42, clearcoat: 0.4, clearcoatRoughness: 0.4 });
+  // Acier inoxydable poli miroir (manille) + finition satinée (vis)
+  const polished = new THREE.MeshPhysicalMaterial({ color: 0xE7EAEE, metalness: 1, roughness: 0.08, clearcoat: 1, clearcoatRoughness: 0.05 });
+  const satin = new THREE.MeshStandardMaterial({ color: 0xC9CED6, metalness: 1, roughness: 0.32 });
 
   const shapesFrom = d => new SVGLoader().parse(`<svg xmlns="http://www.w3.org/2000/svg"><path d="${d}"/></svg>`).paths.flatMap(p => SVGLoader.createShapes(p));
   const extrude = (shapes, depth, bevel, mat) => {
@@ -57,9 +73,34 @@ async function boot() {
     const sh = new THREE.Shape(); sh.moveTo(-26, -78); sh.lineTo(-26, -104); sh.absarc(0, -104, 26, Math.PI, 2 * Math.PI, false); sh.lineTo(26, -78); sh.lineTo(-26, -78);
     const hole = new THREE.Path(); hole.absarc(0, -108, 9, 0, Math.PI * 2, true); sh.holes.push(hole);
     const tab = extrude([sh], 14, 5, sil); tab.position.z = -0.125; medal.add(tab);
-    const ringM = new THREE.Mesh(new THREE.TorusGeometry(0.27, 0.035, 32, 120), steel);
-    ringM.position.set(0, 108 * S + 0.24, 0); ringM.rotation.y = Math.PI / 2; medal.add(ringM);
-    const ring2 = ringM.clone(); ring2.position.x = 0.03; ring2.rotation.y = Math.PI / 2 + 0.12; medal.add(ring2);
+  }
+  { // Manille « lyre » en acier inoxydable poli, avec axe vissé (remplace l'anneau brisé)
+    const hy = 108 * S;               // centre du trou
+    const w = 0.25, h = 0.56, tube = 0.046;
+    // Profil en U évasé (forme lyre), dans le plan Y-Z, ouvert vers le bas où passe l'axe
+    class Lyre extends THREE.Curve {
+      getPoint(t, target = new THREE.Vector3()) {
+        const a = Math.PI * (1 - t);          // de π (gauche) à 0 (droite)
+        const z = Math.cos(a) * w * (1 + 0.18 * Math.sin(a) ** 2);
+        const y = Math.sin(a) * h;
+        return target.set(0, hy + 0.06 + y, z);
+      }
+    }
+    const bow = new THREE.Mesh(new THREE.TubeGeometry(new Lyre(), 160, tube, 28, false), polished);
+    medal.add(bow);
+    // Oreilles de la manille (petits anneaux qui reçoivent l'axe)
+    for (const s of [-1, 1]) {
+      const ear = new THREE.Mesh(new THREE.TorusGeometry(0.062, 0.028, 20, 48), polished);
+      ear.position.set(0, hy + 0.06, s * w); medal.add(ear);
+    }
+    // Axe qui traverse le trou du médaillon
+    const pin = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 2 * w + 0.14, 32), satin);
+    pin.rotation.x = Math.PI / 2; pin.position.set(0, hy + 0.06, 0); medal.add(pin);
+    // Tête de vis bombée d'un côté, embout de l'autre
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.075, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), polished);
+    head.rotation.x = Math.PI / 2; head.position.set(0, hy + 0.06, w + 0.07); medal.add(head);
+    const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.05, 32), satin);
+    cap.rotation.x = Math.PI / 2; cap.position.set(0, hy + 0.06, -w - 0.07); medal.add(cap);
   }
   { // patte en relief (face)
     const paw = new THREE.Group();
@@ -71,7 +112,7 @@ async function boot() {
     paw.position.set(0, -0.08, TH / 2 - 0.02); paw.scale.set(1.28, 1.28, 1.1); medal.add(paw);
   }
   { // QR au dos
-    const tex = await new THREE.TextureLoader().loadAsync(new URL('med/qr-disc.png', import.meta.url).href);
+    const tex = await new THREE.TextureLoader().loadAsync(qrTexUrl);
     tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
     const qr = new THREE.Mesh(new THREE.CircleGeometry(0.72, 128), new THREE.MeshPhysicalMaterial({ map: tex, transparent: true, roughness: 0.35, clearcoat: 0.6, clearcoatRoughness: 0.2 }));
     qr.position.z = -TH / 2 - 0.004; qr.rotation.y = Math.PI; medal.add(qr);
@@ -79,28 +120,58 @@ async function boot() {
   medal.position.y = 0.05;
   scene.add(medal);
 
-  let rotY = -0.5, rotX = 0.08, vel = 0, drag = false, lastX = 0, lastY = 0, idle = 0, dirty = true, host = null;
+  let rotY = auto ? 0 : -0.5, rotX = 0.08, vel = 0, drag = false, lastX = 0, lastY = 0, idle = auto ? 99 : 0, dirty = true, visible = !auto;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SPIN = auto ? 0.9 : 0.7; // tours/s (rad/s)
   canvas.addEventListener('pointerdown', e => { drag = true; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); hint.classList.add('is-used'); });
   canvas.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - lastX, dy = e.clientY - lastY; lastX = e.clientX; lastY = e.clientY; vel = dx * 0.012; rotY += vel; rotX = Math.max(-0.5, Math.min(0.5, rotX + dy * 0.006)); idle = 0; dirty = true; });
   const up = () => { drag = false; }; canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', up);
   canvas.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { rotY -= 0.3; dirty = true; } if (e.key === 'ArrowRight') { rotY += 0.3; dirty = true; } });
-  const resize = () => { if (!host) return; const r = wrap.getBoundingClientRect(); if (!r.width) return; renderer.setSize(r.width, r.height, false); cam.aspect = r.width / r.height; cam.updateProjectionMatrix(); dirty = true; };
+  const resize = () => { const r = wrap.getBoundingClientRect(); if (!r.width || !r.height) return; renderer.setSize(r.width, r.height, false); cam.aspect = r.width / r.height; cam.updateProjectionMatrix(); dirty = true; };
   new ResizeObserver(resize).observe(wrap);
+  if (auto && 'IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) dirty = true; }, { rootMargin: '120px' }).observe(wrap);
+  else visible = true;
   let t0 = performance.now();
   const loop = t => { const dt = Math.min(0.05, (t - t0) / 1000); t0 = t;
-    if (host) { if (!drag) { idle += dt; if (Math.abs(vel) > 0.0005) { rotY += vel; vel *= 0.94; dirty = true; } else if (!reduce && idle > 1.2) { rotY += dt * 0.7; dirty = true; } rotX += (0.08 - rotX) * Math.min(1, dt * 2); }
-      if (dirty) { medal.rotation.set(rotX, rotY, 0); medal.position.y = 0.05 + Math.sin(t / 900) * (reduce ? 0 : 0.03); renderer.render(scene, cam); } }
+    if (visible && wrap.isConnected) {
+      if (!drag) { idle += dt; if (Math.abs(vel) > 0.0005) { rotY += vel; vel *= 0.94; dirty = true; } else if (!reduce && idle > 1.2) { rotY += dt * SPIN; dirty = true; } rotX += (0.08 - rotX) * Math.min(1, dt * 2); }
+      if (dirty) { medal.rotation.set(rotX, rotY, 0); medal.position.y = 0.05 + Math.sin(t / 900) * (reduce ? 0 : 0.03); renderer.render(scene, cam); dirty = reduce ? false : dirty; } }
     requestAnimationFrame(loop); };
   requestAnimationFrame(loop);
 
+  host.appendChild(wrap); host.classList.add('is-3d'); resize();
+  return {
+    wrap,
+    setColors(body, paw) { sil.color.set(body); pawMat.color.set(paw); dirty = true; },
+    pop() { wrap.classList.remove('pop'); void wrap.offsetWidth; wrap.classList.add('pop'); }
+  };
+}
+
+async function boot() {
+  const test = document.createElement('canvas');
+  if (!(test.getContext('webgl2') || test.getContext('webgl'))) return;
+
+  // Page de commande (instance unique, couleurs pilotées par la page)
+  let order = null, pending = null;
   window.NoopieMed3D = {
-    show(target, body, paw) {
-      if (wrap.parentNode !== target) { host = target; target.appendChild(wrap); target.classList.add('is-3d'); resize(); }
-      sil.color.set(body); pawMat.color.set(paw); dirty = true;
-      wrap.classList.remove('pop'); void wrap.offsetWidth; wrap.classList.add('pop');
+    create,
+    async show(target, body, paw) {
+      if (!order) { if (!pending) pending = create(target, { body, paw }); order = await pending; }
+      if (order.wrap.parentNode !== target) { target.appendChild(order.wrap); target.classList.add('is-3d'); }
+      order.setColors(body, paw); order.pop();
     }
   };
   document.dispatchEvent(new CustomEvent('np3d-ready'));
+
+  // Accueil : médaillons qui tournent tout seuls
+  const COLORS = { blue: [0x1E4FC4, 0xF4EBDD], nude: [0xE9D2BE, 0xFFFFFF] };
+  const autos = [...document.querySelectorAll('[data-np3d-auto]')];
+  for (const el of autos) {
+    if (el.dataset.np3dOn) continue; el.dataset.np3dOn = '1';
+    const pick = () => { const dog = document.getElementById('np-pet-dog'); return COLORS[!dog || dog.checked ? 'blue' : 'nude']; };
+    const [b, p] = pick();
+    const inst = await create(el, { auto: true, body: b, paw: p });
+    document.querySelectorAll('input[name="np-pet"], #np-pet-dog, #np-pet-cat').forEach(i => i.addEventListener('change', () => { const [b2, p2] = pick(); inst.setColors(b2, p2); }));
+  }
 }
-boot().catch(err => console.warn('[noopie 3D commande]', err));
+boot().catch(err => console.warn('[noopie 3D]', err));
