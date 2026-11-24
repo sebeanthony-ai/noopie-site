@@ -109,7 +109,7 @@ body {
 #top > div[aria-hidden="true"]:first-child {
   height: clamp(230px, 27vw, 365px);
   background:
-    url("refs/hero-trail-anim.svg?v=1") center bottom / cover no-repeat,
+    url("refs/hero-trail-anim.svg?v=2") center bottom / cover no-repeat,
     #fff;
 }
 #top > div[aria-hidden="true"]:first-child > svg { display: none; }
