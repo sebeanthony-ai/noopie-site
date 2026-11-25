@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noopie</title>
+<script>
+  // L'app web (/app/) gère ses propres pages : on y revient au lieu d'afficher une erreur.
+  if (location.pathname.indexOf('/noopie-site/app/') === 0) location.replace('/noopie-site/app/');
+</script>
+<style>body{margin:0;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;color:#16181D;background:#F7F9FD;padding:16px;box-sizing:border-box;text-align:center}a{color:#1F6FEB;font-weight:700}</style>
+</head>
+<body>
+<div><h1>Page introuvable</h1><p><a href="/noopie-site/">Revenir à l’accueil Noopie</a></p></div>
+</body>
+</html>
