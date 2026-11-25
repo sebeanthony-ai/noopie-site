@@ -303,8 +303,18 @@
     document.querySelectorAll('.np-lang').forEach(syncPicker);
     var sel = document.getElementById('p-l'); if (sel) sel.value = selVal(l);
     try { window.dispatchEvent(new CustomEvent('np-lang', { detail: l })); } catch (e) {}
+    shots(l);
   }
   window.NoopieLang = { set: setLang, get: function () { return LANG; } };
+  // Aperçus de l'application : une capture par langue (refs/app/<langue>/<écran>.webp)
+  function shots(l) {
+    document.querySelectorAll('img[data-shot]').forEach(function (im) {
+      var src = 'refs/app/' + l + '/' + im.getAttribute('data-shot') + '.webp?v=1';
+      if (im.getAttribute('src') !== src) im.setAttribute('src', src);
+    });
+  }
+  shots(LANG);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { shots(LANG); });
 
   // Garder la même place dans la page quand on change de langue
   var POS = 'np-lang-pos';
