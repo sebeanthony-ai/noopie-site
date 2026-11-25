@@ -1649,3 +1649,8 @@ header .np-lang { width: 92px; }
 /* v4.8 — Ziggy triste en bas à droite de la carte « Médaillon seul » */
 .np-pm-card .np-pm-cat { position: absolute; right: 14px; bottom: 14px; width: min(230px, 42%); height: auto; pointer-events: none; filter: drop-shadow(0 10px 14px rgba(16,24,40,.16)); }
 @media (max-width: 760px) { .np-pm-card .np-pm-cat { position: static; align-self: flex-end; width: 170px; margin: 8px -6px -8px 0; } }
+
+/* v4.9 — aperçus de l'app : captures de la vraie application (version I) */
+.np-ap-screen:has(.np-shot-app) { padding: 0 !important; background: #F7F9FD; }
+.np-ap-screen:has(.np-shot-app) .np-ios-bar { position: relative; z-index: 1; height: 22px; padding: 4px 16px 0; background: #F7F9FD; color: #16181D; }
+.np-shot-app { position: absolute; left: 0; right: 0; top: 22px; width: 100%; height: calc(100% - 22px); object-fit: cover; object-position: top center; display: block; }
