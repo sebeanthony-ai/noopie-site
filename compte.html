@@ -453,7 +453,8 @@ h1,h2,h3,h4,.f{font-weight:800;letter-spacing:-.02em}
   const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
   // La langue choisie sur le site est reprise par l'app
   ls.set('noopie.lang', ls.get('np-lang')||'fr');
-  document.getElementById('appframe').src='./app/';
+  // ?v= : évite qu'un navigateur garde en mémoire une ancienne version de l'app
+  document.getElementById('appframe').src='./app/?v='+Date.now();
   window.addEventListener('storage',e=>{if(e.key==='np-lang'&&e.newValue&&window.NoopieLang)try{NoopieLang.set(e.newValue)}catch(x){}});
 })();
 </script>
