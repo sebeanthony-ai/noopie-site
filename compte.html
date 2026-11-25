@@ -436,6 +436,7 @@ h1,h2,h3,h4,.f{font-weight:800;letter-spacing:-.02em}
 .bill-list li>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.bill-list li b{font-size:14px}.bill-list li span{font-size:12.5px;color:var(--muted,#6B6560)}
 .bill-list em{font-style:normal;font-weight:800;font-size:14px;white-space:nowrap}
 .appframe{position:fixed;inset:0;background:#F7F9FD;z-index:5}
+.np-lang{display:none!important} /* la langue se règle dans l'app (Compte) */
 .appframe iframe{border:0;width:100%;height:100%;display:block}
 .demo-acc{margin-top:18px;padding:14px 16px;border-radius:16px;background:#F7F5FE;border:1.5px solid #E2DBFB;display:flex;flex-direction:column;gap:6px}
 .demo-acc b{font-size:14px}.demo-acc span{font-size:13.5px;color:var(--muted,#5E6B80);line-height:1.6}.demo-acc code{font:700 13.5px/1 "DM Sans",system-ui,sans-serif;color:var(--ink,#16181D)}
@@ -444,100 +445,16 @@ h1,h2,h3,h4,.f{font-weight:800;letter-spacing:-.02em}
 <script src="refs/noopie-i18n.js?v=7"></script>
 </head>
 <body>
-
-<!-- ================= CONNEXION ================= -->
-<section class="auth" id="auth">
-  <aside class="auth-side">
-    <a class="logo" href="./index.html" aria-label="Noopie, accueil"><svg viewBox="0 0 156 44" role="img" aria-label="Noopie"><defs><radialGradient id="g-gold1" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFE6A6"/><stop offset=".55" stop-color="#F2C56A"/><stop offset="1" stop-color="#C9922F"/></radialGradient></defs><text x="0" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">no</text><g transform="translate(60 22)"><circle r="14" fill="url(#g-gold1)"/><g fill="#1F6FEB" transform="translate(0 1)"><circle cx="-5" cy="-4" r="2.2"/><circle cx="0" cy="-6" r="2.2"/><circle cx="5" cy="-4" r="2.2"/><path d="M0 -1c-3.2 0-5.8 2.4-5.8 5 0 1.6 1.3 2.8 2.9 2.8 1.1 0 1.9-.5 2.9-.5s1.8.5 2.9.5c1.6 0 2.9-1.2 2.9-2.8 0-2.6-2.6-5-5.8-5Z"/></g><rect x="-3" y="-17" width="6" height="5" rx="2" fill="#CFCAC2"/></g><text x="80" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">pie</text></svg></a>
-    <h2>Content de vous revoir&nbsp;!</h2>
-    <p>Retrouvez la position de vos compagnons, leurs fiches et toutes vos alertes.</p>
-    <ul class="auth-feats">
-      <li><span>📍</span>Position en direct</li>
-      <li><span>🔔</span>Alertes instantanées</li>
-      <li><span>🐾</span>Fiche partageable par QR code</li>
-    </ul>
-    <div class="auth-pets"><img src="refs/hero-dog-noshadow.webp" alt="Nougat, la mascotte Noopie"><img src="refs/hero-cat-noshadow.webp" alt="Ziggy, la mascotte Noopie"></div>
-  </aside>
-  <main class="auth-main">
-    <div class="auth-top"><a class="logo" href="./index.html" aria-label="Noopie, accueil"><svg viewBox="0 0 156 44" role="img" aria-label="Noopie"><defs><radialGradient id="g-gold2" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFE6A6"/><stop offset=".55" stop-color="#F2C56A"/><stop offset="1" stop-color="#C9922F"/></radialGradient></defs><text x="0" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">no</text><g transform="translate(60 22)"><circle r="14" fill="url(#g-gold2)"/><g fill="#1F6FEB" transform="translate(0 1)"><circle cx="-5" cy="-4" r="2.2"/><circle cx="0" cy="-6" r="2.2"/><circle cx="5" cy="-4" r="2.2"/><path d="M0 -1c-3.2 0-5.8 2.4-5.8 5 0 1.6 1.3 2.8 2.9 2.8 1.1 0 1.9-.5 2.9-.5s1.8.5 2.9.5c1.6 0 2.9-1.2 2.9-2.8 0-2.6-2.6-5-5.8-5Z"/></g><rect x="-3" y="-17" width="6" height="5" rx="2" fill="#CFCAC2"/></g><text x="80" y="33" font-family="Fredoka, sans-serif" font-weight="700" font-size="38" fill="#1F6FEB" letter-spacing="-1">pie</text></svg></a><div data-lang-slot style="margin-left:auto"></div><a class="link" href="./index.html">← Retour au site</a></div>
-    <div class="auth-box">
-      <h1 id="auth-title">Se connecter</h1>
-      <p id="auth-sub">Accédez à votre espace Noopie.</p>
-      <div class="tabs" role="tablist">
-        <button type="button" role="tab" aria-selected="true" data-mode="login">Connexion</button>
-        <button type="button" role="tab" aria-selected="false" data-mode="signup">Créer un compte</button>
-      </div>
-      <form id="auth-form" novalidate autocomplete="off">
-        <div class="field" id="f-name" hidden><label for="name">Prénom</label><input id="name" placeholder="Marie"></div>
-        <div class="field"><label for="email">E-mail</label><input id="email" type="email" placeholder="vous@exemple.fr"></div>
-        <div class="field"><label for="pwd">Mot de passe</label><input id="pwd" type="password" placeholder="••••••••"></div>
-        <div class="row-between" id="f-remember"><label><input type="checkbox" checked> Rester connecté</label><button type="button" class="link" id="forgot">Mot de passe oublié ?</button></div>
-        <p class="err" id="auth-err"></p>
-        <button class="btn btn-blue full" type="submit" id="auth-submit">Se connecter</button>
-      </form>
-      <div class="or">ou</div>
-      <div class="sso">
-        <button class="btn" type="button" data-sso><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14 5.3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3.1-1.5z"/></svg>Continuer avec Apple</button>
-        <button class="btn" type="button" data-sso><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6c-.2 1.3-1 2.4-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7C4.4 19.7 8 22 12 22z"/><path fill="#FBBC05" d="M6.2 13.6c-.2-.6-.3-1.2-.3-1.8s.1-1.2.3-1.8V7.3H2.7C2 8.7 1.6 10.3 1.6 12s.4 3.3 1.1 4.7l3.5-3.1z"/><path fill="#EA4335" d="M12 5.8c1.5 0 2.9.5 4 1.5l3-3C17.2 2.6 14.8 1.6 12 1.6 8 1.6 4.4 3.9 2.7 7.3l3.5 2.7C7 7.6 9.3 5.8 12 5.8z"/></svg>Continuer avec Google</button>
-      </div>
-      <div class="demo-acc" id="demo-acc"><b>Compte de présentation</b><span>E-mail : <code>marie@noopie.app</code><br>Mot de passe : <code>Noopie2026</code></span><button class="btn btn-white btn-sm" type="button" id="demo-fill">Remplir les identifiants</button></div>
-      <p class="demo" style="margin-top:14px">Version bêta : vos données restent dans ce navigateur. Les déplacements sur la carte sont simulés en attendant le médaillon GPS.</p>
-    </div>
-  </main>
-</section>
-
-<!-- ================= ESPACE CONNECTÉ : l'app Noopie (mêmes fonctions et mêmes données que l'application) ================= -->
-<div class="appframe" id="app" hidden><iframe id="appframe" title="Mon espace Noopie" allow="geolocation"></iframe></div>
-<div class="toast" id="toast" role="status"></div>
-
+<!-- « Mon compte » sur le site = l'application Noopie elle-même : même connexion, même compte,
+     mêmes fonctions et mêmes données que sur téléphone (compte de présentation : marie@noopie.app). -->
+<div class="appframe" id="app"><iframe id="appframe" title="Mon espace Noopie" allow="geolocation"></iframe></div>
 <script>
 (() => {
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2400)};
-// Compte de présentation (le même que dans l'application)
-const DEMO_EMAIL='marie@noopie.app', DEMO_PASS='Noopie2026';
-const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-const T=fr=>fr; // le site traduit automatiquement les textes affichés
-
-const signedIn=()=>{try{const d=JSON.parse(ls.get('noopie.db.v1')||'null');return !!(d&&d.user)}catch(e){return false}};
-const frame=$('#appframe');
-let watch=null;
-function openApp(path){
-  ls.set('noopie.lang', ls.get('np-lang')||document.documentElement.lang||'fr');
-  $('#auth').hidden=true; $('#app').hidden=false;
-  frame.src='./app/'+(path||'');
-  clearInterval(watch);
-  // Déconnexion depuis l'app : on revient au formulaire du site
-  watch=setInterval(()=>{try{const p=frame.contentWindow.location.pathname;if(/\/app\/login\/?$/.test(p)&&!signedIn()){closeApp()}}catch(e){}},800);
-}
-function closeApp(){clearInterval(watch);$('#app').hidden=true;$('#auth').hidden=false;frame.removeAttribute('src');$('#pwd').value=''}
-
-let mode='login';
-$$('.tabs button').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;$$('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
-  $('#f-name').hidden=mode!=='signup';$('#f-remember').hidden=mode==='signup';
-  $('#auth-title').textContent=T(mode==='login'?'Se connecter':'Créer un compte');
-  $('#auth-sub').textContent=T(mode==='login'?'Accédez à votre espace Noopie.':'Quelques secondes et votre espace est prêt.');
-  $('#auth-submit').textContent=T(mode==='login'?'Se connecter':'Créer mon compte');$('#auth-err').textContent=''});
-$('#forgot').onclick=()=>toast(T('Démonstration : aucun e-mail n’est envoyé'));
-$('#demo-fill').onclick=()=>{if(mode!=='login')$('.tabs button[data-mode="login"]').click();$('#email').value=DEMO_EMAIL;$('#pwd').value=DEMO_PASS;$('#auth-err').textContent=''};
-const go=(o)=>{ls.set('noopie.sso',JSON.stringify(Object.assign({t:Date.now()},o)));openApp('?sso=1')};
-$('#auth-form').onsubmit=e=>{e.preventDefault();const m=$('#email').value.trim().toLowerCase(), pw=$('#pwd').value;
-  const err=t=>{$('#auth-err').textContent=T(t)};
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m))return err('Saisissez une adresse e-mail valide.');
-  if(mode==='login'){
-    if(m!==DEMO_EMAIL)return err('Aucun compte ne correspond à cet e-mail. Pour la démonstration, utilisez marie@noopie.app.');
-    if(pw!==DEMO_PASS)return err('Mot de passe incorrect.');
-    return go({email:m});
-  }
-  if(pw.length<4)return err('Le mot de passe doit faire au moins 4 caractères.');
-  go({email:m,mode:'signup',name:$('#name').value.trim()});
-};
-$$('[data-sso]').forEach(b=>b.onclick=()=>toast(T('Bientôt disponible : utilisez votre e-mail pour le moment')));
-// La langue du site suit celle de l'app, et inversement
-window.addEventListener('np-lang',e=>{if(e.detail)ls.set('noopie.lang',e.detail)});
-window.addEventListener('storage',e=>{if(e.key==='np-lang'&&e.newValue&&window.NoopieLang)try{NoopieLang.set(e.newValue)}catch(x){}});
-// Déjà connecté : on ouvre directement l'espace
-if(signedIn())openApp('');
+  const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  // La langue choisie sur le site est reprise par l'app
+  ls.set('noopie.lang', ls.get('np-lang')||'fr');
+  document.getElementById('appframe').src='./app/';
+  window.addEventListener('storage',e=>{if(e.key==='np-lang'&&e.newValue&&window.NoopieLang)try{NoopieLang.set(e.newValue)}catch(x){}});
 })();
 </script>
 </body>
